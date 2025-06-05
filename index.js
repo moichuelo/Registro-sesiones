@@ -28,7 +28,11 @@ app.set("view engine", "ejs");
 
 //9 4 Definir las rutas
 app.get("/", (req, res) => {
-    res.render("index", { user: "Moi" });
+    if (req.session.loggedin) {
+        res.render("index", { user: req.session.name, login: true });
+    } else {
+        res.render("index", { user: "Debe iniciar sesión", login: false });
+    }
 });
 app.get("/login", (req, res) => {
     res.render("login");
@@ -38,6 +42,7 @@ app.get("/registro", (req, res) => {
 });
 
 //9 8 Definir las rutas POST
+//Ruta de registro
 app.post("/register", async (req, res) => {
     //Recoger los datos del formulario
     const user = req.body.user;
@@ -73,6 +78,68 @@ app.post("/register", async (req, res) => {
             }
         }
     );
+});
+
+//Ruta de inicio de sesión
+app.post("/auth", async (req, res) => {
+    const user = req.body.user;
+    const pass = req.body.pass;
+
+    if (user && pass) {
+        db.query(
+            "SELECT * FROM usuarios WHERE usuario = ?",
+            [user],
+            async (error, results) => {
+                if (
+                    results.length == 0 ||
+                    !(await bcrypt.compare(pass, results[0].pass))
+                ) {
+                    res.render("login", {
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage:
+                            "El usuario o la contraseña son incorrectos",
+                        alertIcon: "error",
+                        showConfirmButton: true,
+                        timer: false,
+                        ruta: "login",
+                        login: false,
+                    });
+                } else {
+                    req.session.loggedin = true;
+                    req.session.name = results[0].nombre;
+
+                    res.render("login", {
+                        alert: true,
+                        alertTitle: "Login",
+                        alertMessage: "Has iniciado sesión correctamente",
+                        alertIcon: "success",
+                        showConfirmButton: false,
+                        timer: 2500,
+                        ruta: "",
+                        login: true,
+                    });
+                }
+            }
+        );
+    } else {
+        res.render("login", {
+            alert: true,
+            alertTitle: "Error",
+            alertMessage: "Introduzca su usuario y contraseña",
+            alertIcon: "error",
+            showConfirmButton: true,
+            timer: false,
+            ruta: "login",
+            login: false,
+        });
+    }
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/");
+    });
 });
 
 //9 2 Crear el servidor

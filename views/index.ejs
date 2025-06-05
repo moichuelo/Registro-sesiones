@@ -10,7 +10,18 @@
 
 <body>
     <h1>Página de inicio</h1>
-    <h2>El usuario conectado es: <%=user %>
+    <h2>Bienvenido
+        <% if (login) {%>
+            <p>El usuario conectado es: <%=user %>
+            </p>
+            <a href="/logout" class="a-logout">Cerrar sesión</a>
+            <% }else { %>
+                <p>
+                    <%= user %>
+                </p>
+                <a href="/login" class="a-login">Iniciar sesión </a>
+
+                <% } %>
     </h2>
 </body>
 
