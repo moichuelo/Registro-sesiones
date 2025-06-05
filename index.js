@@ -4,6 +4,7 @@ const app = express();
 require("dotenv").config({ path: "./env/.env" });
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
+const db = require("./database/db");
 
 //9 7 Definir la sesión
 app.use(
@@ -27,7 +28,51 @@ app.set("view engine", "ejs");
 
 //9 4 Definir las rutas
 app.get("/", (req, res) => {
-    res.send("Hello World");
+    res.render("index", { user: "Moi" });
+});
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+app.get("/registro", (req, res) => {
+    res.render("register");
+});
+
+//9 8 Definir las rutas POST
+app.post("/register", async (req, res) => {
+    //Recoger los datos del formulario
+    const user = req.body.user;
+    const name = req.body.name;
+    const rol = req.body.rol;
+    const pass = req.body.pass;
+
+    //Cifrar la contraseña
+    const passwordHash = await bcrypt.hash(pass, 8);
+
+    //Guardar el usuario en la base de datos
+    db.query(
+        "INSERT INTO usuarios SET ?",
+        {
+            usuario: user,
+            nombre: name,
+            rol: rol,
+            pass: passwordHash,
+        },
+        (error, results) => {
+            if (error) {
+                console.log(error);
+            } else {
+                res.render("register", {
+                    alert: true,
+                    alertTitle: "Registro",
+                    alertMessage: "El usuario se ha registrado correctamente",
+                    alertIcon: "success",
+                    showConfirmButton: false,
+                    timer: 2500,
+                    ruta: "",
+                });
+            }
+        }
+    );
 });
 
 //9 2 Crear el servidor

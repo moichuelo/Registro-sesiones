@@ -1,0 +1,346 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: roboto;
+    margin: auto;
+    text-align: center;
+}
+
+.login-form,
+.contenedor {
+    width: 30%;
+    margin: 0 auto;
+}
+.contenedor2 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.login-form h1 {
+    text-align: center;
+    color: midnightblue;
+    font-size: 28px;
+    padding: 70px 0 10px 0;
+}
+
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilos boton LOGIN*/
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: #223172;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+}
+.btn-login:hover,
+.btn-login:active {
+    color: #fff;
+    background-color: #20369b;
+    border-color: #20369b;
+}
+.btn-login:focus {
+    box-shadow: 0 0 0 3px #20369b;
+}
+
+/* Estilos boton REGISTER*/
+.btn-register {
+    width: 100%;
+    padding: 15px;
+    background-color: #158b36;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    margin-top: 20px;
+    /* Para dar la apariencia de un boton */
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+.btn-register:hover,
+.btn-register:active {
+    color: #fff;
+    background-color: #14ad3f;
+    border-color: #14ad3f;
+}
+.btn-register:focus {
+    box-shadow: 0 0 0 3px #14ad3f;
+}
+
+.inline {
+    display: inline;
+}
+
+/* Estilos de link para realizar el LOGOUT*/
+.a-logout:link,
+.a-logout:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid #f87171;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.a-logout:hover,
+.a-logout:active {
+    background-color: #f87171;
+    color: white;
+}
+
+/* Estilos boton CANCELAR*/
+.btn-cancel {
+    width: 50%;
+    padding: 15px;
+    background-color: #9ca3af;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: medium;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    /* Para dar la apariencia de un boton */
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+.btn-cancel:hover,
+.btn-cancel:active {
+    color: #fff;
+    background-color: #6b7280;
+    border-color: #6b7280;
+}
+.btn-cancel:focus {
+    box-shadow: 0 0 0 3px #6b7280;
+}
+
+/* Estilos boton GUARDAR*/
+.btn-save {
+    width: 50%;
+    padding: 15px;
+    background-color: #1d4ed8;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: medium;
+    color: #ffffff;
+    margin-top: 20px;
+    /* Para dar la apariencia de un boton */
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+.btn-save:hover,
+.btn-save:active {
+    color: #fff;
+    background-color: #1e3a8a;
+    border-color: #1e3a8a;
+}
+.btn-save:focus {
+    box-shadow: 0 0 0 3px #1e3a8a;
+}
+
+/* form User Registration */
+.register-form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 0px 20px 60px 20px;
+    margin-top: 35px;
+    font-family: roboto;
+    text-align: left !important;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.register-form h1 {
+    text-align: left;
+    color: midnightblue;
+    font-size: 22px;
+    padding: 70px 0 10px 0;
+}
+.register-form input[type="password"],
+.register-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el select dropdown */
+.select-css {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    padding: 0.4em 1.4em 0.3em 0.8em;
+    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+.select-css::-ms-expand {
+    display: none;
+}
+.select-css:hover {
+    border-color: #888;
+}
+.select-css:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+}
+.select-css option {
+    font-weight: normal;
+}
+
+/* Estilos de link para ir a LOGIN*/
+.a-login:link,
+.a-login:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid #14ad3f;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.a-login:hover,
+.a-login:active {
+    background-color: #14ad3f;
+    color: white;
+}
+
+/*Estilo del título*/
+#titu {
+    color: #14ad3f;
+}
+
+/* Estilo del menú*/
+.menunave {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.nave-lista {
+    list-style: none;
+}
+
+.nave-item {
+    display: inline;
+}
+
+.nave-link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: #20369b;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.nave-link:hover {
+    background-color: #158b36;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* ------------- footer---------*/
+footer {
+    background-color: #143d20;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 0;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+/*Estilo de la imagen de inicio*/
+/* Contenedor de la imagen */
+.image-container {
+    overflow: hidden; /* Para asegurarse de que la imagen no se desborde */
+    border-radius: 10px; /* Bordes redondeados para un mejor efecto visual */
+}
+
+/* Imagen con efecto hover */
+.hover-image {
+    width: 80%; /* Puedes ajustar el tamaño según sea necesario */
+    height: auto;
+    transition: transform 0.5s ease, filter 0.5s ease; /* Transición para un efecto suave */
+}
+
+.hover-image:hover {
+    transform: scale(
+        1.1
+    ); /* Aumenta el tamaño de la imagen al pasar el ratón por encima */
+    filter: brightness(1.2); /* Incrementa el brillo de la imagen */
+}
