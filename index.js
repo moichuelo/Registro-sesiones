@@ -5,6 +5,7 @@ require("dotenv").config({ path: "./env/.env" });
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const db = require("./database/db");
+const { body, validationResult } = require("express-validator");
 
 //9 7 Definir la sesión
 app.use(
@@ -16,7 +17,7 @@ app.use(
 );
 
 //9 3 Definir los middlewares
-app.use(express.urlencoded({ extended: false })); //nos permite recibir datos de un formulario
+app.use(express.urlencoded({ extended: true })); //nos permite recibir datos de un formulario
 app.use(express.json()); //nos permite recibir datos de una API
 
 //9 5 Configurar carpeta pública
@@ -42,43 +43,75 @@ app.get("/registro", (req, res) => {
 });
 
 //9 8 Definir las rutas POST
-//Ruta de registro
-app.post("/register", async (req, res) => {
-    //Recoger los datos del formulario
-    const user = req.body.user;
-    const name = req.body.name;
-    const rol = req.body.rol;
-    const pass = req.body.pass;
 
-    //Cifrar la contraseña
-    const passwordHash = await bcrypt.hash(pass, 8);
+app.post(
+    "/register",
+    [
+        body("user")
+            .exists()
+            .isLength({ min: 4 })
+            .withMessage("El usuario debe tener al menos 4 caracteres"),
+        body("name")
+            .isLength({ min: 4 })
+            .withMessage("El nombre debe tener al menos 4 caracteres"),
+        body("pass")
+            .isLength({ min: 4 })
+            .withMessage("La contraseña debe tener al menos 4 caracteres"),
+        body("email").isEmail().withMessage("El email no es valido"),
+        body("edad").isNumeric().withMessage("La edad debe ser un número"),
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            // res.status(400).json({ errors: errors.array() });
+            // console.log(errors);
 
-    //Guardar el usuario en la base de datos
-    db.query(
-        "INSERT INTO usuarios SET ?",
-        {
-            usuario: user,
-            nombre: name,
-            rol: rol,
-            pass: passwordHash,
-        },
-        (error, results) => {
-            if (error) {
-                console.log(error);
-            } else {
-                res.render("register", {
-                    alert: true,
-                    alertTitle: "Registro",
-                    alertMessage: "El usuario se ha registrado correctamente",
-                    alertIcon: "success",
-                    showConfirmButton: false,
-                    timer: 2500,
-                    ruta: "",
-                });
-            }
+            console.log(req.body);
+            const valores = req.body; //se guardan los valores introducidos en el formulario
+            const validacionErrores = errors.array(); //se guarda en un array todos los errores producidos
+            res.render("register", {
+                validaciones: validacionErrores,
+                valores: valores,
+            });
+        } else {
+            //Recoger los datos del formulario
+            const user = req.body.user;
+            const name = req.body.name;
+            const rol = req.body.rol;
+            const pass = req.body.pass;
+
+            //Cifrar la contraseña
+            const passwordHash = await bcrypt.hash(pass, 8);
+
+            //Guardar el usuario en la base de datos
+            db.query(
+                "INSERT INTO usuarios SET ?",
+                {
+                    usuario: user,
+                    nombre: name,
+                    rol: rol,
+                    pass: passwordHash,
+                },
+                (error, results) => {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        res.render("register", {
+                            alert: true,
+                            alertTitle: "Registro",
+                            alertMessage:
+                                "El usuario se ha registrado correctamente",
+                            alertIcon: "success",
+                            showConfirmButton: false,
+                            timer: 2500,
+                            ruta: "",
+                        });
+                    }
+                }
+            );
         }
-    );
-});
+    }
+);
 
 //Ruta de inicio de sesión
 app.post("/auth", async (req, res) => {
