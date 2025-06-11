@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const db = require("./database/db");
 const { body, validationResult } = require("express-validator");
+const expressLayouts = require("express-ejs-layouts");
 
 //9 7 Definir la sesión
 app.use(
@@ -25,21 +26,30 @@ app.use("/resources", express.static(__dirname + "/public"));
 
 //9 6 Definir el motor de vistas
 app.set("view engine", "ejs");
+app.use(expressLayouts);
 // app.set("views", __dirname + "/views");
 
 //9 4 Definir las rutas
 app.get("/", (req, res) => {
     if (req.session.loggedin) {
-        res.render("index", { user: req.session.name, login: true });
+        res.render("index", {
+            user: req.session.name,
+            login: true,
+            titulo: "Home",
+        });
     } else {
-        res.render("index", { user: "Debe iniciar sesión", login: false });
+        res.render("index", {
+            user: "Debe iniciar sesión",
+            login: false,
+            titulo: "Home",
+        });
     }
 });
 app.get("/login", (req, res) => {
     res.render("login");
 });
 app.get("/registro", (req, res) => {
-    res.render("register");
+    res.render("register", { titulo: "Login", css: "body.css" });
 });
 
 //9 8 Definir las rutas POST
@@ -72,6 +82,7 @@ app.post(
             res.render("register", {
                 validaciones: validacionErrores,
                 valores: valores,
+                titulo: "Registro",
             });
         } else {
             //Recoger los datos del formulario
@@ -105,6 +116,7 @@ app.post(
                             showConfirmButton: false,
                             timer: 2500,
                             ruta: "",
+                            titulo: "Registro",
                         });
                     }
                 }
@@ -137,6 +149,7 @@ app.post("/auth", async (req, res) => {
                         timer: false,
                         ruta: "login",
                         login: false,
+                        titulo: "Login",
                     });
                 } else {
                     req.session.loggedin = true;
@@ -151,6 +164,7 @@ app.post("/auth", async (req, res) => {
                         timer: 2500,
                         ruta: "",
                         login: true,
+                        titulo: "Login",
                     });
                 }
             }
@@ -165,6 +179,7 @@ app.post("/auth", async (req, res) => {
             timer: false,
             ruta: "login",
             login: false,
+            titulo: "Login",
         });
     }
 });
