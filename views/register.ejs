@@ -1,76 +1,82 @@
-<div class="register-form">
-    <h1>Registro</h1>
-    <form action="/register" method="POST">
-        <label for="user">Usuario: </label>
-        <input type="text" name="user" placeholder="Ingrese su usuario"
-            value="<% if (typeof valores !=='undefined' ) { %> <%= valores.user %> <% } %>">
+<%- include('partials/head') %>
+    <link rel="stylesheet" href="/resources/css/body.css">
+    <%- include('partials/header') %>
 
-        <label for="name">Nombre: </label>
-        <input type="text" name="name" placeholder="Ingrese su nombre"
-            value="<% if (typeof valores !=='undefined' ) { %> <%= valores.name %> <% } %>">
+        <div class="register-form">
+            <h1>Registro</h1>
+            <form action="/register" method="POST">
+                <label for="user">Usuario: </label>
+                <input type="text" name="user" placeholder="Ingrese su usuario"
+                    value="<% if (typeof valores !=='undefined' ) { %> <%= valores.user %> <% } %>">
 
-        <label for="rol">Rol:</label>
-        <select name="rol">
-            <option value="admin">Administrador</option>
-            <option value="user">Usuario</option>
-        </select>
+                <label for="name">Nombre: </label>
+                <input type="text" name="name" placeholder="Ingrese su nombre"
+                    value="<% if (typeof valores !=='undefined' ) { %> <%= valores.name %> <% } %>">
 
-        <br>
-        <label for="pass">Contraseña: </label>
-        <input type="password" name="pass" placeholder="Ingrese su contraseña"
-            value="<% if (typeof valores !=='undefined' ) { %> <%= valores.pass %> <% } %>">
+                <label for="rol">Rol:</label>
+                <select name="rol">
+                    <option value="admin">Administrador</option>
+                    <option value="user">Usuario</option>
+                </select>
 
-        <label for="pass">Email: </label>
-        <input type="text" name="email" placeholder="Ingrese su email"
-            value="<% if (typeof valores !=='undefined' ) { %> <%= valores.email %> <% } %>">
+                <br>
+                <label for="pass">Contraseña: </label>
+                <input type="password" name="pass" placeholder="Ingrese su contraseña"
+                    value="<% if (typeof valores !=='undefined' ) { %> <%= valores.pass %> <% } %>">
 
-        <label for="pass">Edad: </label>
-        <input type="text" name="edad" placeholder="Ingrese su edad"
-            value="<% if (typeof valores !=='undefined' ) { %> <%= valores.edad %> <% } %>">
+                <label for="pass">Email: </label>
+                <input type="text" name="email" placeholder="Ingrese su email"
+                    value="<% if (typeof valores !=='undefined' ) { %> <%= valores.email %> <% } %>">
 
-        <div class="inline">
-            <a href="/" class="btn-cancel">Cancelar</a><input type="submit" class="btn-save" value="Guardar">
+                <label for="pass">Edad: </label>
+                <input type="text" name="edad" placeholder="Ingrese su edad"
+                    value="<% if (typeof valores !=='undefined' ) { %> <%= valores.edad %> <% } %>">
+
+                <div class="inline">
+                    <a href="/" class="btn-cancel">Cancelar</a><input type="submit" class="btn-save" value="Guardar">
+                </div>
+            </form>
+
+            <br>
+            <% if (typeof validaciones !=='undefined' ) { %>
+                <% validaciones.forEach(validacion=> { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <strong>
+                            <%= validacion.msg %>
+                        </strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% }); %>
+                        <% } %>
+
         </div>
-    </form>
 
-    <br>
-    <% if (typeof validaciones !=='undefined' ) { %>
-        <% validaciones.forEach(validacion=> { %>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                    <use xlink:href="#exclamation-triangle-fill" />
-                </svg>
-                <strong>
-                    <%= validacion.msg %>
-                </strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <% }); %>
-                <% } %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-<% if (typeof alert !=='undefined' ) { %>
-    <script>
-        Swal.fire({
-            title: '<%= alertTitle %>',
-            text: '<%= alertMessage %>',
-            icon: '<%= alertIcon %>',
-            showConfirmButton: <%= showConfirmButton %>,
-            timer: <%= timer %>
+        <% if (typeof alert !=='undefined' ) { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: <%= showConfirmButton %>,
+                    timer: <%= timer %>
             }).then(() => {
-                window.location = '/<%= ruta %>'
-            })
-    </script>
-    <% } %>
+                        window.location = '/<%= ruta %>'
+                    })
+            </script>
+            <% } %>
 
 
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path
-                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+
+                <%- include('partials/footer') %>

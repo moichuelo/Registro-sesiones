@@ -1,26 +1,32 @@
-<%- include('partials/popover') %>
-    <div class="login-form">
-        <h2>Login</h2>
-        <form action="/auth" method="POST">
-            <input type="text" name="user" placeholder="Ingrese su usuario" required>
-            <input type="password" name="pass" placeholder="Contraseña" required>
-            <button type="submit" class="btn-login">Login</button>
-        </form>
-        <a href="/registro" class="btn-register"> Registrarse</a>
-    </div>
+<%- include('partials/head') %>
+    <title>Login</title>
+    <%- include('partials/header') %>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <%- include('partials/popover') %>
+            <div class="login-form">
+                <h2>Login</h2>
+                <form action="/auth" method="POST">
+                    <input type="text" name="user" placeholder="Ingrese su usuario" required>
+                    <input type="password" name="pass" placeholder="Contraseña" required>
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
+                <a href="/registro" class="btn-register"> Registrarse</a>
+            </div>
 
-    <% if (typeof alert !=='undefined' ) { %>
-        <script>
-            Swal.fire({
-                title: '<%= alertTitle %>',
-                text: '<%= alertMessage %>',
-                icon: '<%= alertIcon %>',
-                showConfirmButton: <%= showConfirmButton %>,
-                timer: <%= timer %>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+            <% if (typeof alert !=='undefined' ) { %>
+                <script>
+                    Swal.fire({
+                        title: '<%= alertTitle %>',
+                        text: '<%= alertMessage %>',
+                        icon: '<%= alertIcon %>',
+                        showConfirmButton: <%= showConfirmButton %>,
+                        timer: <%= timer %>
             }).then(() => {
-                    window.location = '/<%= ruta %>'
-                })
-        </script>
-        <% } %>
+                            window.location = '/<%= ruta %>'
+                        })
+                </script>
+                <% } %>
+
+                    <%- include('partials/footer') %>
