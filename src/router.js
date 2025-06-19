@@ -22,7 +22,16 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    res.render("login");
+    if (req.session.loggedin) {
+        res.render("login", {
+            login: true,
+        });
+    } else {
+        res.render("login", {
+            login: false,
+        });
+    }
+
 });
 
 router.get("/registro", (req, res) => {
@@ -36,21 +45,59 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/admin", (req, res) => {
-    // res.render("admin");
-    db.query("SELECT * FROM productos", (error, results) => {
-        if (error) {
-            throw error;
-        } else {
-            res.render("admin", {
-                productos: results,
-            });
-        }
-    });
+    if (req.session.loggedin) {
+        db.query("SELECT * FROM productos", (error, results) => {
+            if (error) {
+                throw error;
+            } else {
+                res.render("admin", {
+                    productos: results,
+                    login: true,
+                    rol: req.session.rol,
+                });
+            }
+        });
+    } else {
+        res.render("admin", {
+            msg: "Acceso restringido, por favor inicie sesión",
+            login: false,
+        });
+    }
+
 });
+
 
 router.get("/create", (req, res) => {
     res.render("create");
 });
+
+router.get("/edit/:ref", (req, res) => {
+    const ref = req.params.ref;
+    db.query(
+        "SELECT * FROM productos WHERE ref = ?", [ref], (error, results) => {
+            if (error) {
+                throw error;
+            } else {
+                res.render("edit", {
+                    producto: results[0],
+                });
+            }
+        }
+    );
+})
+
+router.get("/delete/:ref", (req, res) => {
+    const ref = req.params.ref;
+    db.query(
+        "DELETE FROM productos WHERE ref = ?", [ref], (error, results) => {
+            if (error) {
+                throw error;
+            } else {
+                res.redirect("/admin");
+            }
+        }
+    );
+})
 
 //9 8 Definir las rutas POST
 
@@ -151,6 +198,8 @@ router.post("/auth", async (req, res) => {
                 } else {
                     req.session.loggedin = true;
                     req.session.name = results[0].nombre;
+                    req.session.rol = results[0].rol;
+
 
                     res.render("login", {
                         alert: true,
@@ -180,5 +229,6 @@ router.post("/auth", async (req, res) => {
 });
 
 router.post("/save", crud.save);
+router.post("/update", crud.update);
 
 module.exports = router;
