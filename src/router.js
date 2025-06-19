@@ -35,7 +35,16 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/registro", (req, res) => {
-    res.render("register");
+    if (req.session.loggedin) {
+        res.render("register", {
+            login: true,
+        });
+    } else {
+        res.render("register", {
+            login: false,
+        });
+    }
+
 });
 
 router.get("/logout", (req, res) => {
@@ -68,22 +77,35 @@ router.get("/admin", (req, res) => {
 
 
 router.get("/create", (req, res) => {
-    res.render("create");
+    if (req.session.loggedin) {
+        res.render("create", {
+            login: true,
+        });
+    } else {
+        res.redirect("/");
+    }
 });
 
 router.get("/edit/:ref", (req, res) => {
-    const ref = req.params.ref;
-    db.query(
-        "SELECT * FROM productos WHERE ref = ?", [ref], (error, results) => {
-            if (error) {
-                throw error;
-            } else {
-                res.render("edit", {
-                    producto: results[0],
-                });
+    if (req.session.loggedin) {
+        const ref = req.params.ref;
+        db.query(
+            "SELECT * FROM productos WHERE ref = ?", [ref], (error, results) => {
+                if (error) {
+                    throw error;
+                } else {
+                    res.render("edit", {
+                        producto: results[0],
+                        login: true,
+                    });
+                }
             }
-        }
-    );
+        );
+    } else {
+        res.redirect("/");
+    }
+
+
 })
 
 router.get("/delete/:ref", (req, res) => {
