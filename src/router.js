@@ -3,8 +3,24 @@ const router = express();
 const bcrypt = require("bcryptjs");
 const db = require("../database/db");
 const { body, validationResult } = require("express-validator");
-
 const crud = require("../src/controllers");
+
+
+//9 funciones
+function verificarSesion(req, res, next) {
+    if (req.session.loggedin) {
+        return next();
+    }
+    res.redirect('/login');
+}
+
+function verificarAdmin(req, res, next) {
+    //operador de encadenamiento opcional ?. Si no existe no da error
+    if (req.session?.loggedin && req.session?.rol === 'admin') {
+        return next();
+    }
+    res.status(403).json({ error: 'Acceso denegado' });
+}
 
 //9 4 Definir las rutas
 router.get("/", (req, res) => {
@@ -48,12 +64,11 @@ router.get("/registro", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-    req.session.destroy(() => {
-        res.redirect("/");
-    });
+    req.session = null;
+    res.redirect("/");
 });
 
-router.get("/admin", (req, res) => {
+router.get("/admin", verificarSesion, (req, res) => {
     if (req.session.loggedin) {
         db.query("SELECT * FROM productos", (error, results) => {
             if (error) {
@@ -120,6 +135,104 @@ router.get("/delete/:ref", (req, res) => {
         }
     );
 })
+
+
+router.get("/soporte", verificarSesion, (req, res) => {
+    res.render("soporte", {
+        user: {
+            username: req.session.user || req.session.name,
+            role: req.session.rol
+        }
+    });
+});
+
+router.get("/api/mensajes", verificarAdmin, (req, res) => {
+    const usuario = req.query.con; // Extrae el usuario desde la url (...?con=usuarioX)
+
+    if (!usuario) { //si no hay usuario que devuelva el error
+        return res.status(400).json({ error: "Falta el parámetro ?con=usuario" });
+    }
+
+    const sql = `
+    SELECT de_usuario, para_usuario, mensaje, fecha
+    FROM mensajes
+    WHERE 
+      (de_usuario = ? OR para_usuario = ?)
+    ORDER BY fecha ASC
+    `;
+
+    db.query(sql, [usuario, usuario], (err, results) => {
+        if (err) {
+            console.error("❌ Error al consultar mensajes:", err);
+            return res.status(500).json({ error: "Error al obtener mensajes" });
+        }
+
+        // Devuelve los mensajes en formato JSON
+        res.json(results);
+    });
+});
+
+
+router.get("/api/mensajes/mios", (req, res) => {
+    const usuario = req.session.user;
+
+    if (!req.session?.loggedin || !usuario) { //verifica que el usuario este logueado y tenga un usuario
+        return res.status(403).json({ error: "No autorizado" });
+    }
+
+    const sql = `
+    SELECT de_usuario, para_usuario, mensaje, fecha
+    FROM mensajes
+    WHERE 
+      (de_usuario = ? OR para_usuario = ?)
+    ORDER BY fecha ASC
+    `;
+
+    db.query(sql, [usuario, usuario], (err, results) => {
+        if (err) {
+            console.error("❌ Error al obtener mensajes:", err);
+            return res.status(500).json({ error: "Error interno" });
+        }
+
+        // Devuelve los mensajes en formato JSON
+        res.json(results);
+    });
+});
+
+
+router.get("/api/usuarios-conversaciones", verificarAdmin, (req, res) => {
+
+    /*Busca mensajes donde participen administradores.
+    usa UNION para combinar las dos consultas y elimina duplicados
+    renombra las dos columnas como "usuario" para poder procesarlas
+    filtra los que no son administradores y elimina los duplicados
+
+    Devuelve un array de usuarios
+    */
+    const sql = `
+    SELECT DISTINCT usuario
+    FROM (
+      SELECT de_usuario AS usuario FROM mensajes
+      WHERE para_usuario IN (SELECT usuario FROM usuarios WHERE rol = 'admin')
+      
+      UNION
+      
+      SELECT para_usuario AS usuario FROM mensajes
+      WHERE de_usuario IN (SELECT usuario FROM usuarios WHERE rol = 'admin')
+    ) AS conversaciones
+    WHERE usuario NOT IN (SELECT usuario FROM usuarios WHERE rol = 'admin')
+  `;
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error("❌ Error al obtener lista de usuarios:", err);
+            return res.status(500).json({ error: "Error interno" });
+        }
+
+        const usuarios = results.map(r => r.usuario); // Extrae los nombres de los usuarios
+        res.json(usuarios); //los devuelve en formato JSON
+    });
+});
 
 //9 8 Definir las rutas POST
 
@@ -220,6 +333,7 @@ router.post("/auth", async (req, res) => {
                 } else {
                     req.session.loggedin = true;
                     req.session.name = results[0].nombre;
+                    req.session.user = results[0].usuario;
                     req.session.rol = results[0].rol;
 
 

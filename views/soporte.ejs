@@ -1,0 +1,191 @@
+<%- include("partials/head") %>
+    <%- include("partials/header") %>
+
+        <div class="container mt-4">
+            <h2>Soporte</h2>
+            <p>Conectado como: <%= user.username %> (<%= user.role %>)</p> <!-- Mostramos el usuario y su rol -->
+
+            <% if (user.role==='admin' ) { %>
+                <!-- Vista para ADMINISTRADORES, ven los usuarios y sus conversaciones -->
+                <div class="row">
+                    <div class="col-md-3 border-end">
+                        <h5>Usuarios</h5>
+                        <ul id="lista-usuarios" class="list-group"></ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div id="chat" class="border rounded p-3 mb-3" style="height: 400px; overflow-y: auto;"></div>
+                        <form id="formulario" class="row g-2">
+                            <input type="hidden" id="usuarioActual">
+                            <div class="col-10"><input type="text" id="mensaje" class="form-control"
+                                    placeholder="Mensaje..." required></div>
+                            <div class="col-2"><button class="btn btn-primary w-100">Enviar</button></div>
+                        </form>
+                    </div>
+                </div>
+                <% } else { %>
+                    <!-- Vista para USUARIOS, solo ven el chat -->
+                    <div id="chat" class="border rounded p-3 mb-3" style="height: 400px; overflow-y: auto;"></div>
+                    <form id="formulario" class="row g-2">
+                        <div class="col-10"><input type="text" id="mensaje" class="form-control"
+                                placeholder="Mensaje..." required></div>
+                        <div class="col-2"><button class="btn btn-primary w-100">Enviar</button></div>
+                    </form>
+                    <% } %>
+        </div>
+
+
+        <script src="/socket.io/socket.io.js"></script> <!-- Cargamos el código de socket.io -->
+        <script>
+            const socket = io();
+            const chat = document.getElementById("chat");
+            const inputMensaje = document.getElementById("mensaje");
+            const formulario = document.getElementById("formulario");
+
+            function formatearFecha(isoString) { //convertimos un timestamp para que sea legible
+                const fecha = new Date(isoString);
+                const dia = fecha.getDate().toString().padStart(2, '0');
+                const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+                const anio = fecha.getFullYear();
+                const hora = fecha.getHours().toString().padStart(2, '0');
+                const min = fecha.getMinutes().toString().padStart(2, '0');
+                return `${dia}/${mes}/${anio} ${hora}:${min}`;
+            }
+
+            function agregarMensaje(de, mensaje, fecha = null) { //agregamos el mensaje al chat con un <p> con el remitente y la fecha
+                const p = document.createElement("p");
+                const textoFecha = fecha ? `<span class="text-muted" style="font-size: 0.8em;"> (${formatearFecha(fecha)})</span>` : '';
+                p.innerHTML = `<strong>${de}:</strong> ${mensaje} ${textoFecha}`;
+                chat.appendChild(p);
+                chat.scrollTop = chat.scrollHeight;
+            }
+
+  <% if (user.role === 'admin') { %> //Lógica para administradores
+    const listaUsuarios = document.getElementById("lista-usuarios");
+                const usuarioActual = document.getElementById("usuarioActual");
+                let conversaciones = {};
+                let notificaciones = {};
+
+                // carga los mensajes de ese usuario
+                function renderConversacion(usuario) {
+                    chat.innerHTML = ''; //limpia el chat
+                    const mensajes = conversaciones[usuario] || [];
+                    mensajes.forEach(({ de, mensaje, fecha }) => agregarMensaje(de, mensaje, fecha)); //agrega los mensajes
+
+                    usuarioActual.value = usuario;
+
+                    // Actualizar estilos de lista
+                    document.querySelectorAll("#lista-usuarios li").forEach(li => {
+                        li.classList.remove("bg-light", "text-danger", "text-success", "fw-bold");
+
+                        // Si fue visto antes, ponerlo en verde
+                        if (li.id === "user-" + usuario) {
+                            li.classList.add("bg-light", "text-success", "fw-bold");
+                            li.dataset.nuevo = "false";
+                        }
+                    });
+                }
+
+                //agrega un usuario a la lista
+                function agregarUsuarioLista(usuario) {
+                    if (!document.getElementById("user-" + usuario)) {
+                        const li = document.createElement("li");
+                        li.className = "list-group-item";
+                        li.textContent = usuario;
+                        li.id = "user-" + usuario;
+                        li.dataset.nuevo = "";
+                        li.style.cursor = "pointer";
+                        li.addEventListener("click", () => {
+                            renderConversacion(usuario);
+                        });
+                        listaUsuarios.appendChild(li);
+                    }
+                }
+
+                //obtenemos el array de usuarios, los agrega a la lista lateral y carga su historial
+                fetch("/api/usuarios-conversaciones")
+                    .then(res => res.json())
+                    .then(usuarios => {
+                        usuarios.forEach(usuario => {
+                            agregarUsuarioLista(usuario);
+                            cargarHistorial(usuario); // carga mensajes antiguos también
+                        });
+                    });
+
+                //carga los mensajes de ese usuario
+                async function cargarHistorial(usuario) {
+                    const res = await fetch(`/api/mensajes?con=${usuario}`); //llama a la API para obtener los mensajes
+                    const data = await res.json();
+                    conversaciones[usuario] = data.map(m => ({//crea un array con los mensajes
+                        de: m.de_usuario,
+                        mensaje: m.mensaje,
+                        fecha: m.fecha
+                    }));
+                    renderConversacion(usuario);//muestra los mensajes
+                    agregarUsuarioLista(usuario);
+                }
+
+                //escuchador de evento "mensaje_recibido"
+                socket.on("mensaje_recibido", ({ de, mensaje }) => {
+                    const fecha = new Date();
+                    conversaciones[de] = conversaciones[de] || [];
+                    conversaciones[de].push({ de, mensaje, fecha });
+
+                    agregarUsuarioLista(de);
+
+                    // Si no es la conversación activa → notificación visual en rojo
+                    if (usuarioActual.value !== de) {
+                        const li = document.getElementById("user-" + de);
+                        if (li && li.dataset.nuevo !== "true") {
+                            li.classList.remove("text-success"); // quitar verde si lo tenía
+                            li.classList.add("fw-bold", "text-danger");
+                            li.dataset.nuevo = "true";
+                        }
+                    } else {
+                        renderConversacion(de); // ya lo está viendo, lo marcamos como visto
+                    }
+
+                });
+
+                //escuchador de evento "mensaje_privado"
+                formulario.addEventListener("submit", e => {
+                    e.preventDefault(); //cancela el envío del formulario (comportamiento predeterminado)
+                    const para = usuarioActual.value;
+                    const mensaje = inputMensaje.value.trim();
+                    if (!para || !mensaje) return;
+
+                    socket.emit("mensaje_privado", { para, mensaje });
+                    const fecha = new Date();
+                    conversaciones[para] = conversaciones[para] || [];
+                    conversaciones[para].push({ de: "<%= user.username %>", mensaje, fecha });
+                    renderConversacion(para);
+                    inputMensaje.value = '';
+                });
+
+  <% } else { %>
+                // Vista para usuario
+                fetch("/api/mensajes/mios")
+                    .then(res => res.json())
+                    .then(mensajes => {
+                        chat.innerHTML = "";
+                        mensajes.forEach(m => agregarMensaje(m.de_usuario, m.mensaje, m.fecha));
+                    });
+
+                //escuchador de evento "mensaje_recibido"
+                socket.on("mensaje_recibido", ({ de, mensaje }) => {
+                    const fecha = new Date();
+                    agregarMensaje(de, mensaje, fecha);
+                });
+
+                //escuchador de evento "mensaje_privado"
+                formulario.addEventListener("submit", e => {
+                    e.preventDefault();
+                    const mensaje = inputMensaje.value.trim();
+                    if (!mensaje) return;
+                    socket.emit("mensaje_privado", { para: "admin", mensaje });
+                    agregarMensaje("Tú", mensaje, new Date());
+                    inputMensaje.value = '';
+                });
+  <% } %>
+        </script>
+
+        <%- include("partials/footer") %>
