@@ -4,29 +4,18 @@ const bcrypt = require("bcryptjs");
 const db = require("../database/db");
 const { body, validationResult } = require("express-validator");
 const crud = require("../src/controllers");
-
-
-//9 funciones
-function verificarSesion(req, res, next) {
-    if (req.session.loggedin) {
-        return next();
-    }
-    res.redirect('/login');
-}
-
-function verificarAdmin(req, res, next) {
-    //operador de encadenamiento opcional ?. Si no existe no da error
-    if (req.session?.loggedin && req.session?.rol === 'admin') {
-        return next();
-    }
-    res.status(403).json({ error: 'Acceso denegado' });
-}
+const jwt = require("jsonwebtoken");
+const verificarSesion = require("./middlewares/verifyToken");
+const verificarAdmin = require("./middlewares/verifyAdmin");
 
 //9 4 Definir las rutas
 router.get("/", (req, res) => {
-    if (req.session.loggedin) {
+
+    if (req.cookies.token) {
+        const payload = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+        req.user = payload;
         res.render("index", {
-            user: req.session.name,
+            user: req.user?.name || U,
             login: true,
         });
     } else {
@@ -38,7 +27,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    if (req.session.loggedin) {
+    if (req.cookies.token) {
         res.render("login", {
             login: true,
         });
@@ -51,7 +40,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/registro", (req, res) => {
-    if (req.session.loggedin) {
+    if (req.cookies.token) {
         res.render("register", {
             login: true,
         });
@@ -64,35 +53,27 @@ router.get("/registro", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-    req.session = null;
+    res.clearCookie("token");
     res.redirect("/");
 });
 
 router.get("/admin", verificarSesion, (req, res) => {
-    if (req.session.loggedin) {
-        db.query("SELECT * FROM productos", (error, results) => {
-            if (error) {
-                throw error;
-            } else {
-                res.render("admin", {
-                    productos: results,
-                    login: true,
-                    rol: req.session.rol,
-                });
-            }
-        });
-    } else {
-        res.render("admin", {
-            msg: "Acceso restringido, por favor inicie sesión",
-            login: false,
-        });
-    }
-
+    db.query("SELECT * FROM productos", (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.render("admin", {
+                productos: results,
+                login: true,
+                rol: req.user.rol,
+            });
+        }
+    });
 });
 
 
-router.get("/create", (req, res) => {
-    if (req.session.loggedin) {
+router.get("/create", verificarAdmin, (req, res) => {
+    if (req.cookies.token) {
         res.render("create", {
             login: true,
         });
@@ -101,29 +82,23 @@ router.get("/create", (req, res) => {
     }
 });
 
-router.get("/edit/:ref", (req, res) => {
-    if (req.session.loggedin) {
-        const ref = req.params.ref;
-        db.query(
-            "SELECT * FROM productos WHERE ref = ?", [ref], (error, results) => {
-                if (error) {
-                    throw error;
-                } else {
-                    res.render("edit", {
-                        producto: results[0],
-                        login: true,
-                    });
-                }
+router.get("/edit/:ref", verificarAdmin, (req, res) => {
+    const ref = req.params.ref;
+    db.query(
+        "SELECT * FROM productos WHERE ref = ?", [ref], (error, results) => {
+            if (error) {
+                throw error;
+            } else {
+                res.render("edit", {
+                    producto: results[0],
+                    login: true,
+                });
             }
-        );
-    } else {
-        res.redirect("/");
-    }
-
-
+        }
+    );
 })
 
-router.get("/delete/:ref", (req, res) => {
+router.get("/delete/:ref", verificarAdmin, (req, res) => {
     const ref = req.params.ref;
     db.query(
         "DELETE FROM productos WHERE ref = ?", [ref], (error, results) => {
@@ -140,8 +115,8 @@ router.get("/delete/:ref", (req, res) => {
 router.get("/soporte", verificarSesion, (req, res) => {
     res.render("soporte", {
         user: {
-            username: req.session.user || req.session.name,
-            role: req.session.rol
+            username: req.user.user,
+            role: req.user.rol
         }
     });
 });
@@ -173,12 +148,8 @@ router.get("/api/mensajes", verificarAdmin, (req, res) => {
 });
 
 
-router.get("/api/mensajes/mios", (req, res) => {
-    const usuario = req.session.user;
-
-    if (!req.session?.loggedin || !usuario) { //verifica que el usuario este logueado y tenga un usuario
-        return res.status(403).json({ error: "No autorizado" });
-    }
+router.get("/api/mensajes/mios", verificarSesion, (req, res) => {
+    const usuario = req.user.user;
 
     const sql = `
     SELECT de_usuario, para_usuario, mensaje, fecha
@@ -331,10 +302,22 @@ router.post("/auth", async (req, res) => {
                         login: false,
                     });
                 } else {
-                    req.session.loggedin = true;
-                    req.session.name = results[0].nombre;
-                    req.session.user = results[0].usuario;
-                    req.session.rol = results[0].rol;
+                    const payload = { //creamos el cuerpo del token
+                        user: results[0].usuario,
+                        name: results[0].nombre,
+                        rol: results[0].rol,
+                    };
+
+                    // creamos el token con su firma y su duración
+                    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+                        expiresIn: "1d",
+                    });
+
+                    res.cookie("token", token, {
+                        maxAge: 86400000,
+                        httpOnly: true,
+                        secure: false,
+                    });
 
 
                     res.render("login", {
