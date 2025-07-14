@@ -1,59 +1,67 @@
 <%- include('partials/head') %>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <%- include('partials/header') %>
+        <h2>Administrador</h2>
+        <% if (user.imagen){ %>
+            <img src="/resources/uploads/<%=user.imagen %>" alt="imagen de perfil" class="rounded-circle" width="100"
+                height="100">
+            <% } %>
 
-        <% if (login) {%>
-            <div class="container">
-                <% if (rol=="admin" ) {%>
-                    <a href="/create" class="btn btn-outline-primary mt-4"><i class="bx bxs-plus-circle bx-md"></i></a>
-                    <% } %>
-                        <table class="table table-bordered table-striped text-center mt-4">
-                            <thead>
-                                <tr class="bg-primary text-white">
-                                    <th scope="col">Referencia</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Precio</th>
-                                    <th scope="col">Stock</th>
-                                    <% if (rol=="admin" ) {%>
-                                        <th scope="col">Acciones</th>
-                                        <% } %>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% productos.forEach((producto)=> { %>
-                                    <tr>
-                                        <td>
-                                            <%=producto.ref %>
-                                        </td>
-                                        <td>
-                                            <%=producto.nombre %>
-                                        </td>
-                                        <td>
-                                            <%=producto.precio %>
-                                        </td>
-                                        <td>
-                                            <%=producto.stock %>
-                                        </td>
-                                        <% if (rol=="admin" ) {%>
-                                            <td>
-                                                <a href="/edit/<%=producto.ref %>" class="btn btn-outline-warning"><i
-                                                        class="bx bxs-edit"></i></a>
-                                                <a href="/delete/<%=producto.ref %>" class="btn btn-outline-danger"><i
-                                                        class="bx bxs-trash"></i></a>
-                                            </td>
-                                            <% } %>
-                                    </tr>
-                                    <% }) %>
-                            </tbody>
-                        </table>
-            </div>
-            <% } else { %>
-                <div class="container">
-                    <h1>
-                        <%= msg %>
-                    </h1>
-                    <a href="/login" class="a-login">Iniciar sesión </a>
-                </div>
-                <% } %>
+                <% if (login) {%>
+                    <div class="container">
+                        <% if (rol=="admin" ) {%>
+                            <a href="/create" class="btn btn-outline-primary mt-4"><i
+                                    class="bx bxs-plus-circle bx-md"></i></a>
+                            <% } %>
+                                <table class="table table-bordered table-striped text-center mt-4">
+                                    <thead>
+                                        <tr class="bg-primary text-white">
+                                            <th scope="col">Referencia</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Stock</th>
+                                            <% if (rol=="admin" ) {%>
+                                                <th scope="col">Acciones</th>
+                                                <% } %>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% productos.forEach((producto)=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%=producto.ref %>
+                                                </td>
+                                                <td>
+                                                    <%=producto.nombre %>
+                                                </td>
+                                                <td>
+                                                    <%=producto.precio %>
+                                                </td>
+                                                <td>
+                                                    <%=producto.stock %>
+                                                </td>
+                                                <% if (rol=="admin" ) {%>
+                                                    <td>
+                                                        <a href="/edit/<%=producto.ref %>"
+                                                            class="btn btn-outline-warning"><i
+                                                                class="bx bxs-edit"></i></a>
+                                                        <a href="/delete/<%=producto.ref %>"
+                                                            class="btn btn-outline-danger"><i
+                                                                class="bx bxs-trash"></i></a>
+                                                    </td>
+                                                    <% } %>
+                                            </tr>
+                                            <% }) %>
+                                    </tbody>
+                                </table>
+                    </div>
+                    <% } else { %>
+                        <div class="container">
+                            <h1>
+                                <%= msg %>
+                            </h1>
+                            <a href="/login" class="a-login">Iniciar sesión </a>
+                        </div>
+                        <% } %>
 
-                    <%- include('partials/footer') %>
+                            <%- include('partials/footer') %>

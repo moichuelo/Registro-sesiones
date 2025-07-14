@@ -7,6 +7,7 @@ const crud = require("../src/controllers");
 const jwt = require("jsonwebtoken");
 const verificarSesion = require("./middlewares/verifyToken");
 const verificarAdmin = require("./middlewares/verifyAdmin");
+const upload = require("./middlewares/multerConfig");
 
 //9 4 Definir las rutas
 router.get("/", (req, res) => {
@@ -66,6 +67,7 @@ router.get("/admin", verificarSesion, (req, res) => {
                 productos: results,
                 login: true,
                 rol: req.user.rol,
+                user: req.user,
             });
         }
     });
@@ -209,6 +211,7 @@ router.get("/api/usuarios-conversaciones", verificarAdmin, (req, res) => {
 
 router.post(
     "/register",
+    upload.single("profileImage"),
     [
         body("user")
             .exists()
@@ -242,6 +245,9 @@ router.post(
             const name = req.body.name;
             const rol = req.body.rol;
             const pass = req.body.pass;
+            // const email = req.body.email;
+            // const edad = req.body.edad;
+            const profileImage = req.file.filename;
 
             //Cifrar la contraseña
             const passwordHash = await bcrypt.hash(pass, 8);
@@ -254,6 +260,7 @@ router.post(
                     nombre: name,
                     rol: rol,
                     pass: passwordHash,
+                    imagen: profileImage,
                 },
                 (error, results) => {
                     if (error) {
@@ -306,6 +313,7 @@ router.post("/auth", async (req, res) => {
                         user: results[0].usuario,
                         name: results[0].nombre,
                         rol: results[0].rol,
+                        imagen: results[0].imagen,
                     };
 
                     // creamos el token con su firma y su duración
