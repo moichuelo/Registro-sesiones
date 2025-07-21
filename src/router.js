@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const verificarSesion = require("./middlewares/verifyToken");
 const verificarAdmin = require("./middlewares/verifyAdmin");
 const upload = require("./middlewares/multerConfig");
+const limiter = require("./middlewares/authLimiter");
 
 //9 4 Definir las rutas
 router.get("/", (req, res) => {
@@ -210,7 +211,7 @@ router.get("/api/usuarios-conversaciones", verificarAdmin, (req, res) => {
 //9 8 Definir las rutas POST
 
 router.post(
-    "/register",
+    "/register", limiter,
     upload.single("profileImage"),
     [
         body("user")
@@ -284,7 +285,7 @@ router.post(
 );
 
 //Ruta de inicio de sesión
-router.post("/auth", async (req, res) => {
+router.post("/auth", limiter, async (req, res) => {
     const user = req.body.user;
     const pass = req.body.pass;
 
@@ -297,7 +298,7 @@ router.post("/auth", async (req, res) => {
                     results.length == 0 ||
                     !(await bcrypt.compare(pass, results[0].pass))
                 ) {
-                    res.render("login", {
+                    return res.render("login", {
                         alert: true,
                         alertTitle: "Error",
                         alertMessage:
