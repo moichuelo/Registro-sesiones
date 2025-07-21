@@ -9,6 +9,10 @@ const verificarSesion = require("./middlewares/verifyToken");
 const verificarAdmin = require("./middlewares/verifyAdmin");
 const upload = require("./middlewares/multerConfig");
 const limiter = require("./middlewares/authLimiter");
+const puppeteer = require("puppeteer");
+const ejs = require("ejs");
+const path = require("path");
+const PDFDocument = require("pdfkit");
 
 //9 4 Definir las rutas
 router.get("/", (req, res) => {
@@ -69,6 +73,18 @@ router.get("/admin", verificarSesion, (req, res) => {
                 login: true,
                 rol: req.user.rol,
                 user: req.user,
+            });
+        }
+    });
+});
+
+router.get("/pdfAdmin", verificarSesion, (req, res) => {
+    db.query("SELECT * FROM productos", (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.render("pdfTabla", {
+                productos: results,
             });
         }
     });
@@ -208,7 +224,92 @@ router.get("/api/usuarios-conversaciones", verificarAdmin, (req, res) => {
     });
 });
 
+router.get("/pdfProductos", verificarSesion, async (req, res) => { //ruta para generar el pdf con puppeteer
+    db.query("SELECT * FROM productos", async (error, results) => {
+        if (error) {
+            throw error;
+        } //obtenemos todos los productos de la BBDD
+
+        try {
+            //renderizamos el archivo ejs y lo guardamos en una constante
+            const html = await ejs.renderFile(path.join(__dirname, "../views/pdfTabla.ejs"), { productos: results });
+
+            const browser = await puppeteer.launch({ //generamos el navegador
+                headless: true,
+                args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            });
+
+            const page = await browser.newPage(); //creamos una nueva pagina
+            await page.setContent(html, { waitUntil: 'networkidle0' }); //cargamos el html en la página
+
+            const pdfBuffer = await page.pdf({ //generamos el pdf sobre la información que hay en el navegador virtual
+                format: "A4",
+                printBackground: true,
+                margin: { top: "1cm", right: "1cm", bottom: "1cm", left: "1cm" },
+            });
+
+            await browser.close(); //cerramos el navegador
+
+            res.setHeader("Content-Type", "application/pdf"); //establece el tipo de contenido
+            res.setHeader("Content-Disposition", "attachment; filename=productos.pdf"); //establece el nombre del archivo
+            res.send(pdfBuffer); //envia el archivo
+
+        } catch (error) {
+            console.error("Error al generar el PDF:", error);
+            res.status(500).send("Error al generar el PDF");
+        }
+
+    })
+})
+
+router.get("/pdfProductosKIT", verificarSesion, (req, res) => { //ruta para generar el pdf con pdfkit
+    db.query("SELECT * FROM productos", async (error, results) => {
+        if (error) {
+            throw error;
+        } //obtenemos todos los productos de la BBDD
+
+        const doc = new PDFDocument({ margin: 40, size: 'A4' }); //creamos un nuevo documento
+
+        //definir los encabezados
+        res.setHeader("Content-Type", "application/pdf");//establece el tipo de contenido
+        res.setHeader("Content-Disposition", "attachment; filename=productosKit.pdf");//establece el nombre del archivo
+
+        doc.pipe(res);//envia el archivo
+
+        //título
+        doc.fontSize(25).text("Listado productos", { align: "center" }).moveDown(); //establece el título y hace un salto de línea con moveDown
+
+        //encabezados de la tabla
+        doc.font("Helvetica-Bold").fontSize(15); //establece la fuente y el tamaño para las siguientes líneas
+        let y = doc.y; //obtenemos la coordenada y actual del documento
+        doc.text("Referencia", 50, y); //añadimos los encabezados a las coordenadas x e y
+        doc.text("Nombre", 150, y);
+        doc.text("Precio", 300, y);
+        doc.text("Stock", 400, y);
+
+        //añadimos espaciado vertical en y
+        y = y + 20;
+
+        //cuerpo
+        doc.font("Helvetica").fontSize(12); //establece la fuente y el tamaño para las siguientes líneas
+        results.forEach(producto => { //recorremos el array de resultados de la BBDD e introducimos los datos en el documento
+            doc.text(producto.ref, 50, y);
+            doc.text(producto.nombre, 150, y);
+            doc.text(producto.precio, 300, y);
+            doc.text(producto.stock, 400, y);
+            y = y + 20; //añadimos espaciado vertical en y tras cada producto
+        });
+
+        doc.end(); //terminamos el documento
+    });
+});
+
+//9 ******************************************************************************************************
+//9 ******************************************************************************************************
 //9 8 Definir las rutas POST
+//9 ******************************************************************************************************
+//9 ******************************************************************************************************
+
 
 router.post(
     "/register", limiter,

@@ -1,0 +1,45 @@
+<%- include('partials/head') %>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        <h2>Listado PDF</h2>
+
+        <div class="container">
+
+            <table class="table table-bordered table-striped text-center mt-4">
+                <thead>
+                    <tr class="bg-primary text-white">
+                        <th scope="col">Referencia</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% productos.forEach((producto)=> { %>
+                        <tr>
+                            <td>
+                                <%=producto.ref %>
+                            </td>
+                            <td>
+                                <%=producto.nombre %>
+                            </td>
+                            <td>
+                                <%=producto.precio %>
+                            </td>
+                            <td>
+                                <%=producto.stock %>
+                            </td>
+
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    </body>
+
+    </html>
