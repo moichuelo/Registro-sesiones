@@ -27,6 +27,26 @@
 
 
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center <%= lang === 'es' ? 'idioma' : '' %>" href="#"
+                            onclick="changeLang('es')" class="btn-es">
+                            <img src="/resources/img/es.png" alt="Español" width="24px" height="16px">
+                            🇪🇸</a>
+                    </li>
+                    <li>
+                        <a class="nav-link d-flex align-items-center <%= lang === 'en' ? 'idioma' : '' %>" href="#"
+                            onclick="changeLang('en')" class="btn-en">
+                            <img src="/resources/img/en.png" alt="English" width="24px" height="16px">
+                            🇬🇧</a>
+                    </li>
+                </ul>
             </div>
         </div>
+        <script>
+            function changeLang(lang) {
+                const currentPath = window.location.pathname + window.location.search;
+                window.location.href = `/set-lang/${lang}?returnTo=${encodeURIComponent(currentPath)}`;
+            }
+        </script>
     </nav>

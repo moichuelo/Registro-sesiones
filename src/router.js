@@ -304,6 +304,17 @@ router.get("/pdfProductosKIT", verificarSesion, (req, res) => { //ruta para gene
     });
 });
 
+router.get('/set-lang/:lang', (req, res) => {
+    const lang = req.params.lang; //capturamos el parámetro lang de la ruta
+    const returnTo = req.query.returnTo || '/'; //capturamos el parámetro returnTo de la URL
+
+    if (['es', 'en'].includes(lang)) {
+        res.cookie('lang', lang, { maxAge: 900000, httpOnly: true }); //establecemos la cookie con el idioma seleccionado
+    }
+
+    res.redirect(returnTo);
+});
+
 //9 ******************************************************************************************************
 //9 ******************************************************************************************************
 //9 8 Definir las rutas POST

@@ -1,14 +1,25 @@
 <%- include('partials/head') %> <%- include('partials/header') %>
 
-<h2>
-    Bienvenido <% if (login) {%>
-    <p>El usuario conectado es: <%=user %></p>
-    <a href="/logout" class="a-logout">Cerrar sesión</a>
-    <% }else { %>
-    <p><%= user %></p>
-    <a href="/login" class="a-login">Iniciar sesión </a>
 
-    <% } %>
-</h2>
+        <h2>
+            <%= __('saludo') %>
+                <% if (login) {%>
+                    <p>
+                        <%= __('usuario') %>
+                            <%=user %>
+                    </p>
+                    <a href="/logout" class="a-logout">
+                        <%= __('cerrarSesion') %>
+                    </a>
+                    <% }else { %>
+                        <p>
+                            <%= user %>
+                        </p>
+                        <a href="/login" class="a-login">
+                            <%= __('iniciarSesion') %>
+                        </a>
 
-<%- include('partials/popover') %> <%- include('partials/footer') %>
+                        <% } %>
+        </h2>
+
+        <%- include('partials/popover') %> <%- include('partials/footer') %>

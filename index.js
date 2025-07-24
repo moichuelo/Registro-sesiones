@@ -11,7 +11,19 @@ const db = require("./database/db");
 const jwt = require("jsonwebtoken");
 const setupSocket = require("./src/sockets/socketHandler");
 const security = require("./src/middlewares/security");
+const i18n = require("i18n");
+const path = require("path");
+const setGlobals = require("./src/middlewares/setGlobals");
 
+i18n.configure({
+    locales: ["es", "en"],
+    directory: path.join(__dirname, "locales"),
+    defaultLocale: "es",
+    cookie: "lang", // importante si trabajamos con cookies
+    queryParameter: "lang", // importante si trabajamos con query strings
+    autoReload: true,
+    syncFiles: true
+});
 
 
 //9 3 Definir los middlewares
@@ -20,6 +32,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true })); //nos permite recibir datos de un formulario
 app.use(express.json()); //nos permite recibir datos de una API
 app.use(security);
+app.use(i18n.init);
+app.use(setGlobals);
 app.use("/", require("./src/router"));
 
 
