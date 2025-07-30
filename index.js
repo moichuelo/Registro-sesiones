@@ -14,6 +14,7 @@ const security = require("./src/middlewares/security");
 const i18n = require("i18n");
 const path = require("path");
 const setGlobals = require("./src/middlewares/setGlobals");
+const { swaggerJSDoc, swaggerUi, swaggerSpec } = require("./swagger");
 
 i18n.configure({
     locales: ["es", "en"],
@@ -29,6 +30,7 @@ i18n.configure({
 //9 3 Definir los middlewares
 app.use("/resources", express.static(__dirname + "/public"));
 app.use(cookieParser());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.urlencoded({ extended: true })); //nos permite recibir datos de un formulario
 app.use(express.json()); //nos permite recibir datos de una API
 app.use(security);
@@ -49,4 +51,5 @@ setupSocket(io);
 //9 2 Crear el servidor
 server.listen(4000, () => {
     console.log("Servidor corriendo en http://localhost:4000");
+    console.log("Servidor corriendo en http://localhost:4000/api-docs");
 });

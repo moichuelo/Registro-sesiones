@@ -15,6 +15,28 @@ const path = require("path");
 const PDFDocument = require("pdfkit");
 
 //9 4 Definir las rutas
+
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Renderiza la página de inicio con el estado de autenticación del usuario
+ *     description: Verifica si el usuario tiene un token JWT válido en las cookies y, en función de eso, renderiza la página de inicio con los datos del usuario o un mensaje de que debe iniciar sesión.
+ *     tags:
+ *       - Inicio
+ *     responses:
+ *       200:
+ *         description: Página de inicio renderizada el nombre de usuario en caso de estar registrado o por el contrario con un botón de iniciar sesión
+ *         
+ *       
+ *     cookies:
+ *       - name: token
+ *         description: Token JWT usado para verificar la autenticación del usuario
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvY8OqbiBDb21wdXQiLCJpYXQiOjE1MTYyMzkwMjJ9.dGzP9wE9FcP3EwAq78rGbPI5o7OlPZ_VdJ0eP_fLfhQ'
+ */
 router.get("/", (req, res) => {
 
     if (req.cookies.token) {
@@ -63,6 +85,43 @@ router.get("/logout", (req, res) => {
     res.redirect("/");
 });
 
+/**
+ * @swagger
+ * /admin:
+ *   get:
+ *     summary: Página de administración
+ *     description: Renderiza la vista admin con los productos y el usuario logueado
+ *     tags:
+ *       - Administración
+ *     security:
+ *       - cookieAuth: []
+ *     responses:
+ *       200:
+ *         description: Vista HTML con datos de productos y usuario
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ *               example: |
+ *                 <!-- Renderiza la vista admin con los siguientes datos -->
+ *                 {
+ *                   "productos": [
+ *                     {
+ *                       ref: "int(11) NOT NULL AUTO_INCREMENT",
+ *                       nombre: "varchar(30) NOT NULL",
+ *                       precio: "decimal(10,2) NOT NULL",
+ *                       stock: "int(11) NULL"
+ *                     }
+ *                   ],
+ *                   "login": true,
+ *                   "rol": "admin"
+ *                 }
+ *       401:
+ *         description: Token inválido o ausente, redirige a iniciar sesión (`login`),
+ *       500:
+ *         description: Error del servidor o en la consulta a la base de datos, redirige a iniciar sesión (`login`)
+ */
+
 router.get("/admin", verificarSesion, (req, res) => {
     db.query("SELECT * FROM productos", (error, results) => {
         if (error) {
@@ -101,6 +160,29 @@ router.get("/create", verificarAdmin, (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /edit/{id}:
+ *   get:
+ *     summary: Renderiza el formulario de edición de un producto
+ *     description: Obtiene un producto por su referencia (`ref`) y renderiza la vista `edit` con sus datos.
+ *     tags:
+ *       - Editar un producto
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Referencia única del producto, que obtenemos de la URL
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Vista con el formulario de edición del producto
+ *       404:
+ *         description: Producto no encontrado
+ *       500:
+ *         description: Error al consultar la base de datos
+ */
 router.get("/edit/:ref", verificarAdmin, (req, res) => {
     const ref = req.params.ref;
     db.query(
@@ -396,7 +478,52 @@ router.post(
     }
 );
 
-//Ruta de inicio de sesión
+/**
+ * @swagger
+ * /auth:
+ *   post:
+ *     summary: Autentica al usuario y establece una cookie JWT
+ *     description: Valida las credenciales del usuario. Si son correctas, genera un token JWT y lo guarda en una cookie HTTP (`token`). Luego renderiza la vista `/`.
+ *     tags:
+ *       - Autenticación
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/x-www-form-urlencoded:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - user
+ *               - pass
+ *             properties:
+ *               user:
+ *                 type: string
+ *                 description: Nombre de usuario
+ *               pass:
+ *                 type: string
+ *                 description: Contraseña del usuario
+ *     responses:
+ *       200:
+ *         description: Autenticación exitosa. Se establece una cookie JWT y se renderiza la vista `/`.
+ *         headers:
+ *           Set-Cookie:
+ *             description: Cookie HTTP que contiene el JWT (token válido por 1 hora)
+ *             schema:
+ *               type: string
+ *               example: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...; Path=/; HttpOnly; Max-Age=3600
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ *               example: "<html>...</html>"
+ *       400:
+ *         description: Usuario o contraseña faltantes
+ *       401:
+ *         description: Credenciales incorrectas
+ *       500:
+ *         description: Error interno del servidor o de base de datos
+ */
+
 router.post("/auth", limiter, async (req, res) => {
     const user = req.body.user;
     const pass = req.body.pass;
