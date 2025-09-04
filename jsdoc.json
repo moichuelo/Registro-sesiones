@@ -1,0 +1,13 @@
+{
+    "source": {
+        "include": ["./src", "./index.js"],
+        "includePattern": ".+\\.js$",
+        "exclude": ["node_modules", "docs"]
+    },
+    "plugins": ["node_modules/better-docs/category"],
+    "opts": {
+        "destination": "docs/",
+        "recurse": true,
+        "template": "node_modules/better-docs"
+    }
+}
