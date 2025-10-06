@@ -27,8 +27,8 @@ const PDFDocument = require("pdfkit");
  *     responses:
  *       200:
  *         description: Página de inicio renderizada el nombre de usuario en caso de estar registrado o por el contrario con un botón de iniciar sesión
- *         
- *       
+ *
+ *
  *     cookies:
  *       - name: token
  *         description: Token JWT usado para verificar la autenticación del usuario
@@ -38,7 +38,6 @@ const PDFDocument = require("pdfkit");
  *           example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvY8OqbiBDb21wdXQiLCJpYXQiOjE1MTYyMzkwMjJ9.dGzP9wE9FcP3EwAq78rGbPI5o7OlPZ_VdJ0eP_fLfhQ'
  */
 router.get("/", (req, res) => {
-
     if (req.cookies.token) {
         const payload = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
         req.user = payload;
@@ -64,7 +63,6 @@ router.get("/login", (req, res) => {
             login: false,
         });
     }
-
 });
 
 router.get("/registro", (req, res) => {
@@ -77,7 +75,6 @@ router.get("/registro", (req, res) => {
             login: false,
         });
     }
-
 });
 
 router.get("/logout", (req, res) => {
@@ -149,7 +146,6 @@ router.get("/pdfAdmin", verificarSesion, (req, res) => {
     });
 });
 
-
 router.get("/create", verificarAdmin, (req, res) => {
     if (req.cookies.token) {
         res.render("create", {
@@ -186,7 +182,9 @@ router.get("/create", verificarAdmin, (req, res) => {
 router.get("/edit/:ref", verificarAdmin, (req, res) => {
     const ref = req.params.ref;
     db.query(
-        "SELECT * FROM productos WHERE ref = ?", [ref], (error, results) => {
+        "SELECT * FROM productos WHERE ref = ?",
+        [ref],
+        (error, results) => {
             if (error) {
                 throw error;
             } else {
@@ -197,36 +195,36 @@ router.get("/edit/:ref", verificarAdmin, (req, res) => {
             }
         }
     );
-})
+});
 
 router.get("/delete/:ref", verificarAdmin, (req, res) => {
     const ref = req.params.ref;
-    db.query(
-        "DELETE FROM productos WHERE ref = ?", [ref], (error, results) => {
-            if (error) {
-                throw error;
-            } else {
-                res.redirect("/admin");
-            }
+    db.query("DELETE FROM productos WHERE ref = ?", [ref], (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.redirect("/admin");
         }
-    );
-})
-
+    });
+});
 
 router.get("/soporte", verificarSesion, (req, res) => {
     res.render("soporte", {
         user: {
             username: req.user.user,
-            role: req.user.rol
-        }
+            role: req.user.rol,
+        },
     });
 });
 
 router.get("/api/mensajes", verificarAdmin, (req, res) => {
     const usuario = req.query.con; // Extrae el usuario desde la url (...?con=usuarioX)
 
-    if (!usuario) { //si no hay usuario que devuelva el error
-        return res.status(400).json({ error: "Falta el parámetro ?con=usuario" });
+    if (!usuario) {
+        //si no hay usuario que devuelva el error
+        return res
+            .status(400)
+            .json({ error: "Falta el parámetro ?con=usuario" });
     }
 
     const sql = `
@@ -247,7 +245,6 @@ router.get("/api/mensajes", verificarAdmin, (req, res) => {
         res.json(results);
     });
 });
-
 
 router.get("/api/mensajes/mios", verificarSesion, (req, res) => {
     const usuario = req.user.user;
@@ -271,9 +268,7 @@ router.get("/api/mensajes/mios", verificarSesion, (req, res) => {
     });
 });
 
-
 router.get("/api/usuarios-conversaciones", verificarAdmin, (req, res) => {
-
     /*Busca mensajes donde participen administradores.
     usa UNION para combinar las dos consultas y elimina duplicados
     renombra las dos columnas como "usuario" para poder procesarlas
@@ -301,12 +296,13 @@ router.get("/api/usuarios-conversaciones", verificarAdmin, (req, res) => {
             return res.status(500).json({ error: "Error interno" });
         }
 
-        const usuarios = results.map(r => r.usuario); // Extrae los nombres de los usuarios
+        const usuarios = results.map((r) => r.usuario); // Extrae los nombres de los usuarios
         res.json(usuarios); //los devuelve en formato JSON
     });
 });
 
-router.get("/pdfProductos", verificarSesion, async (req, res) => { //ruta para generar el pdf con puppeteer
+router.get("/pdfProductos", verificarSesion, async (req, res) => {
+    //ruta para generar el pdf con puppeteer
     db.query("SELECT * FROM productos", async (error, results) => {
         if (error) {
             throw error;
@@ -314,52 +310,69 @@ router.get("/pdfProductos", verificarSesion, async (req, res) => { //ruta para g
 
         try {
             //renderizamos el archivo ejs y lo guardamos en una constante
-            const html = await ejs.renderFile(path.join(__dirname, "../views/pdfTabla.ejs"), { productos: results });
+            const html = await ejs.renderFile(
+                path.join(__dirname, "../views/pdfTabla.ejs"),
+                { productos: results }
+            );
 
-            const browser = await puppeteer.launch({ //generamos el navegador
+            const browser = await puppeteer.launch({
+                //generamos el navegador
                 headless: true,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
 
             const page = await browser.newPage(); //creamos una nueva pagina
-            await page.setContent(html, { waitUntil: 'networkidle0' }); //cargamos el html en la página
+            await page.setContent(html, { waitUntil: "networkidle0" }); //cargamos el html en la página
 
-            const pdfBuffer = await page.pdf({ //generamos el pdf sobre la información que hay en el navegador virtual
+            const pdfBuffer = await page.pdf({
+                //generamos el pdf sobre la información que hay en el navegador virtual
                 format: "A4",
                 printBackground: true,
-                margin: { top: "1cm", right: "1cm", bottom: "1cm", left: "1cm" },
+                margin: {
+                    top: "1cm",
+                    right: "1cm",
+                    bottom: "1cm",
+                    left: "1cm",
+                },
             });
 
             await browser.close(); //cerramos el navegador
 
             res.setHeader("Content-Type", "application/pdf"); //establece el tipo de contenido
-            res.setHeader("Content-Disposition", "attachment; filename=productos.pdf"); //establece el nombre del archivo
+            res.setHeader(
+                "Content-Disposition",
+                "attachment; filename=productos.pdf"
+            ); //establece el nombre del archivo
             res.send(pdfBuffer); //envia el archivo
-
         } catch (error) {
             console.error("Error al generar el PDF:", error);
             res.status(500).send("Error al generar el PDF");
         }
+    });
+});
 
-    })
-})
-
-router.get("/pdfProductosKIT", verificarSesion, (req, res) => { //ruta para generar el pdf con pdfkit
+router.get("/pdfProductosKIT", verificarSesion, (req, res) => {
+    //ruta para generar el pdf con pdfkit
     db.query("SELECT * FROM productos", async (error, results) => {
         if (error) {
             throw error;
         } //obtenemos todos los productos de la BBDD
 
-        const doc = new PDFDocument({ margin: 40, size: 'A4' }); //creamos un nuevo documento
+        const doc = new PDFDocument({ margin: 40, size: "A4" }); //creamos un nuevo documento
 
         //definir los encabezados
-        res.setHeader("Content-Type", "application/pdf");//establece el tipo de contenido
-        res.setHeader("Content-Disposition", "attachment; filename=productosKit.pdf");//establece el nombre del archivo
+        res.setHeader("Content-Type", "application/pdf"); //establece el tipo de contenido
+        res.setHeader(
+            "Content-Disposition",
+            "attachment; filename=productosKit.pdf"
+        ); //establece el nombre del archivo
 
-        doc.pipe(res);//envia el archivo
+        doc.pipe(res); //envia el archivo
 
         //título
-        doc.fontSize(25).text("Listado productos", { align: "center" }).moveDown(); //establece el título y hace un salto de línea con moveDown
+        doc.fontSize(25)
+            .text("Listado productos", { align: "center" })
+            .moveDown(); //establece el título y hace un salto de línea con moveDown
 
         //encabezados de la tabla
         doc.font("Helvetica-Bold").fontSize(15); //establece la fuente y el tamaño para las siguientes líneas
@@ -374,7 +387,8 @@ router.get("/pdfProductosKIT", verificarSesion, (req, res) => { //ruta para gene
 
         //cuerpo
         doc.font("Helvetica").fontSize(12); //establece la fuente y el tamaño para las siguientes líneas
-        results.forEach(producto => { //recorremos el array de resultados de la BBDD e introducimos los datos en el documento
+        results.forEach((producto) => {
+            //recorremos el array de resultados de la BBDD e introducimos los datos en el documento
             doc.text(producto.ref, 50, y);
             doc.text(producto.nombre, 150, y);
             doc.text(producto.precio, 300, y);
@@ -386,12 +400,12 @@ router.get("/pdfProductosKIT", verificarSesion, (req, res) => { //ruta para gene
     });
 });
 
-router.get('/set-lang/:lang', (req, res) => {
+router.get("/set-lang/:lang", (req, res) => {
     const lang = req.params.lang; //capturamos el parámetro lang de la ruta
-    const returnTo = req.query.returnTo || '/'; //capturamos el parámetro returnTo de la URL
+    const returnTo = req.query.returnTo || "/"; //capturamos el parámetro returnTo de la URL
 
-    if (['es', 'en'].includes(lang)) {
-        res.cookie('lang', lang, { maxAge: 900000, httpOnly: true }); //establecemos la cookie con el idioma seleccionado
+    if (["es", "en"].includes(lang)) {
+        res.cookie("lang", lang, { maxAge: 900000, httpOnly: true }); //establecemos la cookie con el idioma seleccionado
     }
 
     res.redirect(returnTo);
@@ -403,9 +417,9 @@ router.get('/set-lang/:lang', (req, res) => {
 //9 ******************************************************************************************************
 //9 ******************************************************************************************************
 
-
 router.post(
-    "/register", limiter,
+    "/register",
+    limiter,
     upload.single("profileImage"),
     [
         body("user")
@@ -549,7 +563,8 @@ router.post("/auth", limiter, async (req, res) => {
                         login: false,
                     });
                 } else {
-                    const payload = { //creamos el cuerpo del token
+                    const payload = {
+                        //creamos el cuerpo del token
                         user: results[0].usuario,
                         name: results[0].nombre,
                         rol: results[0].rol,
@@ -566,7 +581,6 @@ router.post("/auth", limiter, async (req, res) => {
                         httpOnly: true,
                         secure: false,
                     });
-
 
                     res.render("login", {
                         alert: true,
