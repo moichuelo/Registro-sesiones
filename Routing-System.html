@@ -1,0 +1,3429 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="Application-Bootstrap.html">
+      
+      
+        <link rel="next" href="Public-Routes.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Routing System - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#routing-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Routing System
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Routing-System.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#router-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Router Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Router Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#express-router-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Express Router Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-categories-and-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Categories and Organization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Route Categories and Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#route-registration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Registration Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-route-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Route Map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-handler-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Handler Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Route Handler Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      View Handlers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Handlers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirect-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirect Handlers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-generation-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDF Generation Handlers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Middleware Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-middleware-verifytoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Middleware (verifyToken)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-middleware-verifyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization Middleware (verifyAdmin)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload-middleware-upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Upload Middleware (upload)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting-middleware-limiter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting Middleware (limiter)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-validation-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Validation Middleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-route-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST Route Handlers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST Route Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-registration-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Registration Handler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Handler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controller Delegation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-route-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Route Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Route Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-extraction-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Extraction Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-query-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Query Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-examples-by-route-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Examples by Route Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex SQL Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-switching-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Switching System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swaggeropenapi-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swagger/OpenAPI Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling-by-route-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling by Route Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module Export
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#router-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Router Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Router Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#express-router-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Express Router Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-categories-and-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Categories and Organization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Route Categories and Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#route-registration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Registration Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-route-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Route Map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-handler-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Handler Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Route Handler Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      View Handlers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Handlers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirect-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirect Handlers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-generation-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDF Generation Handlers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Middleware Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-middleware-verifytoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Middleware (verifyToken)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-middleware-verifyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization Middleware (verifyAdmin)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload-middleware-upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Upload Middleware (upload)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting-middleware-limiter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting Middleware (limiter)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-validation-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Validation Middleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-route-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST Route Handlers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST Route Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-registration-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Registration Handler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Handler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controller Delegation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-route-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Route Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Route Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-extraction-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Extraction Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-query-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Query Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-examples-by-route-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Examples by Route Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex SQL Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-switching-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Switching System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swaggeropenapi-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swagger/OpenAPI Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling-by-route-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling by Route Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module Export
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="routing-system">Routing System<a class="headerlink" href="#routing-system" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/proyecto.zip">proyecto.zip</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js">src/router.js</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>The Routing System is the central request routing mechanism for the registro-sesiones application. It defines all HTTP endpoints, maps URL paths to handler functions, applies middleware for authentication and validation, and coordinates between the presentation layer (views) and business logic (controllers). This document covers the router architecture, route organization, middleware integration, and handler patterns.</p>
+<p>For details on specific route categories, see:</p>
+<ul>
+<li><a href="Public-Routes.html">Public Routes</a> - unauthenticated endpoints</li>
+<li><a href="Protected-Routes.html">Protected Routes</a> - authenticated user and admin endpoints</li>
+<li><a href="API-Endpoints.html">API Endpoints</a> - RESTful data endpoints</li>
+</ul>
+<p>For authentication middleware specifics, see <a href="Authentication-%26-Authorization.html">Authentication &amp; Authorization</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L1-L607">src/router.js L1-L607</a></p>
+<hr />
+<h2 id="router-architecture">Router Architecture<a class="headerlink" href="#router-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="express-router-setup">Express Router Setup<a class="headerlink" href="#express-router-setup" title="Permanent link">&para;</a></h3>
+<p>The routing system is implemented using Express.js Router and exported as a module that is mounted in the main application. The router is configured with dependencies for authentication, validation, file uploads, and database access.</p>
+<pre class="mermaid"><code>flowchart TD
+
+RouterInstance["express.Router()&lt;br&gt;Line 2"]
+ExpressValidator["express-validator&lt;br&gt;body, validationResult"]
+BCrypt["bcryptjs&lt;br&gt;Password Hashing"]
+DB["database/db&lt;br&gt;MySQL Connection"]
+JWT["jsonwebtoken&lt;br&gt;Token Management"]
+Puppeteer["puppeteer&lt;br&gt;PDF Generation"]
+PDFKit["pdfkit&lt;br&gt;PDF Creation"]
+EJS["ejs&lt;br&gt;Template Rendering"]
+VerifyToken["verifyToken&lt;br&gt;src/middlewares/verifyToken"]
+VerifyAdmin["verifyAdmin&lt;br&gt;src/middlewares/verifyAdmin"]
+Upload["upload&lt;br&gt;src/middlewares/multerConfig"]
+Limiter["limiter&lt;br&gt;src/middlewares/authLimiter"]
+CRUD["crud&lt;br&gt;src/controllers"]
+ExternalApp["index.js&lt;br&gt;app.use('/', router)"]
+
+RouterInstance --&gt; ExternalApp
+
+subgraph subGraph3 ["Router Module - src/router.js"]
+    RouterInstance
+    RouterInstance --&gt; ExpressValidator
+    RouterInstance --&gt; BCrypt
+    RouterInstance --&gt; DB
+    RouterInstance --&gt; JWT
+    RouterInstance --&gt; Puppeteer
+    RouterInstance --&gt; PDFKit
+    RouterInstance --&gt; EJS
+    RouterInstance --&gt; VerifyToken
+    RouterInstance --&gt; VerifyAdmin
+    RouterInstance --&gt; Upload
+    RouterInstance --&gt; Limiter
+    RouterInstance --&gt; CRUD
+
+subgraph Controllers ["Controllers"]
+    CRUD
+end
+
+subgraph subGraph1 ["Middleware Imports"]
+    VerifyToken
+    VerifyAdmin
+    Upload
+    Limiter
+end
+
+subgraph Dependencies ["Dependencies"]
+    ExpressValidator
+    BCrypt
+    DB
+    JWT
+    Puppeteer
+    PDFKit
+    EJS
+end
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L1-L22">src/router.js L1-L22</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L607-L607">src/router.js L607</a></p>
+<hr />
+<h2 id="route-categories-and-organization">Route Categories and Organization<a class="headerlink" href="#route-categories-and-organization" title="Permanent link">&para;</a></h2>
+<p>The router defines 21 routes organized into three main categories: public routes, protected routes, and API endpoints. Routes are registered using HTTP verb methods (<code>router.get()</code>, <code>router.post()</code>) with optional middleware chains.</p>
+<h3 id="route-registration-pattern">Route Registration Pattern<a class="headerlink" href="#route-registration-pattern" title="Permanent link">&para;</a></h3>
+<p>Routes follow a consistent registration pattern:</p>
+<div class="highlight"><pre><span></span><code>router.<span class="p">&lt;</span><span class="nt">method</span><span class="p">&gt;</span>(&quot;<span class="p">&lt;</span><span class="nt">path</span><span class="p">&gt;</span>&quot;, [middleware1, middleware2, ...], handlerFunction)
+</code></pre></div>
+<h3 id="complete-route-map">Complete Route Map<a class="headerlink" href="#complete-route-map" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTTP Method</th>
+<th>Path</th>
+<th>Middleware</th>
+<th>Handler Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/</code></td>
+<td>None</td>
+<td>View</td>
+<td>Home page with optional user info</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/login</code></td>
+<td>None</td>
+<td>View</td>
+<td>Login form</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/registro</code></td>
+<td>None</td>
+<td>View</td>
+<td>Registration form</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/admin</code></td>
+<td><code>verifyToken</code></td>
+<td>View</td>
+<td>Product management dashboard</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/pdfAdmin</code></td>
+<td><code>verifyToken</code></td>
+<td>View</td>
+<td>PDF preview page</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/create</code></td>
+<td>None</td>
+<td>View</td>
+<td>Create product form</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/edit/:id</code></td>
+<td>None</td>
+<td>View</td>
+<td>Edit product form</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/delete/:id</code></td>
+<td>None</td>
+<td>Redirect</td>
+<td>Delete product and redirect</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/logout</code></td>
+<td>None</td>
+<td>Redirect</td>
+<td>Clear JWT cookie and redirect</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/soporte</code></td>
+<td><code>verifyToken</code></td>
+<td>View</td>
+<td>Support chat interface</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/mensajes</code></td>
+<td><code>verifyAdmin</code></td>
+<td>JSON</td>
+<td>Get messages for specific user</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/mensajes/mios</code></td>
+<td><code>verifyToken</code></td>
+<td>JSON</td>
+<td>Get current user's messages</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/usuarios-conversaciones</code></td>
+<td><code>verifyAdmin</code></td>
+<td>JSON</td>
+<td>Get list of users with conversations</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/pdf/descargar</code></td>
+<td><code>verifyToken</code></td>
+<td>PDF</td>
+<td>Download PDF (Puppeteer)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/pdfkit/descargar</code></td>
+<td><code>verifyToken</code></td>
+<td>PDF</td>
+<td>Download PDF (PDFKit)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/set-lang/:lang</code></td>
+<td>None</td>
+<td>Redirect</td>
+<td>Set language preference</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/register</code></td>
+<td><code>upload.single()</code>, validation</td>
+<td>View</td>
+<td>User registration</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/auth</code></td>
+<td><code>limiter</code></td>
+<td>View</td>
+<td>User authentication</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/save</code></td>
+<td>None</td>
+<td>Redirect</td>
+<td>Create product (via controller)</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/update</code></td>
+<td>None</td>
+<td>Redirect</td>
+<td>Update product (via controller)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L59-L604">src/router.js L59-L604</a></p>
+<hr />
+<h2 id="route-handler-types">Route Handler Types<a class="headerlink" href="#route-handler-types" title="Permanent link">&para;</a></h2>
+<p>The routing system implements four distinct handler patterns based on the type of response generated.</p>
+<pre class="mermaid"><code>flowchart TD
+
+Request["HTTP Request"]
+Router["Express Router"]
+ViewHandler["View Handler&lt;br&gt;res.render()"]
+APIHandler["API Handler&lt;br&gt;res.json()"]
+RedirectHandler["Redirect Handler&lt;br&gt;res.redirect()"]
+PDFHandler["PDF Handler&lt;br&gt;res.send(buffer)"]
+EJSEngine["EJS Template Engine"]
+HTMLResponse["HTML Response"]
+JSONResponse["JSON Response"]
+HTTPRedirect["302/301 Response"]
+PDFEngine["Puppeteer or PDFKit"]
+PDFResponse["PDF Binary Response"]
+
+Request --&gt; Router
+Router --&gt; ViewHandler
+Router --&gt; APIHandler
+Router --&gt; RedirectHandler
+Router --&gt; PDFHandler
+ViewHandler --&gt; EJSEngine
+EJSEngine --&gt; HTMLResponse
+APIHandler --&gt; JSONResponse
+RedirectHandler --&gt; HTTPRedirect
+PDFHandler --&gt; PDFEngine
+PDFEngine --&gt; PDFResponse</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L59-L604">src/router.js L59-L604</a></p>
+<h3 id="view-handlers">View Handlers<a class="headerlink" href="#view-handlers" title="Permanent link">&para;</a></h3>
+<p>View handlers render EJS templates and return HTML responses. They query the database when needed and pass data to templates via the <code>res.render()</code> method.</p>
+<p><strong>Example: Home Page Handler</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 59-74</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">cookies</span><span class="p">.</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">cookies</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">payload</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;Usuario&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">login</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Debe iniciar sesión&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">login</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>View Handler Routes:</strong></p>
+<ul>
+<li><code>/</code> - Renders <code>index.ejs</code></li>
+<li><code>/login</code> - Renders <code>login.ejs</code></li>
+<li><code>/registro</code> - Renders <code>register.ejs</code></li>
+<li><code>/admin</code> - Renders <code>admin.ejs</code> with product data</li>
+<li><code>/pdfAdmin</code> - Renders <code>pdfTabla.ejs</code> for PDF preview</li>
+<li><code>/create</code> - Renders <code>create.ejs</code></li>
+<li><code>/edit/:id</code> - Renders <code>edit.ejs</code> with product data</li>
+<li><code>/soporte</code> - Renders <code>soporte.ejs</code> with user data</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L59-L80">src/router.js L59-L80</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L155">src/router.js L119-L155</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L186-L196">src/router.js L186-L196</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L227">src/router.js L220-L227</a></p>
+<h3 id="api-handlers">API Handlers<a class="headerlink" href="#api-handlers" title="Permanent link">&para;</a></h3>
+<p>API handlers return JSON responses for data retrieval. These endpoints are consumed by client-side JavaScript for dynamic functionality.</p>
+<p><strong>Example: Get User Messages Handler</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 256-280</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/api/mensajes/mios&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No autorizado&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    SELECT de_usuario, para_usuario, mensaje, fecha</span>
+<span class="sb">    FROM mensajes</span>
+<span class="sb">    WHERE </span>
+<span class="sb">      (de_usuario = ? OR para_usuario = ?)</span>
+<span class="sb">    ORDER BY fecha ASC</span>
+<span class="sb">    `</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">usuario</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;❌ Error al obtener mensajes:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error interno&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>API Handler Routes:</strong></p>
+<ul>
+<li><code>/api/mensajes?con=&lt;username&gt;</code> - Returns messages for specific user (admin only)</li>
+<li><code>/api/mensajes/mios</code> - Returns current user's messages</li>
+<li><code>/api/usuarios-conversaciones</code> - Returns list of users with conversations (admin only)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L253">src/router.js L229-L253</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L280">src/router.js L256-L280</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L315">src/router.js L283-L315</a></p>
+<h3 id="redirect-handlers">Redirect Handlers<a class="headerlink" href="#redirect-handlers" title="Permanent link">&para;</a></h3>
+<p>Redirect handlers perform an action and redirect the user to another page using <code>res.redirect()</code>.</p>
+<p><strong>Example: Logout Handler</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 215-218</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/logout&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">clearCookie</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Redirect Handler Routes:</strong></p>
+<ul>
+<li><code>/delete/:id</code> - Deletes product and redirects to <code>/admin</code></li>
+<li><code>/logout</code> - Clears JWT cookie and redirects to <code>/</code></li>
+<li><code>/set-lang/:lang</code> - Sets language cookie and redirects to <code>returnTo</code> parameter</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L198-L208">src/router.js L198-L208</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L215-L218">src/router.js L215-L218</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L398-L407">src/router.js L398-L407</a></p>
+<h3 id="pdf-generation-handlers">PDF Generation Handlers<a class="headerlink" href="#pdf-generation-handlers" title="Permanent link">&para;</a></h3>
+<p>PDF handlers generate PDF documents and return them as binary responses with appropriate headers. The system implements two PDF generation approaches.</p>
+<p><strong>Puppeteer-based Handler (HTML to PDF):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 317-353</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/pdf/descargar&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM productos&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Error al obtener productos&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ejs</span><span class="p">.</span><span class="nx">renderFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;../views/pdfTabla.ejs&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">            </span><span class="p">});</span>
+
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">browser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">headless</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--no-sandbox&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--disable-setuid-sandbox&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="p">});</span>
+
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">();</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">waitUntil</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;networkidle0&quot;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">pdfBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">pdf</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A4&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">printBackground</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20px&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20px&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="p">});</span>
+
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/pdf&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Disposition&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;attachment; filename=&quot;productos.pdf&quot;&#39;</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">pdfBuffer</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;❌ Error al generar el PDF:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Error interno al generar el PDF&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>PDFKit-based Handler (Programmatic PDF):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 355-396</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/pdfkit/descargar&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM productos&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Error al obtener productos&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PDFDocument</span><span class="p">({</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A4&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Disposition&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;attachment; filename=&quot;productos_desde_cero.pdf&quot;&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/pdf&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Title</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">fontSize</span><span class="p">(</span><span class="mf">18</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Listado de Productos&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">align</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="w"> </span><span class="p">}).</span><span class="nx">moveDown</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Table headers</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">font</span><span class="p">(</span><span class="s2">&quot;Helvetica-Bold&quot;</span><span class="p">).</span><span class="nx">fontSize</span><span class="p">(</span><span class="mf">12</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">doc</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Referencia&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">150</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Precio&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Stock&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">380</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+
+<span class="w">        </span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">font</span><span class="p">(</span><span class="s2">&quot;Helvetica&quot;</span><span class="p">).</span><span class="nx">fontSize</span><span class="p">(</span><span class="mf">11</span><span class="p">);</span>
+
+<span class="w">        </span><span class="nx">results</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">ref</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="mf">150</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">precio</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">stock</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span><span class="w"> </span><span class="mf">380</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="nx">doc</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L317-L353">src/router.js L317-L353</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<hr />
+<h2 id="middleware-integration">Middleware Integration<a class="headerlink" href="#middleware-integration" title="Permanent link">&para;</a></h2>
+<p>The routing system integrates five types of middleware to handle authentication, authorization, file uploads, rate limiting, and input validation.</p>
+<pre class="mermaid"><code>flowchart TD
+
+IncomingRequest["HTTP Request"]
+RouteDefinition["Route Definition"]
+MW_Check["Middleware&lt;br&gt;Specified?"]
+MW_Chain["Middleware Chain"]
+Handler["Route Handler"]
+VerifyToken["verifyToken&lt;br&gt;JWT Validation"]
+VerifyAdmin["verifyAdmin&lt;br&gt;Role Check"]
+Upload["upload.single()&lt;br&gt;File Upload"]
+Limiter["limiter&lt;br&gt;Rate Limiting"]
+Validator["express-validator&lt;br&gt;Input Validation"]
+TokenValid["Token Valid?"]
+NextMW["next()"]
+Reject401["401 Response"]
+IsAdmin["User is Admin?"]
+NextMW2["next()"]
+Reject403["403 Response"]
+
+IncomingRequest --&gt; RouteDefinition
+RouteDefinition --&gt; MW_Check
+MW_Check --&gt; MW_Chain
+MW_Check --&gt; Handler
+VerifyToken --&gt; TokenValid
+TokenValid --&gt; NextMW
+TokenValid --&gt; Reject401
+VerifyAdmin --&gt; IsAdmin
+IsAdmin --&gt; NextMW2
+IsAdmin --&gt; Reject403
+NextMW --&gt; Handler
+NextMW2 --&gt; Handler
+
+subgraph subGraph0 ["Middleware Types"]
+    MW_Chain
+    VerifyToken
+    VerifyAdmin
+    Upload
+    Limiter
+    Validator
+    MW_Chain --&gt; VerifyToken
+    MW_Chain --&gt; VerifyAdmin
+    MW_Chain --&gt; Upload
+    MW_Chain --&gt; Limiter
+    MW_Chain --&gt; Validator
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L16-L21">src/router.js L16-L21</a></p>
+<h3 id="authentication-middleware-verifytoken">Authentication Middleware (verifyToken)<a class="headerlink" href="#authentication-middleware-verifytoken" title="Permanent link">&para;</a></h3>
+<p>The <code>verifyToken</code> middleware validates JWT tokens from cookies and attaches user information to <code>req.user</code>. Applied to routes requiring any authenticated user.</p>
+<p><strong>Routes using <code>verifyToken</code>:</strong></p>
+<ul>
+<li><code>/admin</code> - Product management (line 119)</li>
+<li><code>/pdfAdmin</code> - PDF preview (line 136)</li>
+<li><code>/soporte</code> - Support chat (line 220)</li>
+<li><code>/api/mensajes/mios</code> - User's messages (line 256)</li>
+<li><code>/pdf/descargar</code> - PDF download (line 317)</li>
+<li><code>/pdfkit/descargar</code> - PDFKit download (line 355)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L16-L16">src/router.js L16</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L119">src/router.js L119</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L220">src/router.js L220</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L256">src/router.js L256</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L317-L317">src/router.js L317</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L355">src/router.js L355</a></p>
+<h3 id="authorization-middleware-verifyadmin">Authorization Middleware (verifyAdmin)<a class="headerlink" href="#authorization-middleware-verifyadmin" title="Permanent link">&para;</a></h3>
+<p>The <code>verifyAdmin</code> middleware checks if the authenticated user has the <code>admin</code> role. Applied after <code>verifyToken</code> to restrict access to administrative functions.</p>
+<p><strong>Routes using <code>verifyAdmin</code>:</strong></p>
+<ul>
+<li><code>/api/mensajes?con=&lt;user&gt;</code> - Get any user's messages (line 229)</li>
+<li><code>/api/usuarios-conversaciones</code> - Get conversation list (line 283)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L17-L17">src/router.js L17</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L283">src/router.js L283</a></p>
+<h3 id="file-upload-middleware-upload">File Upload Middleware (upload)<a class="headerlink" href="#file-upload-middleware-upload" title="Permanent link">&para;</a></h3>
+<p>The <code>upload</code> middleware from multer handles multipart form data for file uploads. Configured to accept a single file with the field name <code>profileImage</code>.</p>
+<p><strong>Routes using <code>upload</code>:</strong></p>
+<ul>
+<li>POST <code>/register</code> - Profile image upload (line 414)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L19-L19">src/router.js L19</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L414-L414">src/router.js L414</a></p>
+<h3 id="rate-limiting-middleware-limiter">Rate Limiting Middleware (limiter)<a class="headerlink" href="#rate-limiting-middleware-limiter" title="Permanent link">&para;</a></h3>
+<p>The <code>limiter</code> middleware implements rate limiting to prevent brute force attacks on authentication endpoints.</p>
+<p><strong>Routes using <code>limiter</code>:</strong></p>
+<ul>
+<li>POST <code>/auth</code> - Login rate limiting (line 532)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L21-L21">src/router.js L21</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L532">src/router.js L532</a></p>
+<h3 id="input-validation-middleware">Input Validation Middleware<a class="headerlink" href="#input-validation-middleware" title="Permanent link">&para;</a></h3>
+<p>The <code>express-validator</code> library provides validation middleware through the <code>body()</code> function. Validation rules are defined inline and checked using <code>validationResult()</code>.</p>
+<p><strong>Routes using validation:</strong></p>
+<ul>
+<li>POST <code>/register</code> - Validates user, name, pass, email, edad fields (lines 415-428)</li>
+</ul>
+<p><strong>Validation Rules:</strong></p>
+<div class="highlight"><pre><span></span><code>// Lines 415-428
+[
+    body(&quot;user&quot;)
+        .exists()
+        .isLength({ min: 4 })
+        .withMessage(&quot;El usuario debe tener al menos 4 caracteres&quot;),
+    body(&quot;name&quot;)
+        .isLength({ min: 4 })
+        .withMessage(&quot;El nombre debe tener al menos 4 caracteres&quot;),
+    body(&quot;pass&quot;)
+        .isLength({ min: 4 })
+        .withMessage(&quot;La contraseña debe tener al menos 4 caracteres&quot;),
+    body(&quot;email&quot;).isEmail().withMessage(&quot;El email no es valido&quot;),
+    body(&quot;edad&quot;).isNumeric().withMessage(&quot;La edad debe ser un número&quot;),
+]
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L3-L3">src/router.js L3</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L414-L428">src/router.js L414-L428</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L430-L442">src/router.js L430-L442</a></p>
+<hr />
+<h2 id="post-route-handlers">POST Route Handlers<a class="headerlink" href="#post-route-handlers" title="Permanent link">&para;</a></h2>
+<p>POST routes handle form submissions and data modifications. They implement authentication, file uploads, validation, and business logic before responding with views or redirects.</p>
+<h3 id="user-registration-handler">User Registration Handler<a class="headerlink" href="#user-registration-handler" title="Permanent link">&para;</a></h3>
+<p>The registration handler is the most complex POST route, combining file upload, input validation, password hashing, and database insertion.</p>
+<pre class="mermaid"><code>flowchart TD
+
+POST_Register["POST /register"]
+Upload_MW["upload.single('profileImage')"]
+Validation_MW["Validation Middleware Array"]
+Handler["Registration Handler"]
+Validate_Check["Validation&lt;br&gt;Errors?"]
+Render_Errors["res.render('register')&lt;br&gt;with errors and values"]
+Extract_Data["Extract Form Data&lt;br&gt;user, name, rol, pass, profileImage"]
+Hash_Password["bcrypt.hash(pass, 8)"]
+DB_Insert["db.query('INSERT INTO usuarios')"]
+Success_Check["Insert&lt;br&gt;Success?"]
+Render_Success["res.render('register')&lt;br&gt;with success alert"]
+Log_Error["console.log(error)"]
+
+POST_Register --&gt; Upload_MW
+Upload_MW --&gt; Validation_MW
+Validation_MW --&gt; Handler
+Handler --&gt; Validate_Check
+Validate_Check --&gt; Render_Errors
+Validate_Check --&gt; Extract_Data
+Extract_Data --&gt; Hash_Password
+Hash_Password --&gt; DB_Insert
+DB_Insert --&gt; Success_Check
+Success_Check --&gt; Render_Success
+Success_Check --&gt; Log_Error</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L414-L484">src/router.js L414-L484</a></p>
+<p><strong>Handler Details:</strong></p>
+<ol>
+<li><strong>File Upload</strong> (line 414): <code>upload.single("profileImage")</code> processes multipart form data</li>
+<li><strong>Validation</strong> (lines 415-428): 5 validation rules for user, name, pass, email, edad</li>
+<li><strong>Error Handling</strong> (lines 430-442): If validation fails, re-render form with errors and previous values</li>
+<li><strong>Password Hashing</strong> (line 453): <code>bcrypt.hash(pass, 8)</code> with 8 salt rounds</li>
+<li><strong>Database Insert</strong> (lines 456-480): Insert new user record with hashed password and profile image filename</li>
+<li><strong>Success Response</strong> (lines 469-478): Render registration page with SweetAlert success message</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L414-L484">src/router.js L414-L484</a></p>
+<h3 id="authentication-handler">Authentication Handler<a class="headerlink" href="#authentication-handler" title="Permanent link">&para;</a></h3>
+<p>The authentication handler validates credentials, generates JWT tokens, and sets secure HTTP-only cookies.</p>
+<pre class="mermaid"><code>flowchart TD
+
+POST_Auth["POST /auth"]
+Limiter_MW["Rate Limiter Middleware"]
+Auth_Handler["Authentication Handler"]
+Extract_Creds["Extract user and pass&lt;br&gt;from req.body"]
+Creds_Check["Credentials&lt;br&gt;Provided?"]
+Render_Error1["res.render('login')&lt;br&gt;with error alert"]
+DB_Query["db.query('SELECT * FROM usuarios&lt;br&gt;WHERE usuario = ?')"]
+User_Check["User Found &amp;&lt;br&gt;Password Valid?"]
+Render_Error2["res.render('login')&lt;br&gt;with incorrect credentials alert"]
+Create_Payload["Create JWT Payload&lt;br&gt;user, name, rol, imagen"]
+Sign_Token["jwt.sign(payload, secret,&lt;br&gt;{expiresIn: '1h'})"]
+Set_Cookie["res.cookie('token', token,&lt;br&gt;{httpOnly: true, maxAge: 3600000})"]
+Render_Success["res.render('login')&lt;br&gt;with success alert"]
+
+POST_Auth --&gt; Limiter_MW
+Limiter_MW --&gt; Auth_Handler
+Auth_Handler --&gt; Extract_Creds
+Extract_Creds --&gt; Creds_Check
+Creds_Check --&gt; Render_Error1
+Creds_Check --&gt; DB_Query
+DB_Query --&gt; User_Check
+User_Check --&gt; Render_Error2
+User_Check --&gt; Create_Payload
+Create_Payload --&gt; Sign_Token
+Sign_Token --&gt; Set_Cookie
+Set_Cookie --&gt; Render_Success</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L601">src/router.js L532-L601</a></p>
+<p><strong>Handler Details:</strong></p>
+<ol>
+<li><strong>Rate Limiting</strong> (line 532): Prevent brute force attacks</li>
+<li><strong>Credential Extraction</strong> (lines 533-534): Get username and password from form</li>
+<li><strong>Database Query</strong> (lines 537-540): Fetch user record by username</li>
+<li><strong>Password Verification</strong> (line 543): <code>bcrypt.compare(pass, results[0].pass)</code> validates password</li>
+<li><strong>JWT Creation</strong> (lines 559-567): Create payload and sign with <code>JWT_SECRET</code></li>
+<li><strong>Cookie Setup</strong> (lines 570-574): Store token in HTTP-only cookie with 1-hour expiration</li>
+<li><strong>Response</strong> (lines 577-586): Render login page with success alert and auto-redirect</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L601">src/router.js L532-L601</a></p>
+<h3 id="controller-delegation">Controller Delegation<a class="headerlink" href="#controller-delegation" title="Permanent link">&para;</a></h3>
+<p>Two POST routes delegate to the <code>controllers.js</code> module for product CRUD operations.</p>
+<p><strong>Controller Routes:</strong></p>
+<ul>
+<li>POST <code>/save</code> - Delegates to <code>crud.save</code> for product creation (line 603)</li>
+<li>POST <code>/update</code> - Delegates to <code>crud.update</code> for product editing (line 604)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L13-L13">src/router.js L13</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L603-L604">src/router.js L603-L604</a></p>
+<hr />
+<h2 id="dynamic-route-parameters">Dynamic Route Parameters<a class="headerlink" href="#dynamic-route-parameters" title="Permanent link">&para;</a></h2>
+<p>Several routes use Express route parameters (<code>:param</code>) to capture dynamic values from URLs.</p>
+<h3 id="parameter-extraction-pattern">Parameter Extraction Pattern<a class="headerlink" href="#parameter-extraction-pattern" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Parameter</th>
+<th>Extraction</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/edit/:id</code></td>
+<td><code>:id</code></td>
+<td><code>req.params.id</code></td>
+<td>Product reference for editing</td>
+</tr>
+<tr>
+<td><code>/delete/:id</code></td>
+<td><code>:id</code></td>
+<td><code>req.params.id</code></td>
+<td>Product reference for deletion</td>
+</tr>
+<tr>
+<td><code>/set-lang/:lang</code></td>
+<td><code>:lang</code></td>
+<td><code>req.params.lang</code></td>
+<td>Language code (es/en)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example: Edit Product Route</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 186-196</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/edit/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span><span class="w"> </span><span class="c1">// Capture parameter</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM productos WHERE ref = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">ref</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;edit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">producto</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L186-L196">src/router.js L186-L196</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L198-L208">src/router.js L198-L208</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L398-L407">src/router.js L398-L407</a></p>
+<h3 id="query-parameters">Query Parameters<a class="headerlink" href="#query-parameters" title="Permanent link">&para;</a></h3>
+<p>API routes use query parameters for filtering and data retrieval.</p>
+<p><strong>Query Parameter Usage:</strong></p>
+<ul>
+<li><code>/api/mensajes?con=&lt;username&gt;</code> - Query parameter <code>con</code> specifies user for message retrieval (line 230)</li>
+<li><code>/set-lang/:lang?returnTo=&lt;path&gt;</code> - Query parameter <code>returnTo</code> specifies redirect destination (line 400)</li>
+</ul>
+<p><strong>Example: Messages Query</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Line 230</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">con</span><span class="p">;</span><span class="w"> </span><span class="c1">// Extract query parameter</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L230-L230">src/router.js L230</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L400-L400">src/router.js L400</a></p>
+<hr />
+<h2 id="database-integration">Database Integration<a class="headerlink" href="#database-integration" title="Permanent link">&para;</a></h2>
+<p>The router directly executes MySQL queries for most operations using the <code>db</code> connection object imported from <code>database/db.js</code>.</p>
+<h3 id="database-query-pattern">Database Query Pattern<a class="headerlink" href="#database-query-pattern" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+RouteHandler["Route Handler"]
+DBQuery["db.query(sql, params, callback)"]
+Callback["Callback Function"]
+ErrorCheck["error&lt;br&gt;parameter?"]
+ErrorHandler["throw error or&lt;br&gt;res.status(500)"]
+ProcessResults["Process results"]
+Response["Send Response&lt;br&gt;res.render() or res.json()"]
+
+RouteHandler --&gt; DBQuery
+DBQuery --&gt; Callback
+Callback --&gt; ErrorCheck
+ErrorCheck --&gt; ErrorHandler
+ErrorCheck --&gt; ProcessResults
+ProcessResults --&gt; Response</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L5-L5">src/router.js L5</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L121-L133">src/router.js L121-L133</a></p>
+<h3 id="query-examples-by-route-type">Query Examples by Route Type<a class="headerlink" href="#query-examples-by-route-type" title="Permanent link">&para;</a></h3>
+<p><strong>View Rendering Queries:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 121-133 - Admin page</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM productos&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">login</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">rol</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">rol</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>API Endpoint Queries:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 236-252 - Get messages for user</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">SELECT de_usuario, para_usuario, mensaje, fecha</span>
+<span class="sb">FROM mensajes</span>
+<span class="sb">WHERE </span>
+<span class="sb">  (de_usuario = ? OR para_usuario = ?)</span>
+<span class="sb">ORDER BY fecha ASC</span>
+<span class="sb">`</span><span class="p">;</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">usuario</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;❌ Error al consultar mensajes:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error al obtener mensajes&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L121-L133">src/router.js L121-L133</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L236-L252">src/router.js L236-L252</a></p>
+<h3 id="complex-sql-queries">Complex SQL Queries<a class="headerlink" href="#complex-sql-queries" title="Permanent link">&para;</a></h3>
+<p>The <code>/api/usuarios-conversaciones</code> endpoint uses a complex SQL query with UNION and subqueries to find all non-admin users who have conversations with admins.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 292-304</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">SELECT DISTINCT usuario</span>
+<span class="sb">FROM (</span>
+<span class="sb">  SELECT de_usuario AS usuario FROM mensajes</span>
+<span class="sb">  WHERE para_usuario IN (SELECT usuario FROM usuarios WHERE rol = &#39;admin&#39;)</span>
+
+<span class="sb">  UNION</span>
+
+<span class="sb">  SELECT para_usuario AS usuario FROM mensajes</span>
+<span class="sb">  WHERE de_usuario IN (SELECT usuario FROM usuarios WHERE rol = &#39;admin&#39;)</span>
+<span class="sb">) AS conversaciones</span>
+<span class="sb">WHERE usuario NOT IN (SELECT usuario FROM usuarios WHERE rol = &#39;admin&#39;)</span>
+<span class="sb">`</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Query Logic:</strong></p>
+<ol>
+<li>First subquery: Users who sent messages TO admins</li>
+<li>Second subquery: Users who received messages FROM admins</li>
+<li>UNION: Combine both sets</li>
+<li>WHERE: Exclude admin users from results</li>
+<li>DISTINCT: Remove duplicates</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L292-L314">src/router.js L292-L314</a></p>
+<hr />
+<h2 id="language-switching-system">Language Switching System<a class="headerlink" href="#language-switching-system" title="Permanent link">&para;</a></h2>
+<p>The <code>/set-lang/:lang</code> route implements internationalization by storing language preferences in cookies and redirecting back to the originating page.</p>
+<pre class="mermaid"><code>flowchart TD
+
+Request["GET /set-lang/:lang?returnTo=/page"]
+ExtractParams["Extract :lang and&lt;br&gt;?returnTo parameters"]
+ValidateLang["lang in&lt;br&gt;['es', 'en']?"]
+SetCookie["res.cookie('lang', lang,&lt;br&gt;{maxAge: 900000, httpOnly: true})"]
+SkipCookie["Skip cookie setting"]
+Redirect["res.redirect(returnTo || '/')"]
+
+Request --&gt; ExtractParams
+ExtractParams --&gt; ValidateLang
+ValidateLang --&gt; SetCookie
+ValidateLang --&gt; SkipCookie
+SetCookie --&gt; Redirect
+SkipCookie --&gt; Redirect</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L398-L407">src/router.js L398-L407</a></p>
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 398-407</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/set-lang/:lang&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">lang</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">returnTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">returnTo</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">([</span><span class="s1">&#39;es&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;en&#39;</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">lang</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;lang&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">lang</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="mf">900000</span><span class="p">,</span><span class="w"> </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">returnTo</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Cookie Settings:</strong></p>
+<ul>
+<li><code>maxAge: 900000</code> - 15 minutes (900,000 milliseconds)</li>
+<li><code>httpOnly: true</code> - Not accessible via JavaScript for security</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L398-L407">src/router.js L398-L407</a></p>
+<hr />
+<h2 id="swaggeropenapi-documentation">Swagger/OpenAPI Documentation<a class="headerlink" href="#swaggeropenapi-documentation" title="Permanent link">&para;</a></h2>
+<p>Several routes include JSDoc-style Swagger annotations for API documentation. These annotations describe request/response schemas, authentication requirements, and response codes.</p>
+<p><strong>Documented Routes:</strong></p>
+<ul>
+<li>GET <code>/</code> - Home page (lines 40-58)</li>
+<li>GET <code>/admin</code> - Admin page (lines 83-118)</li>
+<li>GET <code>/edit/:id</code> - Edit product (lines 157-184)</li>
+<li>POST <code>/auth</code> - Authentication (lines 486-530)</li>
+</ul>
+<p><strong>Example Swagger Annotation:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 486-530</span>
+<span class="cm">/**</span>
+<span class="cm"> * @swagger</span>
+<span class="cm"> * /auth:</span>
+<span class="cm"> *   post:</span>
+<span class="cm"> *     summary: Autentica al usuario y establece una cookie JWT</span>
+<span class="cm"> *     description: Valida las credenciales del usuario. Si son correctas, genera un token JWT y lo guarda en una cookie HTTP (`token`). Luego renderiza la vista `/`.</span>
+<span class="cm"> *     tags:</span>
+<span class="cm"> *       - Autenticación</span>
+<span class="cm"> *     requestBody:</span>
+<span class="cm"> *       required: true</span>
+<span class="cm"> *       content:</span>
+<span class="cm"> *         application/x-www-form-urlencoded:</span>
+<span class="cm"> *           schema:</span>
+<span class="cm"> *             type: object</span>
+<span class="cm"> *             required:</span>
+<span class="cm"> *               - user</span>
+<span class="cm"> *               - pass</span>
+<span class="cm"> *             properties:</span>
+<span class="cm"> *               user:</span>
+<span class="cm"> *                 type: string</span>
+<span class="cm"> *                 description: Nombre de usuario</span>
+<span class="cm"> *               pass:</span>
+<span class="cm"> *                 type: string</span>
+<span class="cm"> *                 description: Contraseña del usuario</span>
+<span class="cm"> *     responses:</span>
+<span class="cm"> *       200:</span>
+<span class="cm"> *         description: Autenticación exitosa. Se establece una cookie JWT y se renderiza la vista `/`.</span>
+<span class="cm"> *         headers:</span>
+<span class="cm"> *           Set-Cookie:</span>
+<span class="cm"> *             description: Cookie HTTP que contiene el JWT (token válido por 1 hora)</span>
+<span class="cm"> *             schema:</span>
+<span class="cm"> *               type: string</span>
+<span class="cm"> *               example: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...; Path=/; HttpOnly; Max-Age=3600</span>
+<span class="cm"> *         content:</span>
+<span class="cm"> *           text/html:</span>
+<span class="cm"> *             schema:</span>
+<span class="cm"> *               type: string</span>
+<span class="cm"> *               example: &quot;&lt;html&gt;...&lt;/html&gt;&quot;</span>
+<span class="cm"> *       400:</span>
+<span class="cm"> *         description: Usuario o contraseña faltantes</span>
+<span class="cm"> *       401:</span>
+<span class="cm"> *         description: Credenciales incorrectas</span>
+<span class="cm"> *       500:</span>
+<span class="cm"> *         description: Error interno del servidor o de base de datos</span>
+<span class="cm"> */</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L40-L58">src/router.js L40-L58</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L83-L118">src/router.js L83-L118</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L157-L184">src/router.js L157-L184</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L486-L530">src/router.js L486-L530</a></p>
+<hr />
+<h2 id="error-handling-patterns">Error Handling Patterns<a class="headerlink" href="#error-handling-patterns" title="Permanent link">&para;</a></h2>
+<p>The router implements multiple error handling patterns depending on the route type and error scenario.</p>
+<h3 id="error-handling-by-route-type">Error Handling by Route Type<a class="headerlink" href="#error-handling-by-route-type" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Route Type</th>
+<th>Error Pattern</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>View Routes</td>
+<td><code>throw error</code> or conditional render</td>
+<td>500 error or error alert in view</td>
+</tr>
+<tr>
+<td>API Routes</td>
+<td><code>res.status(500).json({ error: "..." })</code></td>
+<td>JSON error object with status code</td>
+</tr>
+<tr>
+<td>PDF Routes</td>
+<td><code>res.status(500).send("Error message")</code></td>
+<td>Plain text error with status code</td>
+</tr>
+<tr>
+<td>Database Errors</td>
+<td><code>throw error</code> or console.error + status</td>
+<td>Varies by route type</td>
+</tr>
+</tbody>
+</table>
+<p><strong>View Route Error Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 188-195 - Edit product</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM productos WHERE ref = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">ref</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span><span class="w">  </span><span class="c1">// Handled by Express error handler</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;edit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">producto</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>API Route Error Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 244-248 - Get messages API</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">usuario</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;❌ Error al consultar mensajes:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error al obtener mensajes&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L188-L195">src/router.js L188-L195</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L244-L252">src/router.js L244-L252</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L318-L320">src/router.js L318-L320</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L348-L351">src/router.js L348-L351</a></p>
+<h3 id="validation-error-handling">Validation Error Handling<a class="headerlink" href="#validation-error-handling" title="Permanent link">&para;</a></h3>
+<p>The registration route has special handling for validation errors, re-rendering the form with error messages and preserving user input.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Lines 430-442</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validationResult</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">valores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w">  </span><span class="c1">// Preserve form values</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">validacionErrores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">array</span><span class="p">();</span><span class="w">  </span><span class="c1">// Extract errors</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;register&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">validaciones</span><span class="o">:</span><span class="w"> </span><span class="nx">validacionErrores</span><span class="p">,</span><span class="w">  </span><span class="c1">// Pass errors to template</span>
+<span class="w">        </span><span class="nx">valores</span><span class="o">:</span><span class="w"> </span><span class="nx">valores</span><span class="p">,</span><span class="w">  </span><span class="c1">// Pass values to template</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L430-L442">src/router.js L430-L442</a></p>
+<hr />
+<h2 id="module-export">Module Export<a class="headerlink" href="#module-export" title="Permanent link">&para;</a></h2>
+<p>The router is exported as a CommonJS module and imported by <code>index.js</code> where it is mounted at the root path.</p>
+<div class="highlight"><pre><span></span><code>// Line 607
+module.exports = router;
+</code></pre></div>
+<p><strong>Usage in index.js:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./src/router&#39;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">router</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L607-L607">src/router.js L607</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js">index.js</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

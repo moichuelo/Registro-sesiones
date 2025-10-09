@@ -1,0 +1,2432 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>verifyAdmin Middleware - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#verifyadmin-middleware" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              verifyAdmin Middleware
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-function-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Function Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Execution Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-extraction-and-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Extraction and Verification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-based-authorization-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role-Based Authorization Check
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-routes-protected-by-verifyadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Routes Protected by verifyAdmin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Routes Protected by verifyAdmin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protected-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protected Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-response-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Response Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Response Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-response-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Response Matrix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-registration-and-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Registration and Import
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-with-verifytoken-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison with verifyToken Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison with verifyToken Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Composition
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-user-object-attachment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request User Object Attachment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt-secret-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Secret Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie-security-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookie Security Attributes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-verification-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role Verification Timing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-information-disclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Information Disclosure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-admin-chat-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Admin Chat System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Admin Chat System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-only-api-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-Only API Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoint-purposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endpoint Purposes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-admin-only-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Admin-Only Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="verifyadmin-middleware">verifyAdmin Middleware<a class="headerlink" href="#verifyadmin-middleware" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js">src/middlewares/verifyAdmin.js</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js">src/router.js</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>The <code>verifyAdmin</code> middleware provides role-based authorization for administrative routes and API endpoints. It ensures that only authenticated users with the <code>admin</code> role can access protected resources. This middleware builds upon JWT token validation to enforce administrative access control.</p>
+<p>For general authentication without role requirements, see <a href="verifyToken-Middleware.html">verifyToken Middleware</a>. For the complete authentication system architecture, see <a href="Authentication-%26-Authorization.html">Authentication &amp; Authorization</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L45">src/middlewares/verifyAdmin.js L1-L45</a></p>
+<hr />
+<h2 id="middleware-function-overview">Middleware Function Overview<a class="headerlink" href="#middleware-function-overview" title="Permanent link">&para;</a></h2>
+<p>The <code>verifyAdmin</code> middleware is implemented in <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L24-L42">src/middlewares/verifyAdmin.js L24-L42</a></p>
+<p>as a single exported function. It performs two critical checks:</p>
+<ol>
+<li><strong>Authentication Check</strong>: Validates the JWT token from the request cookies</li>
+<li><strong>Authorization Check</strong>: Verifies that the authenticated user has the <code>admin</code> role</li>
+</ol>
+<p>The middleware follows the standard Express middleware signature <code>(req, res, next)</code> and either passes control to the next handler or returns an HTTP 403 error response.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L45">src/middlewares/verifyAdmin.js L1-L45</a></p>
+<hr />
+<h2 id="middleware-execution-flow">Middleware Execution Flow<a class="headerlink" href="#middleware-execution-flow" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+Start["Request reaches verifyAdmin middleware"]
+ExtractToken["Extract token from req.cookies.token"]
+CheckToken["Token exists?"]
+Return403A["Return 403: Acceso denegado"]
+VerifyJWT["jwt.verify(token, JWT_SECRET)"]
+TryBlock["Verification result"]
+CatchBlock["Catch block: Token invalid"]
+CheckRole["Check decoded.rol"]
+Return403B["Return 403: Token inválido"]
+RoleMatch["decoded.rol === 'admin'?"]
+Return403C["Return 403: Acceso solo para administradores"]
+SetUser["Set req.user = decoded"]
+CallNext["Call next()"]
+End["Continue to route handler"]
+
+Start --&gt; ExtractToken
+ExtractToken --&gt; CheckToken
+CheckToken --&gt; Return403A
+CheckToken --&gt; VerifyJWT
+VerifyJWT --&gt; TryBlock
+TryBlock --&gt; CatchBlock
+TryBlock --&gt; CheckRole
+CatchBlock --&gt; Return403B
+CheckRole --&gt; RoleMatch
+RoleMatch --&gt; Return403C
+RoleMatch --&gt; SetUser
+SetUser --&gt; CallNext
+Return403A --&gt; End
+Return403B --&gt; End
+Return403C --&gt; End
+CallNext --&gt; End</code></pre>
+<p><strong>Diagram: verifyAdmin Middleware Execution Flow</strong></p>
+<p>This diagram shows the complete decision tree executed by the <code>verifyAdmin</code> function, with three distinct failure paths and one success path.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L24-L42">src/middlewares/verifyAdmin.js L24-L42</a></p>
+<hr />
+<h2 id="token-extraction-and-verification">Token Extraction and Verification<a class="headerlink" href="#token-extraction-and-verification" title="Permanent link">&para;</a></h2>
+<p>The middleware accesses the JWT token from the HTTP-only cookie named <code>token</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">cookies</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Token Source</strong>: The token is extracted from <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L25-L25">src/middlewares/verifyAdmin.js L25</a></p>
+<p>relying on the <code>cookie-parser</code> middleware to populate <code>req.cookies</code>.</p>
+<p><strong>Verification Process</strong>: The token is verified using <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L32-L32">src/middlewares/verifyAdmin.js L32</a></p>
+<p>:</p>
+<ul>
+<li>Uses <code>jwt.verify()</code> from the <code>jsonwebtoken</code> library</li>
+<li>Validates against <code>process.env.JWT_SECRET</code> from environment configuration</li>
+<li>Decodes the payload containing user information (<code>user</code>, <code>name</code>, <code>rol</code>, <code>imagen</code>)</li>
+<li>Throws an exception if the token is expired, malformed, or has an invalid signature</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L24-L42">src/middlewares/verifyAdmin.js L24-L42</a></p>
+<hr />
+<h2 id="role-based-authorization-check">Role-Based Authorization Check<a class="headerlink" href="#role-based-authorization-check" title="Permanent link">&para;</a></h2>
+<p>After successful token verification, the middleware performs role validation:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Code Location</th>
+<th>Logic</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extract role</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L33-L33">src/middlewares/verifyAdmin.js L33</a></td>
+<td><code>decoded.rol</code></td>
+<td>String value: <code>"admin"</code> or <code>"user"</code></td>
+</tr>
+<tr>
+<td>Compare role</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L33-L33">src/middlewares/verifyAdmin.js L33</a></td>
+<td><code>decoded.rol !== "admin"</code></td>
+<td>Boolean check</td>
+</tr>
+<tr>
+<td>Authorize</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L34-L34">src/middlewares/verifyAdmin.js L34</a></td>
+<td>If true, return 403 error</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>Grant access</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L36-L37">src/middlewares/verifyAdmin.js L36-L37</a></td>
+<td>If false, attach user and continue</td>
+<td>Handler executes</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>rol</code> field in the decoded JWT payload must exactly match the string <code>"admin"</code>. Any other value, including <code>"user"</code>, results in authorization failure.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L33-L37">src/middlewares/verifyAdmin.js L33-L37</a></p>
+<hr />
+<h2 id="application-routes-protected-by-verifyadmin">Application Routes Protected by verifyAdmin<a class="headerlink" href="#application-routes-protected-by-verifyadmin" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+Router["Express Router"]
+Route1["GET /api/mensajes&lt;br&gt;Line 229"]
+Route2["GET /api/usuarios-conversaciones&lt;br&gt;Line 283"]
+VerifyAdminMW["verifyAdmin&lt;br&gt;src/middlewares/verifyAdmin.js"]
+Handler1["Query messages for specific user&lt;br&gt;Used by admin chat interface"]
+Handler2["List all users with conversations&lt;br&gt;Admin conversation list"]
+
+Router --&gt; Route1
+Router --&gt; Route2
+Route1 --&gt; VerifyAdminMW
+Route2 --&gt; VerifyAdminMW
+VerifyAdminMW --&gt; Handler1
+VerifyAdminMW --&gt; Handler2
+
+subgraph subGraph3 ["Route Handlers"]
+    Handler1
+    Handler2
+end
+
+subgraph subGraph2 ["verifyAdmin Middleware"]
+    VerifyAdminMW
+end
+
+subgraph subGraph1 ["verifyAdmin Protected Routes"]
+    Route1
+    Route2
+end
+
+subgraph subGraph0 ["Router Layer - src/router.js"]
+    Router
+end</code></pre>
+<p><strong>Diagram: Routes Protected by verifyAdmin Middleware</strong></p>
+<h3 id="protected-endpoints">Protected Endpoints<a class="headerlink" href="#protected-endpoints" title="Permanent link">&para;</a></h3>
+<p><strong>1. GET /api/mensajes</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a></p>
+<ul>
+<li><strong>Purpose</strong>: Retrieve message history for a specific user conversation</li>
+<li><strong>Query Parameter</strong>: <code>?con=username</code> - specifies which user's conversation to retrieve</li>
+<li><strong>Usage</strong>: Called by the admin chat interface to load conversation history when switching between users</li>
+<li><strong>Middleware Chain</strong>: <code>verifyAdmin</code> → handler</li>
+</ul>
+<p><strong>2. GET /api/usuarios-conversaciones</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L283">src/router.js L283</a></p>
+<ul>
+<li><strong>Purpose</strong>: List all non-admin users who have active conversations with administrators</li>
+<li><strong>Returns</strong>: JSON array of usernames</li>
+<li><strong>Usage</strong>: Populates the user list in the admin chat interface</li>
+<li><strong>Middleware Chain</strong>: <code>verifyAdmin</code> → handler</li>
+</ul>
+<p>Both endpoints are essential for the administrative support chat functionality documented in <a href="Admin-Chat-Interface.html">Admin Chat Interface</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L17-L17">src/router.js L17</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L253">src/router.js L229-L253</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L315">src/router.js L283-L315</a></p>
+<hr />
+<h2 id="error-response-specifications">Error Response Specifications<a class="headerlink" href="#error-response-specifications" title="Permanent link">&para;</a></h2>
+<p>The middleware returns HTTP 403 (Forbidden) responses with JSON error messages in three scenarios:</p>
+<h3 id="error-response-matrix">Error Response Matrix<a class="headerlink" href="#error-response-matrix" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>HTTP Status</th>
+<th>Response Body</th>
+<th>Code Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No token in cookies</td>
+<td>403</td>
+<td><code>{ error: "Acceso denegado" }</code></td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L28-L28">src/middlewares/verifyAdmin.js L28</a></td>
+</tr>
+<tr>
+<td>Invalid/expired token</td>
+<td>403</td>
+<td><code>{ error: "Token inválido" }</code></td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L40-L40">src/middlewares/verifyAdmin.js L40</a></td>
+</tr>
+<tr>
+<td>Valid token, non-admin role</td>
+<td>403</td>
+<td><code>{ error: "Acceso solo para administradores" }</code></td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L34-L34">src/middlewares/verifyAdmin.js L34</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Console Logging</strong>: When token verification fails due to an exception, the error message is logged to the console via <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L39-L39">src/middlewares/verifyAdmin.js L39</a></p>
+<p>before the response is sent.</p>
+<p><strong>HTTP Status Rationale</strong>: All error conditions return 403 (Forbidden) rather than 401 (Unauthorized) because:</p>
+<ul>
+<li>Missing tokens indicate denied access to a protected resource</li>
+<li>Invalid tokens suggest authentication cannot be verified</li>
+<li>Non-admin roles represent insufficient permissions for the resource</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L28-L41">src/middlewares/verifyAdmin.js L28-L41</a></p>
+<hr />
+<h2 id="middleware-registration-and-import">Middleware Registration and Import<a class="headerlink" href="#middleware-registration-and-import" title="Permanent link">&para;</a></h2>
+<p>The middleware is imported into the router module:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">verifyAdmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./middlewares/verifyAdmin&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Import Location</strong>: <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L17-L17">src/router.js L17</a></p>
+<p><strong>Module Export</strong>: The middleware function is exported as the default module export at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L44-L44">src/middlewares/verifyAdmin.js L44</a></p>
+<p><strong>Usage Pattern</strong>: Applied directly to route definitions as a middleware parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/api/mensajes&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">verifyAdmin</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L17-L17">src/router.js L17</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L44-L44">src/middlewares/verifyAdmin.js L44</a></p>
+<hr />
+<h2 id="comparison-with-verifytoken-middleware">Comparison with verifyToken Middleware<a class="headerlink" href="#comparison-with-verifytoken-middleware" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+VT_Start["Check token exists"]
+VT_Verify["Verify JWT"]
+VT_Success["Set req.user&lt;br&gt;Call next()"]
+VT_Fail["Return 401"]
+VA_Start["Check token exists"]
+VA_Verify["Verify JWT"]
+VA_CheckRole["Check rol === 'admin'"]
+VA_Success["Set req.user&lt;br&gt;Call next()"]
+VA_Fail403["Return 403&lt;br&gt;Admin only"]
+VA_FailInvalid["Return 403&lt;br&gt;Invalid token"]
+Request["Incoming Request"]
+Choice["Route requires&lt;br&gt;admin access?"]
+
+Request --&gt; Choice
+Choice --&gt; VT_Start
+Choice --&gt; VA_Start
+
+subgraph subGraph1 ["verifyAdmin Middleware"]
+    VA_Start
+    VA_Verify
+    VA_CheckRole
+    VA_Success
+    VA_Fail403
+    VA_FailInvalid
+    VA_Start --&gt; VA_Verify
+    VA_Verify --&gt; VA_CheckRole
+    VA_CheckRole --&gt; VA_Success
+    VA_CheckRole --&gt; VA_Fail403
+    VA_Verify --&gt; VA_FailInvalid
+end
+
+subgraph subGraph0 ["verifyToken Middleware"]
+    VT_Start
+    VT_Verify
+    VT_Success
+    VT_Fail
+    VT_Start --&gt; VT_Verify
+    VT_Verify --&gt; VT_Success
+    VT_Verify --&gt; VT_Fail
+end</code></pre>
+<p><strong>Diagram: Comparison of verifyToken and verifyAdmin Middleware</strong></p>
+<h3 id="key-differences">Key Differences<a class="headerlink" href="#key-differences" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>verifyToken</th>
+<th>verifyAdmin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Authenticate any logged-in user</td>
+<td>Authenticate and authorize admin users</td>
+</tr>
+<tr>
+<td><strong>Role Check</strong></td>
+<td>None</td>
+<td>Required: <code>decoded.rol === "admin"</code></td>
+</tr>
+<tr>
+<td><strong>Error Status</strong></td>
+<td>401 Unauthorized</td>
+<td>403 Forbidden</td>
+</tr>
+<tr>
+<td><strong>Usage Count</strong></td>
+<td>Multiple routes (<a href="Protected-Routes.html">/admin</a>, <a href="Support-Chat-System.html">/soporte</a>)</td>
+<td>Two API endpoints only</td>
+</tr>
+<tr>
+<td><strong>File Location</strong></td>
+<td><code>src/middlewares/verifyToken.js</code></td>
+<td><code>src/middlewares/verifyAdmin.js</code></td>
+</tr>
+<tr>
+<td><strong>Standalone Use</strong></td>
+<td>Yes</td>
+<td>Yes (includes token verification)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="middleware-composition">Middleware Composition<a class="headerlink" href="#middleware-composition" title="Permanent link">&para;</a></h3>
+<p><code>verifyAdmin</code> <strong>does not</strong> depend on <code>verifyToken</code>. It implements its own complete token verification logic. Both middlewares can be used independently:</p>
+<ul>
+<li><strong>verifyToken only</strong>: Used for routes like <code>/admin</code> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L119">src/router.js L119</a>  <code>/soporte</code> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L220">src/router.js L220</a>  and PDF generation endpoints</li>
+<li><strong>verifyAdmin only</strong>: Used for admin-specific API endpoints <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a>  <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L283">src/router.js L283</a></li>
+</ul>
+<p><strong>Design Note</strong>: The system does not chain these middlewares (e.g., <code>verifyToken, verifyAdmin</code>). The <code>verifyAdmin</code> middleware is self-contained with complete authentication and authorization logic.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L45">src/middlewares/verifyAdmin.js L1-L45</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L119">src/router.js L119</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L220">src/router.js L220</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L283">src/router.js L283</a></p>
+<hr />
+<h2 id="request-user-object-attachment">Request User Object Attachment<a class="headerlink" href="#request-user-object-attachment" title="Permanent link">&para;</a></h2>
+<p>Upon successful authorization, the middleware attaches the decoded JWT payload to the request object:</p>
+<div class="highlight"><pre><span></span><code>req.user = decoded;
+</code></pre></div>
+<p><strong>Code Location</strong>: <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L36-L36">src/middlewares/verifyAdmin.js L36</a></p>
+<p><strong>Payload Structure</strong>: The <code>req.user</code> object contains the following fields (set during token creation at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L559-L564">src/router.js L559-L564</a></p>
+<p>):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user</code></td>
+<td>String</td>
+<td>Username from <code>usuarios.usuario</code></td>
+<td><code>"admin1"</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Display name from <code>usuarios.nombre</code></td>
+<td><code>"Administrator"</code></td>
+</tr>
+<tr>
+<td><code>rol</code></td>
+<td>String</td>
+<td>User role from <code>usuarios.rol</code></td>
+<td><code>"admin"</code></td>
+</tr>
+<tr>
+<td><code>imagen</code></td>
+<td>String</td>
+<td>Profile image filename</td>
+<td><code>"profile123.jpg"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Downstream Access</strong>: Route handlers can access this user information via <code>req.user.user</code>, <code>req.user.rol</code>, etc., without additional database queries.</p>
+<p><strong>Example Usage</strong>: In the <code>/api/mensajes</code> endpoint <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L253">src/router.js L229-L253</a></p>
+<p>the admin's identity is available through <code>req.user</code> if needed for logging or audit purposes.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L36-L36">src/middlewares/verifyAdmin.js L36</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L559-L564">src/router.js L559-L564</a></p>
+<hr />
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="jwt-secret-protection">JWT Secret Protection<a class="headerlink" href="#jwt-secret-protection" title="Permanent link">&para;</a></h3>
+<p>The middleware verifies tokens using <code>process.env.JWT_SECRET</code> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L32-L32">src/middlewares/verifyAdmin.js L32</a></p>
+<p>This secret must be:</p>
+<ul>
+<li>Stored securely in environment variables (never in code)</li>
+<li>Sufficiently long and random to prevent brute-force attacks</li>
+<li>Same secret used by token generation at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L567-L567">src/router.js L567</a></li>
+</ul>
+<h3 id="cookie-security-attributes">Cookie Security Attributes<a class="headerlink" href="#cookie-security-attributes" title="Permanent link">&para;</a></h3>
+<p>The JWT token is stored in an HTTP-only cookie (set at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L570-L574">src/router.js L570-L574</a></p>
+<p>):</p>
+<ul>
+<li><code>httpOnly: true</code> - Prevents client-side JavaScript access, mitigating XSS attacks</li>
+<li><code>secure: false</code> - Should be set to <code>true</code> in production with HTTPS</li>
+<li><code>maxAge: 3600000</code> - 1-hour expiration reduces exposure window</li>
+</ul>
+<h3 id="role-verification-timing">Role Verification Timing<a class="headerlink" href="#role-verification-timing" title="Permanent link">&para;</a></h3>
+<p>The role check occurs <strong>after</strong> token verification <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L33-L33">src/middlewares/verifyAdmin.js L33</a></p>
+<p>This ensures:</p>
+<ol>
+<li>Token signature is validated before processing payload</li>
+<li>Expired tokens are rejected before role checks</li>
+<li>Malicious clients cannot bypass verification by manipulating cookies</li>
+</ol>
+<h3 id="error-information-disclosure">Error Information Disclosure<a class="headerlink" href="#error-information-disclosure" title="Permanent link">&para;</a></h3>
+<p>The middleware provides specific error messages:</p>
+<ul>
+<li><code>"Acceso denegado"</code> - Generic access denial</li>
+<li><code>"Token inválido"</code> - Indicates verification failure</li>
+<li><code>"Acceso solo para administradores"</code> - Reveals role requirement</li>
+</ul>
+<p>These messages aid legitimate users but may inform attackers about the authentication scheme. For higher security, consider using a single generic error message.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L24-L42">src/middlewares/verifyAdmin.js L24-L42</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L567-L567">src/router.js L567</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L570-L574">src/router.js L570-L574</a></p>
+<hr />
+<h2 id="integration-with-admin-chat-system">Integration with Admin Chat System<a class="headerlink" href="#integration-with-admin-chat-system" title="Permanent link">&para;</a></h2>
+<p>The <code>verifyAdmin</code> middleware is critical to the administrative support chat functionality:</p>
+<h3 id="admin-only-api-access">Admin-Only API Access<a class="headerlink" href="#admin-only-api-access" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+AdminUI["Admin Chat Interface&lt;br&gt;views/soporte.ejs&lt;br&gt;role=admin"]
+LoadUsers["Fetch user list on load"]
+SwitchConv["Switch conversation"]
+API1["GET /api/usuarios-conversaciones&lt;br&gt;verifyAdmin protected"]
+API2["GET /api/mensajes?con=user&lt;br&gt;verifyAdmin protected"]
+VerifyAdmin1["verifyAdmin middleware"]
+VerifyAdmin2["verifyAdmin middleware"]
+DB1["Query mensajes + usuarios tables"]
+DB2["Query mensajes table"]
+Return1["Return JSON array of usernames"]
+Return2["Return JSON array of messages"]
+Render1["Populate user list in UI"]
+Render2["Display conversation history"]
+
+AdminUI --&gt; LoadUsers
+AdminUI --&gt; SwitchConv
+LoadUsers --&gt; API1
+SwitchConv --&gt; API2
+API1 --&gt; VerifyAdmin1
+API2 --&gt; VerifyAdmin2
+VerifyAdmin1 --&gt; DB1
+VerifyAdmin2 --&gt; DB2
+DB1 --&gt; Return1
+DB2 --&gt; Return2
+Return1 --&gt; Render1
+Return2 --&gt; Render2</code></pre>
+<p><strong>Diagram: verifyAdmin Protection of Admin Chat APIs</strong></p>
+<h3 id="endpoint-purposes">Endpoint Purposes<a class="headerlink" href="#endpoint-purposes" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>User List Endpoint</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L315">src/router.js L283-L315</a> : * Returns all non-admin users with message history * Enables admin to see which users need support * SQL query uses role filtering to exclude other admins</li>
+<li><strong>Conversation History Endpoint</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L253">src/router.js L229-L253</a> : * Requires <code>?con=username</code> query parameter * Returns bidirectional messages between admin and specified user * Sorted chronologically by <code>fecha</code> field</li>
+</ol>
+<h3 id="why-admin-only-access">Why Admin-Only Access<a class="headerlink" href="#why-admin-only-access" title="Permanent link">&para;</a></h3>
+<p>These endpoints expose potentially sensitive information:</p>
+<ul>
+<li>List of all users engaging with support system</li>
+<li>Complete message history across all user conversations</li>
+<li>Patterns in support requests and response times</li>
+</ul>
+<p>Regular users access their own messages via <code>/api/mensajes/mios</code> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L256">src/router.js L256</a></p>
+<p>which is protected by <code>verifyToken</code> instead, limiting visibility to their own conversation only.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L253">src/router.js L229-L253</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L280">src/router.js L256-L280</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L315">src/router.js L283-L315</a></p>
+<hr />
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<p>The <code>verifyAdmin</code> middleware requires the following npm packages:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Import Statement</th>
+<th>Usage</th>
+<th>Version Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jsonwebtoken</code></td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L1">src/middlewares/verifyAdmin.js L1</a></td>
+<td><code>jwt.verify()</code> for token validation</td>
+<td>Compatible with JWT signing in router</td>
+</tr>
+<tr>
+<td><code>cookie-parser</code> (implicit)</td>
+<td>Via <code>req.cookies</code></td>
+<td>Parses cookies from request headers</td>
+<td>Must be registered before this middleware</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Environment Variables</strong>:</p>
+<ul>
+<li><code>JWT_SECRET</code> - Required for token verification. Must match the secret used for token signing.</li>
+</ul>
+<p><strong>Express Middleware Dependencies</strong>:
+The middleware assumes the following Express middleware are already registered (in <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js">index.js</a></p>
+<p>):</p>
+<ol>
+<li><code>cookie-parser</code> - Populates <code>req.cookies</code></li>
+<li>JSON/urlencoded body parsers - Not directly used but part of request pipeline</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L1">src/middlewares/verifyAdmin.js L1</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

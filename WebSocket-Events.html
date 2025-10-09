@@ -1,0 +1,2584 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="HTTP-Endpoints.html">
+      
+      
+        <link rel="next" href="Deployment-%26-Configuration.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>WebSocket Events - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#websocket-events" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WebSocket Events
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="WebSocket-Events.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Event
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection Event">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-side-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-Side Handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-to-server-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-to-Server Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client-to-Server Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mensaje_privado" class="md-nav__link">
+    <span class="md-ellipsis">
+      mensaje_privado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-to-client-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-to-Client Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-to-Client Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mensaje_recibido" class="md-nav__link">
+    <span class="md-ellipsis">
+      mensaje_recibido
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnect-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disconnect Event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-event-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Event Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Event Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-to-admin-message-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-to-Admin Message Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-to-user-message-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-to-User Message Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-entity-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Entity Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Entity Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-side-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-Side Entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-side-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-Side Entities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Persistence
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Event
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection Event">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-side-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-Side Handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-to-server-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-to-Server Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client-to-Server Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mensaje_privado" class="md-nav__link">
+    <span class="md-ellipsis">
+      mensaje_privado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-to-client-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-to-Client Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-to-Client Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mensaje_recibido" class="md-nav__link">
+    <span class="md-ellipsis">
+      mensaje_recibido
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnect-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disconnect Event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-event-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Event Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Event Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-to-admin-message-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-to-Admin Message Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-to-user-message-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-to-User Message Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-entity-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Entity Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Entity Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-side-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-Side Entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-side-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-Side Entities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Persistence
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="websocket-events">WebSocket Events<a class="headerlink" href="#websocket-events" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js">src/sockets/socketHandler.js</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs">views/soporte.ejs</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>This document provides a complete reference for all Socket.IO events used in the real-time communication system. It documents the event names, payload structures, expected behaviors, and the flow of messages between clients and the server.</p>
+<p>For information about HTTP API endpoints used to retrieve message history, see <a href="HTTP-Endpoints.html">HTTP Endpoints</a>. For architectural details about the real-time communication system, including room management and authentication flow, see <a href="Real-time-Communication-System.html">Real-time Communication System</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L1-L71">src/sockets/socketHandler.js L1-L71</a></p>
+<hr />
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<p>All WebSocket connections must be authenticated before any events can be exchanged. Authentication occurs automatically when a client establishes a connection, using JWT tokens stored in HTTP-only cookies.</p>
+<h3 id="authentication-flow">Authentication Flow<a class="headerlink" href="#authentication-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+  participant Socket.IO Client
+  participant io.use() Middleware
+  participant jwt.verify()
+  participant Connection Handler
+
+  Socket.IO Client-&gt;&gt;io.use() Middleware: "Connect with cookies"
+  io.use() Middleware-&gt;&gt;io.use() Middleware: "Extract token from cookie"
+  loop [No cookies]
+    io.use() Middleware--&gt;&gt;Socket.IO Client: "Error: No autenticado"
+    io.use() Middleware--&gt;&gt;Socket.IO Client: "Error: Token no proporcionado"
+    io.use() Middleware-&gt;&gt;jwt.verify(): "verify(token, JWT_SECRET)"
+    jwt.verify()--&gt;&gt;io.use() Middleware: "throw Error"
+    io.use() Middleware--&gt;&gt;Socket.IO Client: "Error: Token inválido"
+  end
+  jwt.verify()--&gt;&gt;io.use() Middleware: "decoded user data"
+  io.use() Middleware-&gt;&gt;io.use() Middleware: "Attach user to socket.request.user"
+  io.use() Middleware-&gt;&gt;Connection Handler: "next()"
+  Connection Handler-&gt;&gt;Connection Handler: "socket.join() rooms"
+  Connection Handler--&gt;&gt;Socket.IO Client: "Connection established"</code></pre>
+<p>The middleware extracts the JWT from the <code>token</code> cookie using a regex pattern: <code>/token=([^;]+)/</code>. The decoded token contains <code>user</code>, <code>name</code>, and <code>rol</code> fields, which are attached to <code>socket.request.user</code> for use in subsequent event handlers.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L6-L32">src/sockets/socketHandler.js L6-L32</a></p>
+<hr />
+<h2 id="connection-event">Connection Event<a class="headerlink" href="#connection-event" title="Permanent link">&para;</a></h2>
+<p>The <code>connection</code> event fires when a client successfully authenticates and establishes a WebSocket connection.</p>
+<h3 id="server-side-handler">Server-Side Handler<a class="headerlink" href="#server-side-handler" title="Permanent link">&para;</a></h3>
+<p><strong>Event Name:</strong> <code>connection</code> (Socket.IO reserved event)</p>
+<p><strong>Payload:</strong> Socket object with authenticated user data in <code>socket.request.user</code></p>
+<p><strong>Behavior:</strong></p>
+<ol>
+<li>Extracts user information from <code>socket.request.user</code>: <code>user</code> (username), <code>name</code>, <code>rol</code> (role)</li>
+<li>Logs the connection with user and role information</li>
+<li>Joins the socket to rooms based on user identity and role: * Personal room: <code>user:{username}</code> - Every user gets their own room * Admin room: <code>admins</code> - Only users with <code>rol === "admin"</code> join this room</li>
+</ol>
+<p><strong>Room Assignment Logic:</strong></p>
+<table>
+<thead>
+<tr>
+<th>User Role</th>
+<th>Personal Room</th>
+<th>Admin Room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user</code></td>
+<td><code>user:{username}</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>admin</code></td>
+<td><code>user:{username}</code></td>
+<td><code>admins</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Code Reference:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L36-L43">src/sockets/socketHandler.js L36-L43</a></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L36-L43">src/sockets/socketHandler.js L36-L43</a></p>
+<hr />
+<h2 id="client-to-server-events">Client-to-Server Events<a class="headerlink" href="#client-to-server-events" title="Permanent link">&para;</a></h2>
+<h3 id="mensaje_privado">mensaje_privado<a class="headerlink" href="#mensaje_privado" title="Permanent link">&para;</a></h3>
+<p>The client emits this event to send a message to another user.</p>
+<p><strong>Event Name:</strong> <code>mensaje_privado</code></p>
+<p><strong>Direction:</strong> Client → Server</p>
+<p><strong>Payload Structure:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="nt">  para</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="w">    </span><span class="nv">// Recipient username</span>
+<span class="w">  </span><span class="nv">mensaje</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">string  // Message content</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>Payload Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>para</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Username of the intended recipient</td>
+</tr>
+<tr>
+<td><code>mensaje</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The message text to send</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Server Behavior:</strong></p>
+<ol>
+<li>Extracts sender username from authenticated user: <code>const de = user;</code></li>
+<li>Emits <code>mensaje_recibido</code> to recipient's personal room: <code>io.to('user:${para}').emit(...)</code></li>
+<li>If sender is NOT an admin (<code>rol !== "admin"</code>), also broadcasts to all admins: <code>io.to("admins").emit(...)</code></li>
+<li>Persists message to database using INSERT query to <code>mensajes</code> table with fields <code>(de_usuario, para_usuario, mensaje)</code></li>
+</ol>
+<p><strong>Message Routing Logic:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+
+Client["Client emits&lt;br&gt;mensaje_privado"]
+CheckRole["Sender&lt;br&gt;role?"]
+SendToRecipient["Emit to&lt;br&gt;user:{para}"]
+SendToAdmins["Emit to&lt;br&gt;admins room"]
+SaveDB["INSERT INTO mensajes"]
+
+Client --&gt; CheckRole
+CheckRole --&gt; SendToRecipient
+CheckRole --&gt; SendToRecipient
+CheckRole --&gt; SendToAdmins
+SendToRecipient --&gt; SaveDB
+SendToAdmins --&gt; SaveDB</code></pre>
+<p><strong>Client Implementation Examples:</strong></p>
+<p>Admin sending a message:</p>
+<div class="highlight"><pre><span></span><code>// From views/soporte.ejs:156
+socket.emit(&quot;mensaje_privado&quot;, { para, mensaje });
+</code></pre></div>
+<p>Regular user sending to admin:</p>
+<div class="highlight"><pre><span></span><code>// From views/soporte.ejs:184
+socket.emit(&quot;mensaje_privado&quot;, { para: &quot;admin&quot;, mensaje });
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L63">src/sockets/socketHandler.js L45-L63</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L150-L162">views/soporte.ejs L150-L162</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L180-L187">views/soporte.ejs L180-L187</a></p>
+<hr />
+<h2 id="server-to-client-events">Server-to-Client Events<a class="headerlink" href="#server-to-client-events" title="Permanent link">&para;</a></h2>
+<h3 id="mensaje_recibido">mensaje_recibido<a class="headerlink" href="#mensaje_recibido" title="Permanent link">&para;</a></h3>
+<p>The server emits this event to deliver a message to connected clients.</p>
+<p><strong>Event Name:</strong> <code>mensaje_recibido</code></p>
+<p><strong>Direction:</strong> Server → Client</p>
+<p><strong>Payload Structure:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="nt">  de</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="w">      </span><span class="nv">// Sender username</span>
+<span class="w">  </span><span class="nv">mensaje</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">string  // Message content</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>Payload Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>de</code></td>
+<td>string</td>
+<td>Username of the message sender</td>
+</tr>
+<tr>
+<td><code>mensaje</code></td>
+<td>string</td>
+<td>The message text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Emitted To:</strong></p>
+<p>This event is emitted to specific Socket.IO rooms depending on the sender's role:</p>
+<ol>
+<li><strong>Always:</strong> Recipient's personal room <code>user:{para}</code></li>
+<li><strong>Conditionally:</strong> <code>admins</code> room (only if sender is not an admin)</li>
+</ol>
+<p><strong>Client-Side Handlers:</strong></p>
+<p><strong>Admin Client:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// From views/soporte.ejs:128-147</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;mensaje_recibido&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">de</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fecha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">conversaciones</span><span class="p">[</span><span class="nx">de</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">conversaciones</span><span class="p">[</span><span class="nx">de</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="nx">conversaciones</span><span class="p">[</span><span class="nx">de</span><span class="p">].</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">de</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">,</span><span class="w"> </span><span class="nx">fecha</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">agregarUsuarioLista</span><span class="p">(</span><span class="nx">de</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Visual notification if not active conversation</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">usuarioActual</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">de</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">li</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;user-&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">de</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">li</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">li</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">nuevo</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">li</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&quot;text-success&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">li</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;fw-bold&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text-danger&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">li</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">nuevo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">renderConversacion</span><span class="p">(</span><span class="nx">de</span><span class="p">);</span><span class="w"> </span><span class="c1">// Already viewing, mark as seen</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Regular User Client:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// From views/soporte.ejs:174-177</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;mensaje_recibido&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">de</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fecha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">agregarMensaje</span><span class="p">(</span><span class="nx">de</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">,</span><span class="w"> </span><span class="nx">fecha</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Behavior Differences by Role:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Client Role</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>admin</code></td>
+<td>Stores message in conversation map, adds sender to user list if needed, shows notification badge if not viewing that conversation</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>Appends message directly to chat display</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L48-L52">src/sockets/socketHandler.js L48-L52</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L128-L147">views/soporte.ejs L128-L147</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L174-L177">views/soporte.ejs L174-L177</a></p>
+<hr />
+<h2 id="disconnect-event">Disconnect Event<a class="headerlink" href="#disconnect-event" title="Permanent link">&para;</a></h2>
+<p>The <code>disconnect</code> event fires when a client's WebSocket connection is closed.</p>
+<p><strong>Event Name:</strong> <code>disconnect</code> (Socket.IO reserved event)</p>
+<p><strong>Direction:</strong> Client → Server (automatic)</p>
+<p><strong>Payload:</strong> None</p>
+<p><strong>Server Behavior:</strong></p>
+<p>Logs the disconnection with the username of the disconnected user. No additional cleanup is performed as Socket.IO automatically removes the socket from all rooms.</p>
+<p><strong>Code Reference:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L65-L67">src/sockets/socketHandler.js L65-L67</a></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L65-L67">src/sockets/socketHandler.js L65-L67</a></p>
+<hr />
+<h2 id="complete-event-flow">Complete Event Flow<a class="headerlink" href="#complete-event-flow" title="Permanent link">&para;</a></h2>
+<h3 id="user-to-admin-message-flow">User-to-Admin Message Flow<a class="headerlink" href="#user-to-admin-message-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+  participant User Client
+  participant (role=user)
+  participant Socket.IO Server
+  participant socketHandler.js
+  participant MySQL
+  participant mensajes table
+  participant Admin Client
+  participant (role=admin)
+
+  User Client-&gt;&gt;Socket.IO Server: "emit('mensaje_privado',
+  Socket.IO Server-&gt;&gt;Socket.IO Server: {para:'admin', mensaje})"
+  Socket.IO Server-&gt;&gt;Admin Client: "Extract de from
+  Socket.IO Server-&gt;&gt;Admin Client: socket.request.user"
+  Socket.IO Server-&gt;&gt;MySQL: "to('user:admin').emit(
+  MySQL--&gt;&gt;Socket.IO Server: 'mensaje_recibido', {de, mensaje})"
+  Admin Client-&gt;&gt;Admin Client: "to('admins').emit(
+  Admin Client-&gt;&gt;Admin Client: 'mensaje_recibido', {de, mensaje})"</code></pre>
+<h3 id="admin-to-user-message-flow">Admin-to-User Message Flow<a class="headerlink" href="#admin-to-user-message-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+  participant Admin Client
+  participant (role=admin)
+  participant Socket.IO Server
+  participant socketHandler.js
+  participant MySQL
+  participant mensajes table
+  participant User Client
+  participant (role=user)
+
+  Admin Client-&gt;&gt;Socket.IO Server: "emit('mensaje_privado',
+  Socket.IO Server-&gt;&gt;Socket.IO Server: {para:username, mensaje})"
+  Socket.IO Server-&gt;&gt;User Client: "Extract de from
+  note over Socket.IO Server,(role=user): "No broadcast to admins
+  Socket.IO Server-&gt;&gt;MySQL: socket.request.user"
+  MySQL--&gt;&gt;Socket.IO Server: "to('user:username').emit(
+  User Client-&gt;&gt;User Client: 'mensaje_recibido', {de, mensaje})"</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L63">src/sockets/socketHandler.js L45-L63</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L1-L191">views/soporte.ejs L1-L191</a></p>
+<hr />
+<h2 id="event-summary-table">Event Summary Table<a class="headerlink" href="#event-summary-table" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Direction</th>
+<th>Emitter</th>
+<th>Handler Location</th>
+<th>Persisted to DB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>connection</code></td>
+<td>Server</td>
+<td>Socket.IO</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L36-L36">socketHandler.js L36</a></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>mensaje_privado</code></td>
+<td>Client→Server</td>
+<td>Client code</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L45-L45">socketHandler.js L45</a></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>mensaje_recibido</code></td>
+<td>Server→Client</td>
+<td>Server code</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L128-L174">soporte.ejs L128-L174</a></td>
+<td>No (payload only)</td>
+</tr>
+<tr>
+<td><code>disconnect</code></td>
+<td>Client→Server</td>
+<td>Socket.IO</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L65-L65">socketHandler.js L65</a></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L1-L71">src/sockets/socketHandler.js L1-L71</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L1-L191">views/soporte.ejs L1-L191</a></p>
+<hr />
+<h2 id="code-entity-reference">Code Entity Reference<a class="headerlink" href="#code-entity-reference" title="Permanent link">&para;</a></h2>
+<h3 id="server-side-entities">Server-Side Entities<a class="headerlink" href="#server-side-entities" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Type</th>
+<th>Location</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setupSocket</code></td>
+<td>Function</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L4-L4">socketHandler.js L4</a></td>
+<td>Initializes Socket.IO server and event handlers</td>
+</tr>
+<tr>
+<td><code>io.use()</code></td>
+<td>Middleware</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L6-L6">socketHandler.js L6</a></td>
+<td>Authenticates WebSocket connections via JWT</td>
+</tr>
+<tr>
+<td><code>io.on("connection")</code></td>
+<td>Event Handler</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L36-L36">socketHandler.js L36</a></td>
+<td>Handles new client connections and room assignments</td>
+</tr>
+<tr>
+<td><code>socket.on("mensaje_privado")</code></td>
+<td>Event Handler</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L45-L45">socketHandler.js L45</a></td>
+<td>Processes incoming messages and routes to recipients</td>
+</tr>
+<tr>
+<td><code>socket.on("disconnect")</code></td>
+<td>Event Handler</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L65-L65">socketHandler.js L65</a></td>
+<td>Handles client disconnections</td>
+</tr>
+<tr>
+<td><code>socket.join()</code></td>
+<td>Method</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L42-L43">socketHandler.js L42-L43</a></td>
+<td>Adds socket to room(s)</td>
+</tr>
+<tr>
+<td><code>io.to()</code></td>
+<td>Method</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/socketHandler.js#L48-L51">socketHandler.js L48-L51</a></td>
+<td>Targets message emission to specific room</td>
+</tr>
+</tbody>
+</table>
+<h3 id="client-side-entities">Client-Side Entities<a class="headerlink" href="#client-side-entities" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Type</th>
+<th>Location</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>io()</code></td>
+<td>Constructor</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L39-L39">soporte.ejs L39</a></td>
+<td>Creates Socket.IO client instance</td>
+</tr>
+<tr>
+<td><code>socket.emit()</code></td>
+<td>Method</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L156-L184">soporte.ejs L156-L184</a></td>
+<td>Sends events to server</td>
+</tr>
+<tr>
+<td><code>socket.on()</code></td>
+<td>Method</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L128-L174">soporte.ejs L128-L174</a></td>
+<td>Registers event listeners</td>
+</tr>
+<tr>
+<td><code>agregarMensaje()</code></td>
+<td>Function</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L54-L54">soporte.ejs L54</a></td>
+<td>Renders message in chat UI</td>
+</tr>
+<tr>
+<td><code>renderConversacion()</code></td>
+<td>Function</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L69-L69">soporte.ejs L69</a></td>
+<td>Displays full conversation for selected user (admin only)</td>
+</tr>
+<tr>
+<td><code>conversaciones</code></td>
+<td>Object</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/soporte.ejs#L65-L65">soporte.ejs L65</a></td>
+<td>Stores message history by user (admin only)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L1-L71">src/sockets/socketHandler.js L1-L71</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/soporte.ejs#L1-L191">views/soporte.ejs L1-L191</a></p>
+<hr />
+<h2 id="database-persistence">Database Persistence<a class="headerlink" href="#database-persistence" title="Permanent link">&para;</a></h2>
+<p>Messages sent via <code>mensaje_privado</code> are persisted to the <code>mensajes</code> table using the following SQL query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">mensajes</span><span class="w"> </span><span class="p">(</span><span class="n">de_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">para_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ol>
+<li><code>de_usuario</code> - Sender username (from <code>socket.request.user.user</code>)</li>
+<li><code>para_usuario</code> - Recipient username (from event payload <code>para</code> field)</li>
+<li><code>mensaje</code> - Message content (from event payload <code>mensaje</code> field)</li>
+</ol>
+<p>The <code>fecha</code> column is automatically set to the current timestamp via database defaults. Error handling logs failures but does not notify the client.</p>
+<p>For retrieving message history, clients use HTTP GET endpoints documented in <a href="HTTP-Endpoints.html">HTTP Endpoints</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L55-L62">src/sockets/socketHandler.js L55-L62</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

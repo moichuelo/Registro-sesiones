@@ -1,0 +1,3213 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="Puppeteer-PDF-Generation.html">
+      
+      
+        <link rel="next" href="Internationalization-%28i18n%29.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>PDFKit PDF Generation - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pdfkit-pdf-generation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PDFKit PDF Generation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-flow-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Flow Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-definition-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Definition and Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdf-document-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDF Document Initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-rendering-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Rendering Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout-positioning-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout Positioning System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layout Positioning System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Layout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-positioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical Positioning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-and-typography-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font and Typography Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Font and Typography Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#font-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font Specifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-rendering-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Rendering Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-processing-and-type-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Processing and Type Conversion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Processing and Type Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Conversions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iteration Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdfkit-vs-puppeteer-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDFKit vs Puppeteer Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDFKit vs Puppeteer Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Each Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-generation-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Generation Flow Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-query-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Query Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-finalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Finalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      NPM Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations and Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations and Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout Limitations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancement-possibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancement Possibilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Enhancement Possibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagination-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pagination Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-column-widths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Column Widths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#styling-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Styling Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-flow-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Flow Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-definition-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Definition and Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdf-document-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDF Document Initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-rendering-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Rendering Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout-positioning-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout Positioning System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layout Positioning System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Layout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-positioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical Positioning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-and-typography-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font and Typography Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Font and Typography Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#font-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font Specifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-rendering-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Rendering Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-processing-and-type-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Processing and Type Conversion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Processing and Type Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Conversions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iteration Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdfkit-vs-puppeteer-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDFKit vs Puppeteer Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDFKit vs Puppeteer Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Each Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-generation-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Generation Flow Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-query-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Query Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-finalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Finalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      NPM Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations and Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations and Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout Limitations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancement-possibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancement Possibilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Enhancement Possibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagination-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pagination Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-column-widths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Column Widths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#styling-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Styling Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pdfkit-pdf-generation">PDFKit PDF Generation<a class="headerlink" href="#pdfkit-pdf-generation" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json">package-lock.json</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js">src/router.js</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>This document covers the PDFKit-based programmatic PDF generation system that creates product reports with precise layout control. This approach directly generates PDF documents using drawing commands and coordinate positioning, contrasting with the HTML-to-PDF rendering approach. For the Puppeteer-based HTML rendering approach, see <a href="Puppeteer-PDF-Generation.html">Puppeteer PDF Generation</a>. For general PDF generation features, see <a href="PDF-Generation.html">PDF Generation</a>.</p>
+<p>The PDFKit implementation provides:</p>
+<ul>
+<li>Programmatic PDF creation without HTML templates</li>
+<li>Direct control over layout positioning and styling</li>
+<li>Streaming response for efficient memory usage</li>
+<li>Product data export functionality for authenticated users</li>
+</ul>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The PDFKit PDF generation system creates product reports by programmatically drawing content onto a PDF document. Unlike the Puppeteer approach that renders HTML templates, PDFKit uses low-level drawing commands to place text at specific coordinates, providing precise control over layout but requiring manual positioning calculations.</p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li><strong>Route:</strong> <code>GET /pdfkit/descargar</code></li>
+<li><strong>Authentication:</strong> Requires valid JWT via <code>verifyToken</code> middleware</li>
+<li><strong>Data Source:</strong> <code>productos</code> table in MySQL database</li>
+<li><strong>Output Format:</strong> PDF file with filename <code>productos_desde_cero.pdf</code></li>
+<li><strong>Delivery Method:</strong> Direct streaming via <code>doc.pipe(res)</code></li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L27-L27">package-lock.json L27</a></p>
+<hr />
+<h2 id="request-flow-architecture">Request Flow Architecture<a class="headerlink" href="#request-flow-architecture" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+Client["Client Browser"]
+Route["GET /pdfkit/descargar&lt;br&gt;router.js:355"]
+VerifyToken["verifyToken&lt;br&gt;Middleware"]
+DBQuery["db.query&lt;br&gt;SELECT * FROM productos"]
+PDFDoc["new PDFDocument&lt;br&gt;margin: 40, size: A4"]
+SetHeaders["res.setHeader&lt;br&gt;Content-Disposition&lt;br&gt;Content-Type"]
+PipeStream["doc.pipe(res)"]
+DrawTitle["doc.fontSize(18).text&lt;br&gt;Listado de Productos"]
+DrawHeaders["Draw Table Headers&lt;br&gt;x,y coordinates"]
+DrawRows["forEach productos&lt;br&gt;Draw data rows"]
+EndDoc["doc.end()"]
+Response["PDF Stream to Client"]
+MySQL["MySQL Database&lt;br&gt;productos table"]
+
+Client --&gt; Route
+Route --&gt; VerifyToken
+VerifyToken --&gt; DBQuery
+DBQuery --&gt; PDFDoc
+PDFDoc --&gt; SetHeaders
+SetHeaders --&gt; PipeStream
+PipeStream --&gt; DrawTitle
+DrawTitle --&gt; DrawHeaders
+DrawHeaders --&gt; DrawRows
+DrawRows --&gt; EndDoc
+EndDoc --&gt; Response
+Response --&gt; Client
+DBQuery --&gt; MySQL</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<hr />
+<h2 id="route-definition-and-configuration">Route Definition and Configuration<a class="headerlink" href="#route-definition-and-configuration" title="Permanent link">&para;</a></h2>
+<p>The PDFKit route is defined at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<p>with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP Method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>Path</td>
+<td><code>/pdfkit/descargar</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td><code>verifyToken</code> middleware</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>User-level access (any authenticated user)</td>
+</tr>
+<tr>
+<td>Database Query</td>
+<td><code>SELECT * FROM productos</code></td>
+</tr>
+<tr>
+<td>Response Type</td>
+<td><code>application/pdf</code></td>
+</tr>
+<tr>
+<td>Content-Disposition</td>
+<td><code>attachment; filename="productos_desde_cero.pdf"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Authentication Flow:</strong></p>
+<ol>
+<li>Client must have valid JWT in <code>token</code> cookie</li>
+<li><code>verifyToken</code> middleware validates JWT signature and expiration</li>
+<li>User information attached to <code>req.user</code> for potential logging</li>
+<li>No role-based restriction (both users and admins can access)</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L16-L16">src/router.js L16</a></p>
+<hr />
+<h2 id="pdf-document-initialization">PDF Document Initialization<a class="headerlink" href="#pdf-document-initialization" title="Permanent link">&para;</a></h2>
+<p>The PDF document is created with specific configuration parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PDFDocument</span><span class="p">({</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;A4&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p><strong>Configuration Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>margin</code></td>
+<td><code>40</code></td>
+<td>Sets 40-point margin on all sides</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>'A4'</code></td>
+<td>Standard paper size (210mm × 297mm)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Headers:</strong></p>
+<ul>
+<li><code>Content-Disposition: attachment; filename="productos_desde_cero.pdf"</code> - Forces browser download</li>
+<li><code>Content-Type: application/pdf</code> - Specifies MIME type</li>
+</ul>
+<p><strong>Streaming Architecture:</strong>
+The document is piped directly to the response object at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L367-L367">src/router.js L367</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>doc.pipe(res);
+</code></pre></div>
+<p>This approach streams the PDF content as it's generated rather than buffering the entire document in memory, providing efficient memory usage for large reports.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L361-L367">src/router.js L361-L367</a></p>
+<hr />
+<h2 id="content-rendering-process">Content Rendering Process<a class="headerlink" href="#content-rendering-process" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+Start["Start Rendering"]
+Title["Render Title&lt;br&gt;fontSize(18)&lt;br&gt;text('Listado de Productos')&lt;br&gt;align: center&lt;br&gt;moveDown()"]
+HeaderFont["Set Header Font&lt;br&gt;font('Helvetica-Bold')&lt;br&gt;fontSize(12)"]
+GetY["y = doc.y&lt;br&gt;Current vertical position"]
+HeaderText["Draw Headers&lt;br&gt;Referencia (50, y)&lt;br&gt;Nombre (150, y)&lt;br&gt;Precio (300, y)&lt;br&gt;Stock (380, y)"]
+IncrementY1["y += 20&lt;br&gt;Space after headers"]
+DataFont["Set Data Font&lt;br&gt;font('Helvetica')&lt;br&gt;fontSize(11)"]
+LoopStart["For each&lt;br&gt;producto"]
+DrawRow["Draw Row Data&lt;br&gt;ref (50, y)&lt;br&gt;nombre (150, y)&lt;br&gt;precio (300, y)&lt;br&gt;stock (380, y)"]
+IncrementY2["y += 20&lt;br&gt;Next row"]
+LoopEnd["End Loop"]
+Finalize["doc.end()"]
+
+Start --&gt; Title
+Title --&gt; HeaderFont
+HeaderFont --&gt; GetY
+GetY --&gt; HeaderText
+HeaderText --&gt; IncrementY1
+IncrementY1 --&gt; DataFont
+DataFont --&gt; LoopStart
+LoopStart --&gt; DrawRow
+DrawRow --&gt; IncrementY2
+IncrementY2 --&gt; LoopStart
+LoopStart --&gt; Finalize</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L369-L395">src/router.js L369-L395</a></p>
+<hr />
+<h2 id="layout-positioning-system">Layout Positioning System<a class="headerlink" href="#layout-positioning-system" title="Permanent link">&para;</a></h2>
+<p>The PDFKit implementation uses absolute positioning with fixed X-coordinates for table columns:</p>
+<h3 id="column-layout">Column Layout<a class="headerlink" href="#column-layout" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>X Position</th>
+<th>Content</th>
+<th>Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Referencia</td>
+<td>50</td>
+<td><code>p.ref.toString()</code></td>
+<td>Integer (AUTO_INCREMENT)</td>
+</tr>
+<tr>
+<td>Nombre</td>
+<td>150</td>
+<td><code>p.nombre</code></td>
+<td>String (varchar(30))</td>
+</tr>
+<tr>
+<td>Precio</td>
+<td>300</td>
+<td><code>Number(p.precio).toFixed(2)</code></td>
+<td>Decimal (10,2)</td>
+</tr>
+<tr>
+<td>Stock</td>
+<td>380</td>
+<td><code>p.stock.toString()</code></td>
+<td>Integer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vertical-positioning">Vertical Positioning<a class="headerlink" href="#vertical-positioning" title="Permanent link">&para;</a></h3>
+<p>The Y-coordinate is managed dynamically:</p>
+<ol>
+<li><strong>Initial Position:</strong> Retrieved via <code>doc.y</code> after title at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L375-L375">src/router.js L375</a></li>
+<li><strong>Header Row:</strong> Headers placed at current Y position</li>
+<li><strong>Row Spacing:</strong> Y incremented by 20 points between rows at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L382-L382">src/router.js L382</a>  and <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L391-L391">src/router.js L391</a></li>
+</ol>
+<p><strong>Coordinate System Diagram:</strong></p>
+<pre class="mermaid"><code>flowchart TD
+
+P50["X=50&lt;br&gt;Referencia"]
+P150["X=150&lt;br&gt;Nombre"]
+P300["X=300&lt;br&gt;Precio"]
+P380["X=380&lt;br&gt;Stock"]
+Title["Title (centered)&lt;br&gt;Y = initial"]
+Headers["Headers Row&lt;br&gt;Y = doc.y"]
+Row1["Data Row 1&lt;br&gt;Y += 20"]
+Row2["Data Row 2&lt;br&gt;Y += 20"]
+RowN["Data Row N&lt;br&gt;Y += 20"]
+
+Title --&gt; Headers
+Headers --&gt; Row1
+Row1 --&gt; Row2
+Row2 --&gt; RowN
+
+subgraph subGraph0 ["PDF Coordinate Space"]
+    P50
+    P150
+    P300
+    P380
+    P50 --&gt; P150
+    P150 --&gt; P300
+    P300 --&gt; P380
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L373-L391">src/router.js L373-L391</a></p>
+<hr />
+<h2 id="font-and-typography-configuration">Font and Typography Configuration<a class="headerlink" href="#font-and-typography-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="font-specifications">Font Specifications<a class="headerlink" href="#font-specifications" title="Permanent link">&para;</a></h3>
+<p>The implementation uses two font weights from the Helvetica family:</p>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Font</th>
+<th>Size</th>
+<th>Code Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>(default)</td>
+<td>18</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L370-L370">src/router.js L370</a></td>
+</tr>
+<tr>
+<td>Table Headers</td>
+<td>Helvetica-Bold</td>
+<td>12</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L374-L374">src/router.js L374</a></td>
+</tr>
+<tr>
+<td>Table Data</td>
+<td>Helvetica</td>
+<td>11</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L384-L384">src/router.js L384</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-rendering-methods">Text Rendering Methods<a class="headerlink" href="#text-rendering-methods" title="Permanent link">&para;</a></h3>
+<p><strong>Title Rendering:</strong></p>
+<div class="highlight"><pre><span></span><code>doc.fontSize(18).text(&quot;Listado de Productos&quot;, { align: &quot;center&quot; }).moveDown();
+</code></pre></div>
+<ul>
+<li>Method chaining for font size, content, and alignment</li>
+<li><code>moveDown()</code> adds vertical spacing after title</li>
+</ul>
+<p><strong>Positioned Text:</strong></p>
+<div class="highlight"><pre><span></span><code>doc.text(content, x, y);
+</code></pre></div>
+<ul>
+<li>Explicit X,Y coordinates for table cells</li>
+<li>No automatic line wrapping or overflow handling</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L370-L390">src/router.js L370-L390</a></p>
+<hr />
+<h2 id="data-processing-and-type-conversion">Data Processing and Type Conversion<a class="headerlink" href="#data-processing-and-type-conversion" title="Permanent link">&para;</a></h2>
+<p>Products retrieved from the database undergo type conversion before rendering:</p>
+<h3 id="type-conversions">Type Conversions<a class="headerlink" href="#type-conversions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Database Type</th>
+<th>Conversion</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ref</code></td>
+<td>INT(11)</td>
+<td><code>p.ref.toString()</code></td>
+<td>PDFKit requires strings</td>
+</tr>
+<tr>
+<td><code>nombre</code></td>
+<td>VARCHAR(30)</td>
+<td><code>p.nombre</code></td>
+<td>Already string</td>
+</tr>
+<tr>
+<td><code>precio</code></td>
+<td>DECIMAL(10,2)</td>
+<td><code>Number(p.precio).toFixed(2)</code></td>
+<td>Format to 2 decimals</td>
+</tr>
+<tr>
+<td><code>stock</code></td>
+<td>INT(11)</td>
+<td><code>p.stock.toString()</code></td>
+<td>PDFKit requires strings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iteration-pattern">Iteration Pattern<a class="headerlink" href="#iteration-pattern" title="Permanent link">&para;</a></h3>
+<p>The data rendering loop at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L386-L392">src/router.js L386-L392</a></p>
+<p>uses <code>forEach</code> to iterate through the <code>results</code> array:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">results</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">ref</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="mf">150</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">precio</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">doc</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">stock</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span><span class="w"> </span><span class="mf">380</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L386-L392">src/router.js L386-L392</a></p>
+<hr />
+<h2 id="database-integration">Database Integration<a class="headerlink" href="#database-integration" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+Query["db.query&lt;br&gt;SELECT * FROM productos"]
+Callback["Callback Function&lt;br&gt;(error, results)"]
+ErrorCheck["error?"]
+ErrorResponse["res.status(500)&lt;br&gt;Error al obtener productos"]
+PDFGeneration["Generate PDF&lt;br&gt;with results"]
+ProductosTable["productos table&lt;br&gt;ref (PK)&lt;br&gt;nombre&lt;br&gt;precio&lt;br&gt;stock"]
+
+Query --&gt; Callback
+Callback --&gt; ErrorCheck
+ErrorCheck --&gt; ErrorResponse
+ErrorCheck --&gt; PDFGeneration
+Query --&gt; ProductosTable
+ProductosTable --&gt; Callback</code></pre>
+<p><strong>Query Details:</strong></p>
+<ul>
+<li><strong>SQL:</strong> <code>SELECT * FROM productos</code></li>
+<li><strong>Returns:</strong> Array of product objects</li>
+<li><strong>Error Handling:</strong> Returns HTTP 500 on query failure</li>
+<li><strong>Callback Pattern:</strong> Traditional callback at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L356-L396">src/router.js L356-L396</a></li>
+</ul>
+<p><strong>Database Schema Reference:</strong>
+For complete <code>productos</code> table schema, see <a href="productos-Table.html">productos Table</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L356-L359">src/router.js L356-L359</a></p>
+<hr />
+<h2 id="pdfkit-vs-puppeteer-comparison">PDFKit vs Puppeteer Comparison<a class="headerlink" href="#pdfkit-vs-puppeteer-comparison" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>PDFKit</th>
+<th>Puppeteer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Route</strong></td>
+<td><code>/pdfkit/descargar</code></td>
+<td><code>/pdf/descargar</code></td>
+</tr>
+<tr>
+<td><strong>Approach</strong></td>
+<td>Programmatic drawing</td>
+<td>HTML template rendering</td>
+</tr>
+<tr>
+<td><strong>Template</strong></td>
+<td>None (code-based)</td>
+<td><code>views/pdfTabla.ejs</code></td>
+</tr>
+<tr>
+<td><strong>Layout Method</strong></td>
+<td>Absolute coordinates</td>
+<td>CSS styling</td>
+</tr>
+<tr>
+<td><strong>Memory Usage</strong></td>
+<td>Low (streaming)</td>
+<td>Higher (browser instance)</td>
+</tr>
+<tr>
+<td><strong>Dependencies</strong></td>
+<td>PDFKit only</td>
+<td>Puppeteer + EJS + Chrome</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>Manual positioning</td>
+<td>HTML/CSS flexibility</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Low-level control</td>
+<td>Higher abstraction</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Fast (direct PDF)</td>
+<td>Slower (browser startup)</td>
+</tr>
+<tr>
+<td><strong>Maintenance</strong></td>
+<td>Position calculations</td>
+<td>Template maintenance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-to-use-each-approach">When to Use Each Approach<a class="headerlink" href="#when-to-use-each-approach" title="Permanent link">&para;</a></h3>
+<p><strong>PDFKit (Current Page):</strong></p>
+<ul>
+<li>Simple tabular reports</li>
+<li>Known, fixed layouts</li>
+<li>Performance-critical scenarios</li>
+<li>Minimal external dependencies</li>
+</ul>
+<p><strong>Puppeteer (Page 10.1):</strong></p>
+<ul>
+<li>Complex layouts with CSS</li>
+<li>Existing HTML templates</li>
+<li>Rich typography and graphics</li>
+<li>Need for print CSS features</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L317-L353">src/router.js L317-L353</a></p>
+<hr />
+<h2 id="complete-generation-flow-diagram">Complete Generation Flow Diagram<a class="headerlink" href="#complete-generation-flow-diagram" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+  participant Client
+  participant Router
+  participant verifyToken
+  participant MySQL Database
+  participant PDFDocument
+  participant Response Stream
+
+  Client-&gt;&gt;Router: GET /pdfkit/descargar
+  Router-&gt;&gt;verifyToken: Verify JWT token
+  verifyToken-&gt;&gt;Router: User authenticated
+  Router-&gt;&gt;MySQL Database: SELECT * FROM productos
+  MySQL Database-&gt;&gt;Router: results array
+  Router-&gt;&gt;PDFDocument: new PDFDocument({margin:40, size:'A4'})
+  Router-&gt;&gt;Response Stream: Set headers (Content-Type, Content-Disposition)
+  Router-&gt;&gt;PDFDocument: doc.pipe(res)
+  note over PDFDocument: Streaming begins
+  PDFDocument-&gt;&gt;Response Stream: Write title
+  PDFDocument-&gt;&gt;Response Stream: Write table headers
+  loop [For each producto]
+    PDFDocument-&gt;&gt;Response Stream: Write row data
+  end
+  PDFDocument-&gt;&gt;Response Stream: doc.end()
+  Response Stream-&gt;&gt;Client: PDF file stream</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<hr />
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<h3 id="database-query-errors">Database Query Errors<a class="headerlink" href="#database-query-errors" title="Permanent link">&para;</a></h3>
+<p>If the database query fails at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L357-L357">src/router.js L357</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>if (error) {
+    return res.status(500).send(&quot;Error al obtener productos&quot;);
+}
+</code></pre></div>
+<p><strong>Error Response:</strong></p>
+<ul>
+<li>HTTP Status: 500</li>
+<li>Content-Type: text/html</li>
+<li>Body: "Error al obtener productos"</li>
+</ul>
+<h3 id="authentication-errors">Authentication Errors<a class="headerlink" href="#authentication-errors" title="Permanent link">&para;</a></h3>
+<p>Authentication failures are handled by the <code>verifyToken</code> middleware before reaching the route handler:</p>
+<ul>
+<li>Missing token → 401 response</li>
+<li>Invalid token → 401 response</li>
+<li>Expired token → 401 response</li>
+</ul>
+<p>For authentication details, see <a href="verifyToken-Middleware.html">verifyToken Middleware</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L359">src/router.js L355-L359</a></p>
+<hr />
+<h2 id="document-finalization">Document Finalization<a class="headerlink" href="#document-finalization" title="Permanent link">&para;</a></h2>
+<p>The PDF document is finalized at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L394-L394">src/router.js L394</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>doc.end();
+</code></pre></div>
+<p><strong>Finalization Process:</strong></p>
+<ol>
+<li><code>doc.end()</code> signals end of content writing</li>
+<li>Remaining buffered content flushed to stream</li>
+<li>PDF structure finalized (xref table, trailer)</li>
+<li>Stream closed automatically</li>
+<li>Client receives complete PDF file</li>
+</ol>
+<p><strong>No Explicit Response Closure:</strong>
+The response is closed automatically when the piped stream ends. The route handler does not explicitly call <code>res.end()</code> because the stream handles this.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L394-L394">src/router.js L394</a></p>
+<hr />
+<h2 id="usage-example">Usage Example<a class="headerlink" href="#usage-example" title="Permanent link">&para;</a></h2>
+<p><strong>Client Request:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /pdfkit/descargar HTTP/1.1</span>
+<span class="l l-Scalar l-Scalar-Plain">Host</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
+</code></pre></div>
+<p><strong>Server Response:</strong></p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 200 OK
+Content-Type: application/pdf
+Content-Disposition: attachment; filename=&quot;productos_desde_cero.pdf&quot;
+Content-Length: [file size]
+
+%PDF-1.3
+[binary PDF content]
+</code></pre></div>
+<p><strong>Browser Behavior:</strong>
+The <code>attachment</code> disposition triggers a file download dialog with the suggested filename <code>productos_desde_cero.pdf</code>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L364-L365">src/router.js L364-L365</a></p>
+<hr />
+<h2 id="implementation-dependencies">Implementation Dependencies<a class="headerlink" href="#implementation-dependencies" title="Permanent link">&para;</a></h2>
+<h3 id="npm-packages">NPM Packages<a class="headerlink" href="#npm-packages" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pdfkit</code></td>
+<td>0.17.1</td>
+<td>PDF document generation</td>
+</tr>
+<tr>
+<td><code>express</code></td>
+<td>5.1.0</td>
+<td>HTTP routing framework</td>
+</tr>
+<tr>
+<td><code>mysql2</code></td>
+<td>3.14.1</td>
+<td>Database connectivity</td>
+</tr>
+<tr>
+<td><code>jsonwebtoken</code></td>
+<td>9.0.2</td>
+<td>JWT authentication</td>
+</tr>
+</tbody>
+</table>
+<h3 id="internal-dependencies">Internal Dependencies<a class="headerlink" href="#internal-dependencies" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>src/middlewares/verifyToken.js</code> - JWT validation</li>
+<li><code>database/db.js</code> - MySQL connection pool</li>
+<li><code>process.env.JWT_SECRET</code> - Token signing key</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L27-L28">package-lock.json L27-L28</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L1-L19">src/router.js L1-L19</a></p>
+<hr />
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="memory-efficiency">Memory Efficiency<a class="headerlink" href="#memory-efficiency" title="Permanent link">&para;</a></h3>
+<p><strong>Streaming Approach:</strong></p>
+<ul>
+<li>PDF content is piped directly to response stream</li>
+<li>No intermediate buffer for entire document</li>
+<li>Constant memory usage regardless of document size</li>
+<li>Suitable for large product catalogs</li>
+</ul>
+<h3 id="comparison-metrics">Comparison Metrics<a class="headerlink" href="#comparison-metrics" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>PDFKit</th>
+<th>Puppeteer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Startup Time</td>
+<td>~0ms (library load)</td>
+<td>~500-1000ms (browser launch)</td>
+</tr>
+<tr>
+<td>Memory Overhead</td>
+<td>~10-20MB</td>
+<td>~100-200MB</td>
+</tr>
+<tr>
+<td>CPU Usage</td>
+<td>Low</td>
+<td>High (rendering engine)</td>
+</tr>
+<tr>
+<td>Concurrency</td>
+<td>High (lightweight)</td>
+<td>Limited (browser instances)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+<hr />
+<h2 id="limitations-and-constraints">Limitations and Constraints<a class="headerlink" href="#limitations-and-constraints" title="Permanent link">&para;</a></h2>
+<h3 id="layout-limitations">Layout Limitations<a class="headerlink" href="#layout-limitations" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Fixed Positioning:</strong> All coordinates are hardcoded</li>
+<li><strong>No Overflow Handling:</strong> Text exceeding column width is not wrapped</li>
+<li><strong>No Pagination:</strong> Large datasets may exceed single page</li>
+<li><strong>Single Page Assumption:</strong> No automatic page breaks</li>
+</ol>
+<h3 id="data-constraints">Data Constraints<a class="headerlink" href="#data-constraints" title="Permanent link">&para;</a></h3>
+<p><strong>Column Width Assumptions:</strong></p>
+<ul>
+<li><strong>Referencia:</strong> Assumes short integer values</li>
+<li><strong>Nombre:</strong> Maximum 30 characters (database constraint)</li>
+<li><strong>Precio:</strong> Assumes standard currency format</li>
+<li><strong>Stock:</strong> Assumes reasonable integer values</li>
+</ul>
+<h3 id="missing-features">Missing Features<a class="headerlink" href="#missing-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>No page headers/footers</li>
+<li>No page numbering</li>
+<li>No automatic table continuation across pages</li>
+<li>No grid lines or borders</li>
+<li>No sorting or filtering options</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L373-L391">src/router.js L373-L391</a></p>
+<hr />
+<h2 id="future-enhancement-possibilities">Future Enhancement Possibilities<a class="headerlink" href="#future-enhancement-possibilities" title="Permanent link">&para;</a></h2>
+<h3 id="pagination-support">Pagination Support<a class="headerlink" href="#pagination-support" title="Permanent link">&para;</a></h3>
+<p>To handle large datasets, the implementation could:</p>
+<ol>
+<li>Track vertical position (<code>y</code> coordinate)</li>
+<li>Detect when approaching page bottom</li>
+<li>Call <code>doc.addPage()</code> to create new page</li>
+<li>Repeat headers on each page</li>
+</ol>
+<h3 id="dynamic-column-widths">Dynamic Column Widths<a class="headerlink" href="#dynamic-column-widths" title="Permanent link">&para;</a></h3>
+<p>Calculate column widths based on:</p>
+<ul>
+<li>Actual content length</li>
+<li>Available page width</li>
+<li>Font metrics</li>
+</ul>
+<h3 id="styling-enhancements">Styling Enhancements<a class="headerlink" href="#styling-enhancements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add table borders and grid lines</li>
+<li>Alternate row background colors</li>
+<li>Header background styling</li>
+<li>Footer with timestamp or page numbers</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L396">src/router.js L355-L396</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

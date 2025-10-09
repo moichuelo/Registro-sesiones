@@ -1,0 +1,2716 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="Template-Structure.html">
+      
+      
+        <link rel="next" href="Page-Views.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Partial Components - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#partial-components" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Partial Components
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Partial-Components.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partial-inclusion-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial Inclusion Mechanism
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partial Inclusion Mechanism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-partial-inclusion-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Partial Inclusion Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      head.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="head.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsibilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-inclusion-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical Inclusion Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headerejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      header.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="header.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Links
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-switcher-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Switcher Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelang-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      changeLang Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-language-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Language Indicator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bootstrap Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#footerejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      footer.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="footer.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsibilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inclusion Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#popoverejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      popover.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="popover.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-usage-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Usage Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Usage Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-page-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Page Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pages-with-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pages with Alerts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registration-page-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Page Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagram-partial-component-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Partial Component Relationships
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-passed-to-partials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Passed to Partials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Internationalization
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partial-inclusion-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partial Inclusion Mechanism
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partial Inclusion Mechanism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-partial-inclusion-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Partial Inclusion Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      head.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="head.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsibilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-inclusion-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical Inclusion Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headerejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      header.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="header.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Links
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-switcher-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Switcher Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changelang-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      changeLang Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-language-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Language Indicator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bootstrap Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#footerejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      footer.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="footer.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsibilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inclusion Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#popoverejs-partial" class="md-nav__link">
+    <span class="md-ellipsis">
+      popover.ejs Partial
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="popover.ejs Partial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-usage-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Usage Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Usage Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-page-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Page Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pages-with-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pages with Alerts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registration-page-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Page Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagram-partial-component-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Partial Component Relationships
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-passed-to-partials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Passed to Partials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Internationalization
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="partial-components">Partial Components<a class="headerlink" href="#partial-components" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css">public/css/style.css</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs">views/admin.ejs</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs">views/index.ejs</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs">views/partials/header.ejs</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs">views/register.ejs</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>This document describes the reusable partial components in the EJS template system. Partials are modular template fragments stored in the <code>views/partials/</code> directory that are included across multiple page views to ensure consistent UI elements and reduce code duplication.</p>
+<p>For information about the overall template structure and layout inheritance, see <a href="Template-Structure.html">Template Structure</a>. For documentation of individual page templates that use these partials, see <a href="Page-Views.html">Page Views</a>.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The application uses four primary partial components that are included across various page templates:</p>
+<table>
+<thead>
+<tr>
+<th>Partial</th>
+<th>File Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>head</code></td>
+<td><code>views/partials/head.ejs</code></td>
+<td>HTML head section with meta tags, CSS links, and fonts</td>
+</tr>
+<tr>
+<td><code>header</code></td>
+<td><code>views/partials/header.ejs</code></td>
+<td>Navigation bar with menu items and language switcher</td>
+</tr>
+<tr>
+<td><code>footer</code></td>
+<td><code>views/partials/footer.ejs</code></td>
+<td>Footer section with copyright and links</td>
+</tr>
+<tr>
+<td><code>popover</code></td>
+<td><code>views/partials/popover.ejs</code></td>
+<td>Bootstrap popover/alert components</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L1-L35">views/index.ejs L1-L35</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L1-L71">views/admin.ejs L1-L71</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L1-L85">views/register.ejs L1-L85</a></p>
+<h2 id="partial-inclusion-mechanism">Partial Inclusion Mechanism<a class="headerlink" href="#partial-inclusion-mechanism" title="Permanent link">&para;</a></h2>
+<p>Partials are included in page templates using the EJS <code>include</code> directive with the following syntax:</p>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/header&#39;) %&gt;
+</code></pre></div>
+<p>The <code>&lt;%-</code> tag renders the included content without HTML escaping, allowing the partial's HTML to be directly inserted into the parent template. The file extension <code>.ejs</code> is implied and omitted from the include path.</p>
+<h3 id="diagram-partial-inclusion-flow">Diagram: Partial Inclusion Flow<a class="headerlink" href="#diagram-partial-inclusion-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+IndexPage["index.ejs"]
+AdminPage["admin.ejs"]
+RegisterPage["register.ejs"]
+LoginPage["login.ejs"]
+HeadPartial["head.ejs&lt;br&gt;Meta tags, CSS links"]
+HeaderPartial["header.ejs&lt;br&gt;Navigation, i18n"]
+FooterPartial["footer.ejs&lt;br&gt;Footer content"]
+PopoverPartial["popover.ejs&lt;br&gt;Alert components"]
+
+IndexPage --&gt; HeadPartial
+IndexPage --&gt; HeaderPartial
+IndexPage --&gt; FooterPartial
+IndexPage --&gt; PopoverPartial
+AdminPage --&gt; HeadPartial
+AdminPage --&gt; HeaderPartial
+AdminPage --&gt; FooterPartial
+RegisterPage --&gt; HeadPartial
+RegisterPage --&gt; HeaderPartial
+RegisterPage --&gt; FooterPartial
+LoginPage --&gt; HeadPartial
+LoginPage --&gt; HeaderPartial
+LoginPage --&gt; FooterPartial
+
+subgraph subGraph1 ["Partial Components views/partials/"]
+    HeadPartial
+    HeaderPartial
+    FooterPartial
+    PopoverPartial
+end
+
+subgraph subGraph0 ["Page Templates"]
+    IndexPage
+    AdminPage
+    RegisterPage
+    LoginPage
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L1-L2">views/index.ejs L1-L2</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L1-L1">views/admin.ejs L1</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L1-L3">views/register.ejs L1-L3</a></p>
+<h2 id="headejs-partial">head.ejs Partial<a class="headerlink" href="#headejs-partial" title="Permanent link">&para;</a></h2>
+<p>The <code>head</code> partial contains the HTML <code>&lt;head&gt;</code> section elements that are consistent across all pages. While the file is not directly provided in the source files, it is consistently included as the first partial in all page templates.</p>
+<h3 id="responsibilities">Responsibilities<a class="headerlink" href="#responsibilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HTML document metadata (<code>&lt;meta&gt;</code> tags)</li>
+<li>CSS stylesheet links (Bootstrap, custom stylesheets)</li>
+<li>Font declarations (Montserrat, Open Sans from <code>docs/fonts/</code>)</li>
+<li>Favicon and page title configuration</li>
+<li>Additional <code>&lt;head&gt;</code> elements required globally</li>
+</ul>
+<h3 id="typical-inclusion-pattern">Typical Inclusion Pattern<a class="headerlink" href="#typical-inclusion-pattern" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/head&#39;) %&gt;
+</code></pre></div>
+<p>This partial is always included first, before the <code>header</code> partial, as it must complete before the <code>&lt;body&gt;</code> tag opens.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L1-L1">views/index.ejs L1</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L1-L1">views/admin.ejs L1</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L1-L1">views/register.ejs L1</a></p>
+<h2 id="headerejs-partial">header.ejs Partial<a class="headerlink" href="#headerejs-partial" title="Permanent link">&para;</a></h2>
+<p>The <code>header</code> partial implements the primary navigation bar and language switching interface. It is located at <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L1-L55">views/partials/header.ejs L1-L55</a></p>
+<p>and contains both the closing <code>&lt;/head&gt;</code> tag and the opening <code>&lt;body&gt;</code> tag, making it a transitional partial between document metadata and body content.</p>
+<h3 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Header["header.ejs"]
+CloseHead["tag"]
+OpenBody["tag"]
+Title["Curso de Node"]
+Navbar["Bootstrap navbar"]
+Brand["navbar-brand: Home link"]
+NavItems["navbar-nav: Navigation items"]
+LangSwitcher["Language switcher UI"]
+LoginLink["Login nav-link"]
+RegisterLink["Register nav-link"]
+AdminLink["Admin nav-link"]
+SoporteLink["Soporte nav-link"]
+EsLink["Spanish link with flag"]
+EnLink["English link with flag"]
+ChangeLangFunc["changeLang(lang) function"]
+
+Header --&gt; CloseHead
+Header --&gt; OpenBody
+Header --&gt; Title
+Header --&gt; Navbar
+Navbar --&gt; Brand
+Navbar --&gt; NavItems
+Navbar --&gt; LangSwitcher
+NavItems --&gt; LoginLink
+NavItems --&gt; RegisterLink
+NavItems --&gt; AdminLink
+NavItems --&gt; SoporteLink
+LangSwitcher --&gt; EsLink
+LangSwitcher --&gt; EnLink
+LangSwitcher --&gt; ChangeLangFunc</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L1-L55">views/partials/header.ejs L1-L55</a></p>
+<h3 id="navigation-links">Navigation Links<a class="headerlink" href="#navigation-links" title="Permanent link">&para;</a></h3>
+<p>The header provides four primary navigation links:</p>
+<table>
+<thead>
+<tr>
+<th>Link Text</th>
+<th>Route</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td><code>/</code></td>
+<td>Navigate to homepage</td>
+</tr>
+<tr>
+<td>Iniciar sesión</td>
+<td><code>/login</code></td>
+<td>Navigate to login page</td>
+</tr>
+<tr>
+<td>Registro</td>
+<td><code>/registro</code></td>
+<td>Navigate to registration page</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td><code>/admin</code></td>
+<td>Navigate to admin dashboard</td>
+</tr>
+<tr>
+<td>Soporte</td>
+<td><code>/soporte</code></td>
+<td>Navigate to support chat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L7-L24">views/partials/header.ejs L7-L24</a></p>
+<h3 id="language-switcher-implementation">Language Switcher Implementation<a class="headerlink" href="#language-switcher-implementation" title="Permanent link">&para;</a></h3>
+<p>The header includes a bilingual interface switcher in the right-aligned navigation section (<code>navbar-nav ms-auto</code>):</p>
+<pre class="mermaid"><code>flowchart TD
+
+LangUI["Language Switcher UI"]
+EsOption["Spanish Option"]
+EnOption["English Option"]
+EsFlag["Flag image: /resources/img/es.png"]
+EsEmoji["Emoji: 🇪🇸"]
+EsActive["Active class if lang === 'es'"]
+EnFlag["Flag image: /resources/img/en.png"]
+EnEmoji["Emoji: 🇬🇧"]
+EnActive["Active class if lang === 'en'"]
+ChangeLang["changeLang('es')"]
+ChangeLang2["changeLang('en')"]
+RouteCall["/set-lang/:lang?returnTo=..."]
+
+LangUI --&gt; EsOption
+LangUI --&gt; EnOption
+EsOption --&gt; EsFlag
+EsOption --&gt; EsEmoji
+EsOption --&gt; EsActive
+EnOption --&gt; EnFlag
+EnOption --&gt; EnEmoji
+EnOption --&gt; EnActive
+EsOption --&gt; ChangeLang
+EnOption --&gt; ChangeLang2
+ChangeLang --&gt; RouteCall
+ChangeLang2 --&gt; RouteCall</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L31-L54">views/partials/header.ejs L31-L54</a></p>
+<h3 id="changelang-function">changeLang Function<a class="headerlink" href="#changelang-function" title="Permanent link">&para;</a></h3>
+<p>The header includes inline JavaScript that handles language switching:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">changeLang</span><span class="p">(</span><span class="nx">lang</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`/set-lang/</span><span class="si">${</span><span class="nx">lang</span><span class="si">}</span><span class="sb">?returnTo=</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">currentPath</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This function:</p>
+<ol>
+<li>Captures the current page path and query string</li>
+<li>Navigates to <code>/set-lang/:lang</code> route with the current page as <code>returnTo</code> parameter</li>
+<li>Allows the server to set the language cookie and redirect back to the originating page</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L49-L54">views/partials/header.ejs L49-L54</a></p>
+<h3 id="active-language-indicator">Active Language Indicator<a class="headerlink" href="#active-language-indicator" title="Permanent link">&para;</a></h3>
+<p>The language links use conditional CSS classes to highlight the currently active language:</p>
+<div class="highlight"><pre><span></span><code>class=&quot;nav-link idioma d-flex align-items-center &lt;%= lang === &#39;es&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;
+</code></pre></div>
+<p>The <code>idioma.active</code> class applies a blue background color (<code>#b5c1e2</code>) to visually indicate the current language selection.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L33-L44">views/partials/header.ejs L33-L44</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L8-L12">public/css/style.css L8-L12</a></p>
+<h3 id="bootstrap-integration">Bootstrap Integration<a class="headerlink" href="#bootstrap-integration" title="Permanent link">&para;</a></h3>
+<p>The header uses Bootstrap 5 navbar components:</p>
+<ul>
+<li><code>navbar navbar-expand-lg navbar-light bg-light</code> - Main navbar container</li>
+<li><code>navbar-toggler</code> - Mobile responsive menu toggle button</li>
+<li><code>collapse navbar-collapse</code> - Collapsible menu content</li>
+<li><code>navbar-nav</code> - Navigation items container</li>
+<li><code>nav-item</code> and <code>nav-link</code> - Individual navigation links</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L5-L29">views/partials/header.ejs L5-L29</a></p>
+<h2 id="footerejs-partial">footer.ejs Partial<a class="headerlink" href="#footerejs-partial" title="Permanent link">&para;</a></h2>
+<p>The <code>footer</code> partial provides consistent footer content across all pages. While the file contents are not directly visible in the provided sources, it is consistently included at the end of page templates.</p>
+<h3 id="responsibilities_1">Responsibilities<a class="headerlink" href="#responsibilities_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Copyright information</li>
+<li>Footer navigation links</li>
+<li>Contact information or social media links</li>
+<li>Additional footer content</li>
+</ul>
+<h3 id="css-styling">CSS Styling<a class="headerlink" href="#css-styling" title="Permanent link">&para;</a></h3>
+<p>The footer is styled with classes defined in the main stylesheet:</p>
+<table>
+<thead>
+<tr>
+<th>CSS Class</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>footer</code></td>
+<td>Main footer container with dark green background (<code>#143d20</code>)</td>
+</tr>
+<tr>
+<td><code>footer-container</code></td>
+<td>Flex container for footer sections, max-width 1100px</td>
+</tr>
+<tr>
+<td><code>footer-section</code></td>
+<td>Individual footer columns with flexible layout</td>
+</tr>
+<tr>
+<td><code>footer-bottom</code></td>
+<td>Bottom footer text with smaller font size</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L278-L331">public/css/style.css L278-L331</a></p>
+<h3 id="inclusion-pattern">Inclusion Pattern<a class="headerlink" href="#inclusion-pattern" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/footer&#39;) %&gt;
+</code></pre></div>
+<p>The footer partial is always included last, after all page content, and typically preceded by closing any open content containers.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L35-L35">views/index.ejs L35</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L71-L71">views/admin.ejs L71</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L85-L85">views/register.ejs L85</a></p>
+<h2 id="popoverejs-partial">popover.ejs Partial<a class="headerlink" href="#popoverejs-partial" title="Permanent link">&para;</a></h2>
+<p>The <code>popover</code> partial provides Bootstrap alert and popover components that can be included on pages requiring notification or validation feedback displays.</p>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<p>The popover partial is selectively included on pages that require alert functionality, such as the homepage:</p>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/popover&#39;) %&gt;
+</code></pre></div>
+<p>Not all pages include this partial, as it is only needed where alerts or popovers are displayed to users.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L34-L34">views/index.ejs L34</a></p>
+<h2 id="common-usage-patterns">Common Usage Patterns<a class="headerlink" href="#common-usage-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="standard-page-structure">Standard Page Structure<a class="headerlink" href="#standard-page-structure" title="Permanent link">&para;</a></h3>
+<p>Most page templates follow this inclusion pattern:</p>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/head&#39;) %&gt;
+&lt;%- include(&#39;partials/header&#39;) %&gt;
+
+&lt;!-- Page-specific content --&gt;
+
+&lt;%- include(&#39;partials/footer&#39;) %&gt;
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L1-L35">views/index.ejs L1-L35</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L1-L71">views/admin.ejs L1-L71</a></p>
+<h3 id="pages-with-alerts">Pages with Alerts<a class="headerlink" href="#pages-with-alerts" title="Permanent link">&para;</a></h3>
+<p>Pages that display validation errors or success messages include the popover partial:</p>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/head&#39;) %&gt;
+&lt;%- include(&#39;partials/header&#39;) %&gt;
+
+&lt;!-- Page content --&gt;
+
+&lt;%- include(&#39;partials/popover&#39;) %&gt;
+&lt;%- include(&#39;partials/footer&#39;) %&gt;
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L1-L35">views/index.ejs L1-L35</a></p>
+<h3 id="registration-page-pattern">Registration Page Pattern<a class="headerlink" href="#registration-page-pattern" title="Permanent link">&para;</a></h3>
+<p>The registration page demonstrates a variant pattern with additional CSS:</p>
+<div class="highlight"><pre><span></span><code>&lt;%- include(&#39;partials/head&#39;) %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/resources/css/body.css&quot;&gt;
+&lt;%- include(&#39;partials/header&#39;) %&gt;
+
+&lt;!-- Registration form --&gt;
+
+&lt;%- include(&#39;partials/footer&#39;) %&gt;
+</code></pre></div>
+<p>This shows that additional stylesheets can be injected between the head and header partials when page-specific styling is required.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L1-L3">views/register.ejs L1-L3</a></p>
+<h2 id="diagram-partial-component-relationships">Diagram: Partial Component Relationships<a class="headerlink" href="#diagram-partial-component-relationships" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+CSS["public/css/style.css&lt;br&gt;public/css/body.css"]
+Images["public/resources/img/&lt;br&gt;es.png, en.png"]
+Fonts["docs/fonts/&lt;br&gt;Montserrat, Open Sans"]
+Head["head.ejs"]
+Header["header.ejs"]
+Footer["footer.ejs"]
+Popover["popover.ejs"]
+I18nVar["lang variable&lt;br&gt;(es/en)"]
+UserVar["login variable&lt;br&gt;user variable"]
+Router["Router /set-lang/:lang"]
+
+Head --&gt; CSS
+Head --&gt; Fonts
+Header --&gt; Images
+Header --&gt; I18nVar
+Header --&gt; Router
+Footer --&gt; CSS
+Header --&gt; UserVar
+
+subgraph subGraph2 ["Server-Side Data"]
+    I18nVar
+    UserVar
+    Router
+end
+
+subgraph subGraph1 ["Partials views/partials/"]
+    Head
+    Header
+    Footer
+    Popover
+    Popover --&gt; Head
+end
+
+subgraph subGraph0 ["Static Resources"]
+    CSS
+    Images
+    Fonts
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L1-L55">views/partials/header.ejs L1-L55</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L1-L353">public/css/style.css L1-L353</a></p>
+<h2 id="data-passed-to-partials">Data Passed to Partials<a class="headerlink" href="#data-passed-to-partials" title="Permanent link">&para;</a></h2>
+<p>Partials have access to the same template variables as their parent page templates. The header partial specifically uses:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lang</code></td>
+<td>String</td>
+<td>Current language code ('es' or 'en') for active language highlighting</td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td>Boolean</td>
+<td>(Used in parent pages) Indicates if user is authenticated</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>String/Object</td>
+<td>(Used in parent pages) Current user information</td>
+</tr>
+</tbody>
+</table>
+<p>These variables are set by route handlers in <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js">src/router.js</a></p>
+<p>and passed through the <code>res.render()</code> call that renders the parent page template.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L33-L44">views/partials/header.ejs L33-L44</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L15-L31">views/index.ejs L15-L31</a></p>
+<h2 id="integration-with-internationalization">Integration with Internationalization<a class="headerlink" href="#integration-with-internationalization" title="Permanent link">&para;</a></h2>
+<p>The header partial integrates closely with the i18n system (documented in <a href="https://github.com/moichuelo/registro/blob/544abbcc/#11">#11</a></p>
+<p>). The language switcher in the header:</p>
+<ol>
+<li>Displays current language using the <code>lang</code> template variable</li>
+<li>Provides clickable links to switch languages</li>
+<li>Calls the <code>/set-lang/:lang</code> route to change the language preference</li>
+<li>Preserves the current page location via the <code>returnTo</code> query parameter</li>
+</ol>
+<p>The <code>changeLang()</code> function enables seamless language switching without losing the user's current page context.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L31-L54">views/partials/header.ejs L31-L54</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

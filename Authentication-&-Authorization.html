@@ -1,0 +1,3441 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="API-Endpoints.html">
+      
+      
+        <link rel="next" href="User-Registration-%26-Login.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Authentication & Authorization - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#authentication-authorization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication & Authorization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication System Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication System Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-registration-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Registration Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Registration Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registration-request-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Request Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registration-validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Validation Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Hashing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-schema-for-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Schema for usuarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-and-jwt-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login and JWT Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Login and JWT Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Flow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt-payload-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Payload Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt-token-creation-and-cookie-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Token Creation and Cookie Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-expiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Expiration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifytoken-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      verifyToken Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="verifyToken Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#middleware-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-in-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in Routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifyadmin-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      verifyAdmin Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="verifyAdmin Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-authorization-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Authorization Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifyadmin-vs-verifytoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      verifyAdmin vs verifyToken
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-protected-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-Protected Routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-authentication-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Authentication Libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-related-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security-Related Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logout-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logout Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logout Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logout-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logout Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jwt-token-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Token Access Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JWT Token Access Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-access-in-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Access in Routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-token-validation-on-homepage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Token Validation on Homepage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-user-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request User Object Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request User Object Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requser-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      req.user Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting for Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rate Limiting for Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiter-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiter Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-measures-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Measures Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-only-cookie-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP-only Cookie Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-flag-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Flag Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-response-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Response Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-error-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Error Rendering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-authentication-component-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary: Authentication Component Map
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication System Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication System Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-registration-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Registration Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Registration Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registration-request-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Request Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registration-validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registration Validation Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password Hashing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-schema-for-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Schema for usuarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-and-jwt-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login and JWT Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Login and JWT Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-flow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Flow Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt-payload-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Payload Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt-token-creation-and-cookie-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Token Creation and Cookie Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-expiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Expiration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifytoken-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      verifyToken Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="verifyToken Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#middleware-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-in-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in Routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifyadmin-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      verifyAdmin Middleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="verifyAdmin Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin-authorization-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Authorization Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifyadmin-vs-verifytoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      verifyAdmin vs verifyToken
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-protected-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin-Protected Routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-authentication-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Authentication Libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-related-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security-Related Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logout-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logout Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logout Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logout-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logout Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jwt-token-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Token Access Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JWT Token Access Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-access-in-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Access in Routes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-token-validation-on-homepage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Token Validation on Homepage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-user-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request User Object Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request User Object Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requser-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      req.user Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting for Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rate Limiting for Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiter-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiter Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-measures-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Measures Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-only-cookie-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP-only Cookie Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-flag-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Flag Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-response-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Response Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-error-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Error Rendering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-authentication-component-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary: Authentication Component Map
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="authentication-authorization">Authentication &amp; Authorization<a class="headerlink" href="#authentication-authorization" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json">package-lock.json</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js">src/middlewares/verifyAdmin.js</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js">src/middlewares/verifyToken.js</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js">src/router.js</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>This document describes the authentication and authorization mechanisms in the registro application. It covers user registration, login flows, JWT token management, password hashing with bcrypt, and role-based access control using middleware.</p>
+<p>For information about the protected routes that use these mechanisms, see <a href="Protected-Routes.html">Protected Routes</a>. For details on WebSocket authentication, see <a href="WebSocket-Authentication.html">WebSocket Authentication</a>. For security measures like rate limiting and input validation, see <a href="Security-Measures.html">Security Measures</a>.</p>
+<hr />
+<h2 id="authentication-system-overview">Authentication System Overview<a class="headerlink" href="#authentication-system-overview" title="Permanent link">&para;</a></h2>
+<p>The application implements a stateless authentication system using JWT (JSON Web Tokens) stored in HTTP-only cookies. Passwords are hashed using bcrypt before storage, and access control is enforced through two middleware functions: <code>verifyToken</code> and <code>verifyAdmin</code>.</p>
+<h3 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+LoginForm["Login Form&lt;br&gt;/views/login.ejs"]
+RegisterForm["Registration Form&lt;br&gt;/views/register.ejs"]
+LoginRoute["POST /auth&lt;br&gt;src/router.js:532-601"]
+RegisterRoute["POST /register&lt;br&gt;src/router.js:414-484"]
+LogoutRoute["GET /logout&lt;br&gt;src/router.js:215-218"]
+BCryptHash["bcrypt.hash()&lt;br&gt;Password Hashing"]
+BCryptCompare["bcrypt.compare()&lt;br&gt;Password Verification"]
+JWTSign["jwt.sign()&lt;br&gt;Token Generation"]
+JWTVerify["jwt.verify()&lt;br&gt;Token Validation"]
+RateLimiter["authLimiter&lt;br&gt;src/middlewares/authLimiter.js"]
+VerifyToken["verifyToken&lt;br&gt;src/middlewares/verifyToken.js"]
+VerifyAdmin["verifyAdmin&lt;br&gt;src/middlewares/verifyAdmin.js"]
+Cookie["HTTP-only Cookie&lt;br&gt;name: token&lt;br&gt;maxAge: 3600000"]
+DB["MySQL Database&lt;br&gt;usuarios table"]
+
+RegisterForm --&gt; RegisterRoute
+RegisterRoute --&gt; BCryptHash
+BCryptHash --&gt; DB
+LoginForm --&gt; LoginRoute
+LoginRoute --&gt; RateLimiter
+RateLimiter --&gt; DB
+DB --&gt; BCryptCompare
+JWTSign --&gt; Cookie
+Cookie --&gt; VerifyToken
+VerifyToken --&gt; JWTVerify
+JWTVerify --&gt; VerifyAdmin
+LogoutRoute --&gt; Cookie
+
+subgraph Storage ["Storage"]
+    Cookie
+    DB
+end
+
+subgraph subGraph3 ["Middleware Layer"]
+    RateLimiter
+    VerifyToken
+    VerifyAdmin
+end
+
+subgraph subGraph2 ["Authentication Logic"]
+    BCryptHash
+    BCryptCompare
+    JWTSign
+    JWTVerify
+    BCryptCompare --&gt; JWTSign
+end
+
+subgraph subGraph1 ["Route Handlers"]
+    LoginRoute
+    RegisterRoute
+    LogoutRoute
+end
+
+subgraph subGraph0 ["Client Layer"]
+    LoginForm
+    RegisterForm
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L1-L608">src/router.js L1-L608</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L1-L18">src/middlewares/verifyToken.js L1-L18</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L45">src/middlewares/verifyAdmin.js L1-L45</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L523-L530">package-lock.json L523-L530</a></p>
+<hr />
+<h2 id="user-registration-flow">User Registration Flow<a class="headerlink" href="#user-registration-flow" title="Permanent link">&para;</a></h2>
+<p>Registration is handled by the <code>POST /register</code> route with file upload support for profile images. The process includes validation, password hashing, and database insertion.</p>
+<h3 id="registration-request-processing">Registration Request Processing<a class="headerlink" href="#registration-request-processing" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Start["POST /register"]
+Upload["multer processes&lt;br&gt;profileImage file"]
+Validate["express-validator&lt;br&gt;validates input fields"]
+ValidCheck["Valid?"]
+RenderErrors["Render register.ejs&lt;br&gt;with validaciones array"]
+Hash["bcrypt.hash(pass, 8)&lt;br&gt;Generate password hash"]
+Insert["INSERT INTO usuarios&lt;br&gt;usuario, nombre, rol,&lt;br&gt;pass, imagen"]
+Success["Render register.ejs&lt;br&gt;with success alert"]
+End["End"]
+
+Start --&gt; Upload
+Upload --&gt; Validate
+Validate --&gt; ValidCheck
+ValidCheck --&gt; RenderErrors
+ValidCheck --&gt; Hash
+Hash --&gt; Insert
+Insert --&gt; Success
+RenderErrors --&gt; End
+Success --&gt; End</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L414-L484">src/router.js L414-L484</a></p>
+<h3 id="registration-validation-rules">Registration Validation Rules<a class="headerlink" href="#registration-validation-rules" title="Permanent link">&para;</a></h3>
+<p>The registration route uses <code>express-validator</code> to enforce input constraints:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Validation Rule</th>
+<th>Error Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user</code></td>
+<td>min length: 4</td>
+<td>"El usuario debe tener al menos 4 caracteres"</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>min length: 4</td>
+<td>"El nombre debe tener al menos 4 caracteres"</td>
+</tr>
+<tr>
+<td><code>pass</code></td>
+<td>min length: 4</td>
+<td>"La contraseña debe tener al menos 4 caracteres"</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>isEmail()</td>
+<td>"El email no es valido"</td>
+</tr>
+<tr>
+<td><code>edad</code></td>
+<td>isNumeric()</td>
+<td>"La edad debe ser un número"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L416-L428">src/router.js L416-L428</a></p>
+<h3 id="password-hashing">Password Hashing<a class="headerlink" href="#password-hashing" title="Permanent link">&para;</a></h3>
+<p>Passwords are hashed using bcrypt with a salt round of 8 before being stored in the database:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">passwordHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">pass</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">);</span>
+</code></pre></div>
+<p>This occurs at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L453-L453">src/router.js L453</a></p>
+<p>within the registration handler.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L452-L453">src/router.js L452-L453</a></p>
+<h3 id="database-schema-for-usuarios">Database Schema for usuarios<a class="headerlink" href="#database-schema-for-usuarios" title="Permanent link">&para;</a></h3>
+<p>The registration process inserts records into the <code>usuarios</code> table with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>usuario</code></td>
+<td>VARCHAR</td>
+<td>Unique username (primary key)</td>
+</tr>
+<tr>
+<td><code>nombre</code></td>
+<td>VARCHAR</td>
+<td>Full name of the user</td>
+</tr>
+<tr>
+<td><code>rol</code></td>
+<td>VARCHAR</td>
+<td>Role: "user" or "admin"</td>
+</tr>
+<tr>
+<td><code>pass</code></td>
+<td>VARCHAR</td>
+<td>bcrypt hashed password</td>
+</tr>
+<tr>
+<td><code>imagen</code></td>
+<td>VARCHAR</td>
+<td>Profile image filename (nullable)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L456-L464">src/router.js L456-L464</a></p>
+<hr />
+<h2 id="login-and-jwt-generation">Login and JWT Generation<a class="headerlink" href="#login-and-jwt-generation" title="Permanent link">&para;</a></h2>
+<p>The login process validates credentials, generates a JWT token, and stores it in an HTTP-only cookie.</p>
+<h3 id="login-flow-diagram">Login Flow Diagram<a class="headerlink" href="#login-flow-diagram" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+  participant Client
+  participant POST /auth
+  participant authLimiter
+  participant MySQL
+  participant BCrypt
+  participant jsonwebtoken
+  participant Cookie
+
+  Client-&gt;&gt;POST /auth: user, pass
+  POST /auth-&gt;&gt;authLimiter: Check rate limit
+  authLimiter-&gt;&gt;MySQL: SELECT * FROM usuarios
+  MySQL--&gt;&gt;POST /auth: WHERE usuario = ?
+  POST /auth-&gt;&gt;BCrypt: results array
+  BCrypt--&gt;&gt;POST /auth: bcrypt.compare(pass, results[0].pass)
+  loop [Credentials Valid]
+    POST /auth-&gt;&gt;jsonwebtoken: true/false
+    jsonwebtoken--&gt;&gt;POST /auth: jwt.sign(payload, JWT_SECRET, {expiresIn: "1h"})
+    POST /auth-&gt;&gt;Cookie: token string
+    Cookie--&gt;&gt;Client: Set token cookie
+    POST /auth--&gt;&gt;Client: httpOnly: true
+  end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L601">src/router.js L532-L601</a></p>
+<h3 id="jwt-payload-structure">JWT Payload Structure<a class="headerlink" href="#jwt-payload-structure" title="Permanent link">&para;</a></h3>
+<p>When a user successfully authenticates, a JWT is created with the following payload structure:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">usuario</span><span class="p">,</span><span class="w">    </span><span class="c1">// username</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">nombre</span><span class="p">,</span><span class="w">      </span><span class="c1">// full name</span>
+<span class="w">    </span><span class="nx">rol</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">rol</span><span class="p">,</span><span class="w">          </span><span class="c1">// &quot;user&quot; or &quot;admin&quot;</span>
+<span class="w">    </span><span class="nx">imagen</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">imagen</span><span class="w">     </span><span class="c1">// profile image filename</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>This payload is defined at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L559-L564">src/router.js L559-L564</a></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L559-L564">src/router.js L559-L564</a></p>
+<h3 id="jwt-token-creation-and-cookie-storage">JWT Token Creation and Cookie Storage<a class="headerlink" href="#jwt-token-creation-and-cookie-storage" title="Permanent link">&para;</a></h3>
+<p>The JWT is signed with the <code>JWT_SECRET</code> environment variable and stored in an HTTP-only cookie:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1h&quot;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">      </span><span class="c1">// set to true for HTTPS</span>
+<span class="w">    </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="mf">3600000</span><span class="w">     </span><span class="c1">// 1 hour in milliseconds</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>This occurs at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L567-L567">src/router.js L567</a></p>
+<p>and <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L570-L574">src/router.js L570-L574</a></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L567-L574">src/router.js L567-L574</a></p>
+<h3 id="token-expiration">Token Expiration<a class="headerlink" href="#token-expiration" title="Permanent link">&para;</a></h3>
+<p>Both the JWT token and the HTTP cookie are configured to expire after 1 hour (3600000 milliseconds). After expiration, users must re-authenticate.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L567-L567">src/router.js L567</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L573-L573">src/router.js L573</a></p>
+<hr />
+<h2 id="verifytoken-middleware">verifyToken Middleware<a class="headerlink" href="#verifytoken-middleware" title="Permanent link">&para;</a></h2>
+<p>The <code>verifyToken</code> middleware authenticates users by validating the JWT token in the request cookie.</p>
+<h3 id="middleware-flow">Middleware Flow<a class="headerlink" href="#middleware-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Start["Request arrives at&lt;br&gt;protected route"]
+Extract["Extract token from&lt;br&gt;req.cookies.token"]
+CheckToken["Token&lt;br&gt;exists?"]
+Return401["return res.status(401)&lt;br&gt;.send('No autenticado')"]
+Verify["jwt.verify(token,&lt;br&gt;process.env.JWT_SECRET)"]
+ValidToken["Valid?"]
+Return403["return res.status(403)&lt;br&gt;.send('Token inválido')"]
+AttachUser["req.user = payload&lt;br&gt;Attach decoded payload"]
+Next["next()&lt;br&gt;Continue to route handler"]
+End["End"]
+
+Start --&gt; Extract
+Extract --&gt; CheckToken
+CheckToken --&gt; Return401
+CheckToken --&gt; Verify
+Verify --&gt; ValidToken
+ValidToken --&gt; Return403
+ValidToken --&gt; AttachUser
+AttachUser --&gt; Next
+Return401 --&gt; End
+Return403 --&gt; End
+Next --&gt; End</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L1-L18">src/middlewares/verifyToken.js L1-L18</a></p>
+<h3 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link">&para;</a></h3>
+<p>The <code>verifyToken</code> function is implemented at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L3-L15">src/middlewares/verifyToken.js L3-L15</a></p>
+<p>:</p>
+<table>
+<thead>
+<tr>
+<th>Line Range</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>Extract token from <code>req.cookies.token</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Return 401 if no token present</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Verify token using <code>jwt.verify()</code> with <code>JWT_SECRET</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Attach decoded payload to <code>req.user</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Call <code>next()</code> to continue middleware chain</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Return 403 if verification fails</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L3-L15">src/middlewares/verifyToken.js L3-L15</a></p>
+<h3 id="usage-in-routes">Usage in Routes<a class="headerlink" href="#usage-in-routes" title="Permanent link">&para;</a></h3>
+<p>The <code>verifyToken</code> middleware is applied to routes that require any authenticated user:</p>
+<ul>
+<li><code>GET /admin</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L119">src/router.js L119</a></li>
+<li><code>GET /pdfAdmin</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L136-L136">src/router.js L136</a></li>
+<li><code>GET /soporte</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L220">src/router.js L220</a></li>
+<li><code>GET /api/mensajes/mios</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L256">src/router.js L256</a></li>
+<li><code>GET /pdf/descargar</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L317-L317">src/router.js L317</a></li>
+<li><code>GET /pdfkit/descargar</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L355">src/router.js L355</a></li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L119">src/router.js L119</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L136-L136">src/router.js L136</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L220">src/router.js L220</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L256">src/router.js L256</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L317-L317">src/router.js L317</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L355-L355">src/router.js L355</a></p>
+<hr />
+<h2 id="verifyadmin-middleware">verifyAdmin Middleware<a class="headerlink" href="#verifyadmin-middleware" title="Permanent link">&para;</a></h2>
+<p>The <code>verifyAdmin</code> middleware extends authentication by checking if the user has an "admin" role. It performs both token validation and role verification.</p>
+<h3 id="admin-authorization-flow">Admin Authorization Flow<a class="headerlink" href="#admin-authorization-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Start["Request to admin route"]
+GetToken["token = req.cookies.token"]
+CheckToken["Token&lt;br&gt;exists?"]
+Deny403A["return res.status(403)&lt;br&gt;.json({error: 'Acceso denegado'})"]
+VerifyJWT["decoded = jwt.verify(token,&lt;br&gt;process.env.JWT_SECRET)"]
+TryCatch["Verify&lt;br&gt;success?"]
+Invalid403["return res.status(403)&lt;br&gt;.json({error: 'Token inválido'})"]
+CheckRole["decoded.rol&lt;br&gt;== 'admin'?"]
+AdminOnly403["return res.status(403)&lt;br&gt;.json({error: 'Acceso solo&lt;br&gt;para administradores'})"]
+AttachUser["req.user = decoded"]
+Next["next()"]
+End["End"]
+
+Start --&gt; GetToken
+GetToken --&gt; CheckToken
+CheckToken --&gt; Deny403A
+CheckToken --&gt; VerifyJWT
+VerifyJWT --&gt; TryCatch
+TryCatch --&gt; Invalid403
+TryCatch --&gt; CheckRole
+CheckRole --&gt; AdminOnly403
+CheckRole --&gt; AttachUser
+AttachUser --&gt; Next
+Deny403A --&gt; End
+Invalid403 --&gt; End
+AdminOnly403 --&gt; End
+Next --&gt; End</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L24-L42">src/middlewares/verifyAdmin.js L24-L42</a></p>
+<h3 id="verifyadmin-vs-verifytoken">verifyAdmin vs verifyToken<a class="headerlink" href="#verifyadmin-vs-verifytoken" title="Permanent link">&para;</a></h3>
+<p>The key difference between the two middleware functions:</p>
+<table>
+<thead>
+<tr>
+<th>Middleware</th>
+<th>Token Validation</th>
+<th>Role Check</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>verifyToken</code></td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+<td>401/403 on failure</td>
+</tr>
+<tr>
+<td><code>verifyAdmin</code></td>
+<td>✅ Yes</td>
+<td>✅ Yes (must be "admin")</td>
+<td>403 on failure</td>
+</tr>
+</tbody>
+</table>
+<p>Both middleware functions attach the decoded JWT payload to <code>req.user</code> upon success.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L1-L18">src/middlewares/verifyToken.js L1-L18</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L45">src/middlewares/verifyAdmin.js L1-L45</a></p>
+<h3 id="admin-protected-routes">Admin-Protected Routes<a class="headerlink" href="#admin-protected-routes" title="Permanent link">&para;</a></h3>
+<p>The <code>verifyAdmin</code> middleware is applied to administrative routes:</p>
+<ul>
+<li><code>GET /api/mensajes</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a>  - Get messages for specific user</li>
+<li><code>GET /api/usuarios-conversaciones</code> - <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L283">src/router.js L283</a>  - List all user conversations</li>
+</ul>
+<p>Note that <code>GET /admin</code> uses only <code>verifyToken</code>, not <code>verifyAdmin</code>, meaning any authenticated user can access it. This may be a design consideration.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L283">src/router.js L283</a></p>
+<hr />
+<h2 id="authentication-dependencies">Authentication Dependencies<a class="headerlink" href="#authentication-dependencies" title="Permanent link">&para;</a></h2>
+<p>The authentication system relies on the following npm packages:</p>
+<h3 id="core-authentication-libraries">Core Authentication Libraries<a class="headerlink" href="#core-authentication-libraries" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bcryptjs</code></td>
+<td>^3.0.2</td>
+<td>Password hashing and comparison</td>
+</tr>
+<tr>
+<td><code>jsonwebtoken</code></td>
+<td>^9.0.2</td>
+<td>JWT token creation and verification</td>
+</tr>
+<tr>
+<td><code>cookie-parser</code></td>
+<td>^1.4.7</td>
+<td>Parse cookies from request headers</td>
+</tr>
+<tr>
+<td><code>express-validator</code></td>
+<td>^7.2.1</td>
+<td>Input validation for registration</td>
+</tr>
+<tr>
+<td><code>multer</code></td>
+<td>^2.0.2</td>
+<td>File upload handling for profile images</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L12-L12">package-lock.json L12</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L24-L24">package-lock.json L24</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L13-L13">package-lock.json L13</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L21-L21">package-lock.json L21</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L25-L25">package-lock.json L25</a></p>
+<h3 id="security-related-dependencies">Security-Related Dependencies<a class="headerlink" href="#security-related-dependencies" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>helmet</code></td>
+<td>^8.1.0</td>
+<td>Security headers middleware</td>
+</tr>
+<tr>
+<td><code>express-rate-limit</code></td>
+<td>^6.7.0</td>
+<td>Rate limiting for brute force protection</td>
+</tr>
+<tr>
+<td><code>express-session</code></td>
+<td>^1.18.2</td>
+<td>Session management (compatibility)</td>
+</tr>
+<tr>
+<td><code>cookie-session</code></td>
+<td>^2.1.1</td>
+<td>Alternative session storage</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L22-L22">package-lock.json L22</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L19-L19">package-lock.json L19</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L20-L20">package-lock.json L20</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/package-lock.json#L14-L14">package-lock.json L14</a></p>
+<hr />
+<h2 id="logout-process">Logout Process<a class="headerlink" href="#logout-process" title="Permanent link">&para;</a></h2>
+<p>Logout is handled by clearing the JWT token cookie, effectively invalidating the user's session.</p>
+<h3 id="logout-implementation">Logout Implementation<a class="headerlink" href="#logout-implementation" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Client["Client"]
+Handler["Route Handler&lt;br&gt;src/router.js:215-218"]
+ClearCookie["Remove token cookie"]
+Home["Redirect to homepage"]
+
+Client --&gt; Handler
+Handler --&gt; ClearCookie
+ClearCookie --&gt; Home</code></pre>
+<p>The logout route is implemented at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L215-L218">src/router.js L215-L218</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/logout&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">clearCookie</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>This simply removes the <code>token</code> cookie from the client, forcing re-authentication on the next protected route access.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L215-L218">src/router.js L215-L218</a></p>
+<hr />
+<h2 id="jwt-token-access-patterns">JWT Token Access Patterns<a class="headerlink" href="#jwt-token-access-patterns" title="Permanent link">&para;</a></h2>
+<p>The application accesses and validates JWT tokens in multiple contexts throughout the codebase.</p>
+<h3 id="token-access-in-routes">Token Access in Routes<a class="headerlink" href="#token-access-in-routes" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+HomePage["GET /&lt;br&gt;src/router.js:59-74"]
+AdminPage["GET /admin&lt;br&gt;verifyToken"]
+SoportePage["GET /soporte&lt;br&gt;verifyToken"]
+MessagesAPI["GET /api/mensajes&lt;br&gt;verifyAdmin"]
+OptionalToken["Optional Token&lt;br&gt;jwt.verify() in route handler"]
+MiddlewareToken["Required Token&lt;br&gt;verifyToken middleware"]
+AdminToken["Admin Token&lt;br&gt;verifyAdmin middleware"]
+Cookie["req.cookies.token"]
+
+HomePage --&gt; OptionalToken
+AdminPage --&gt; MiddlewareToken
+SoportePage --&gt; MiddlewareToken
+MessagesAPI --&gt; AdminToken
+OptionalToken --&gt; Cookie
+MiddlewareToken --&gt; Cookie
+AdminToken --&gt; Cookie
+
+subgraph subGraph2 ["Token Validation Methods"]
+    OptionalToken
+    MiddlewareToken
+    AdminToken
+end
+
+subgraph subGraph1 ["Protected Routes"]
+    AdminPage
+    SoportePage
+    MessagesAPI
+end
+
+subgraph subGraph0 ["Public Routes"]
+    HomePage
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L59-L74">src/router.js L59-L74</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L119-L119">src/router.js L119</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L220-L220">src/router.js L220</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L229">src/router.js L229</a></p>
+<h3 id="optional-token-validation-on-homepage">Optional Token Validation on Homepage<a class="headerlink" href="#optional-token-validation-on-homepage" title="Permanent link">&para;</a></h3>
+<p>The homepage route (<code>GET /</code>) performs optional token validation at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L61-L73">src/router.js L61-L73</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">cookies</span><span class="p">.</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">cookies</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">payload</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;Usuario&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">login</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Debe iniciar sesión&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">login</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This pattern allows the homepage to display personalized content for authenticated users without requiring authentication.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L61-L73">src/router.js L61-L73</a></p>
+<hr />
+<h2 id="request-user-object-structure">Request User Object Structure<a class="headerlink" href="#request-user-object-structure" title="Permanent link">&para;</a></h2>
+<p>After successful authentication via <code>verifyToken</code> or <code>verifyAdmin</code>, the decoded JWT payload is attached to <code>req.user</code> with the following structure:</p>
+<h3 id="requser-properties">req.user Properties<a class="headerlink" href="#requser-properties" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user</code></td>
+<td>string</td>
+<td><code>usuarios.usuario</code></td>
+<td>Username (primary key)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td><code>usuarios.nombre</code></td>
+<td>User's full name</td>
+</tr>
+<tr>
+<td><code>rol</code></td>
+<td>string</td>
+<td><code>usuarios.rol</code></td>
+<td>Role: "user" or "admin"</td>
+</tr>
+<tr>
+<td><code>imagen</code></td>
+<td>string</td>
+<td><code>usuarios.imagen</code></td>
+<td>Profile image filename</td>
+</tr>
+</tbody>
+</table>
+<p>This object is available in all route handlers that use <code>verifyToken</code> or <code>verifyAdmin</code> middleware, and can be accessed as <code>req.user</code>.</p>
+<p><strong>Example usage in admin route</strong> at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L125-L131">src/router.js L125-L131</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">res.render(&quot;admin&quot;, {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">productos</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">results,</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">req.user,</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">login</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">rol</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">req.user.rol,</span>
+<span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L559-L564">src/router.js L559-L564</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L10-L10">src/middlewares/verifyToken.js L10</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L36-L36">src/middlewares/verifyAdmin.js L36</a></p>
+<hr />
+<h2 id="rate-limiting-for-authentication">Rate Limiting for Authentication<a class="headerlink" href="#rate-limiting-for-authentication" title="Permanent link">&para;</a></h2>
+<p>The login route uses rate limiting to prevent brute force attacks. The <code>authLimiter</code> middleware is applied at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L532">src/router.js L532</a></p>
+<h3 id="rate-limiter-configuration">Rate Limiter Configuration<a class="headerlink" href="#rate-limiter-configuration" title="Permanent link">&para;</a></h3>
+<p>The <code>limiter</code> is imported from <code>./middlewares/authLimiter</code> and applied specifically to the <code>POST /auth</code> route:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/auth&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">limiter</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p>This occurs at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L532">src/router.js L532</a></p>
+<p><strong>Note:</strong> The actual configuration of the rate limiter (max requests, time window) is defined in <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/authLimiter.js">src/middlewares/authLimiter.js</a></p>
+<p>which is imported at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L21-L21">src/router.js L21</a></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L21-L21">src/router.js L21</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L532">src/router.js L532</a></p>
+<hr />
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<p>The authentication system implements several security best practices:</p>
+<h3 id="security-measures-summary">Security Measures Summary<a class="headerlink" href="#security-measures-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Implementation</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Password Hashing</td>
+<td>bcrypt with salt round 8</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L453-L453">src/router.js L453</a></td>
+</tr>
+<tr>
+<td>HTTP-only Cookies</td>
+<td><code>httpOnly: true</code> flag</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L571-L571">src/router.js L571</a></td>
+</tr>
+<tr>
+<td>Token Expiration</td>
+<td>1 hour expiry</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L567-L567">src/router.js L567</a> <br>  <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L573-L573">src/router.js L573</a></td>
+</tr>
+<tr>
+<td>Rate Limiting</td>
+<td>Applied to login route</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L532-L532">src/router.js L532</a></td>
+</tr>
+<tr>
+<td>Input Validation</td>
+<td>express-validator on registration</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L415-L428">src/router.js L415-L428</a></td>
+</tr>
+<tr>
+<td>Role-Based Access</td>
+<td>verifyAdmin middleware</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L24-L42">src/middlewares/verifyAdmin.js L24-L42</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="http-only-cookie-benefits">HTTP-only Cookie Benefits<a class="headerlink" href="#http-only-cookie-benefits" title="Permanent link">&para;</a></h3>
+<p>The <code>httpOnly: true</code> flag at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L571-L571">src/router.js L571</a></p>
+<p>prevents JavaScript access to the token cookie, mitigating XSS attack vectors. The cookie is only transmitted with HTTP requests.</p>
+<h3 id="secure-flag-configuration">Secure Flag Configuration<a class="headerlink" href="#secure-flag-configuration" title="Permanent link">&para;</a></h3>
+<p>The <code>secure: false</code> flag at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L572-L572">src/router.js L572</a></p>
+<p>should be set to <code>true</code> in production environments using HTTPS:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">res.cookie(&quot;token&quot;, token, {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">httpOnly</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">secure</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false,  // ⚠️ Set to true for HTTPS in production</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">maxAge</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600000</span>
+<span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L570-L574">src/router.js L570-L574</a></p>
+<hr />
+<h2 id="authentication-error-handling">Authentication Error Handling<a class="headerlink" href="#authentication-error-handling" title="Permanent link">&para;</a></h2>
+<p>The authentication system returns specific HTTP status codes and error messages for different failure scenarios.</p>
+<h3 id="error-response-table">Error Response Table<a class="headerlink" href="#error-response-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Scenario</th>
+<th>Middleware/Route</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>401</td>
+<td>No token present</td>
+<td><code>verifyToken</code></td>
+<td>"No autenticado"</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Invalid token</td>
+<td><code>verifyToken</code></td>
+<td>"Token inválido"</td>
+</tr>
+<tr>
+<td>403</td>
+<td>No token present</td>
+<td><code>verifyAdmin</code></td>
+<td><code>{error: "Acceso denegado"}</code></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Invalid token</td>
+<td><code>verifyAdmin</code></td>
+<td><code>{error: "Token inválido"}</code></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Valid token but not admin</td>
+<td><code>verifyAdmin</code></td>
+<td><code>{error: "Acceso solo para administradores"}</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L6-L6">src/middlewares/verifyToken.js L6</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L13-L13">src/middlewares/verifyToken.js L13</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L28-L28">src/middlewares/verifyAdmin.js L28</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L40-L40">src/middlewares/verifyAdmin.js L40</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L34-L34">src/middlewares/verifyAdmin.js L34</a></p>
+<h3 id="login-error-rendering">Login Error Rendering<a class="headerlink" href="#login-error-rendering" title="Permanent link">&para;</a></h3>
+<p>The login route handles authentication failures by re-rendering the login form with error alerts:</p>
+<p><strong>Invalid credentials</strong> at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L545-L556">src/router.js L545-L556</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">return res.render(&quot;login&quot;, {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">alert</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">alertTitle</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">alertMessage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;El</span><span class="nv"> </span><span class="s">usuario</span><span class="nv"> </span><span class="s">o</span><span class="nv"> </span><span class="s">la</span><span class="nv"> </span><span class="s">contraseña</span><span class="nv"> </span><span class="s">son</span><span class="nv"> </span><span class="s">incorrectos&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">alertIcon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">showConfirmButton</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">    </span><span class="nt">timer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false,</span>
+<span class="w">    </span><span class="nt">ruta</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;login&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">login</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false,</span>
+<span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<p><strong>Missing credentials</strong> at <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L590-L600">src/router.js L590-L600</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">res.render(&quot;login&quot;, {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">alert</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">alertTitle</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">alertMessage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Introduzca</span><span class="nv"> </span><span class="s">su</span><span class="nv"> </span><span class="s">usuario</span><span class="nv"> </span><span class="s">y</span><span class="nv"> </span><span class="s">contraseña&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">alertIcon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">showConfirmButton</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">    </span><span class="nt">timer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false,</span>
+<span class="w">    </span><span class="nt">ruta</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;login&quot;</span><span class="err">,</span>
+<span class="w">    </span><span class="nt">login</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false,</span>
+<span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L545-L556">src/router.js L545-L556</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L590-L600">src/router.js L590-L600</a></p>
+<hr />
+<h2 id="summary-authentication-component-map">Summary: Authentication Component Map<a class="headerlink" href="#summary-authentication-component-map" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+PostAuth["POST /auth"]
+PostRegister["POST /register"]
+GetLogout["GET /logout"]
+BCryptHash["bcrypt.hash()"]
+BCryptCompare["bcrypt.compare()"]
+JWTSign["jwt.sign()"]
+JWTVerify["jwt.verify()"]
+VerifyToken["verifyToken&lt;br&gt;src/middlewares/verifyToken.js"]
+VerifyAdmin["verifyAdmin&lt;br&gt;src/middlewares/verifyAdmin.js"]
+AuthLimiter["authLimiter&lt;br&gt;src/middlewares/authLimiter.js"]
+TokenCookie["Cookie: token&lt;br&gt;httpOnly: true&lt;br&gt;maxAge: 3600000"]
+UsuariosTable["MySQL Table: usuarios&lt;br&gt;columns: usuario, nombre,&lt;br&gt;rol, pass, imagen"]
+
+PostRegister --&gt; BCryptHash
+BCryptHash --&gt; UsuariosTable
+PostAuth --&gt; AuthLimiter
+PostAuth --&gt; BCryptCompare
+PostAuth --&gt; JWTSign
+JWTSign --&gt; TokenCookie
+GetLogout --&gt; TokenCookie
+TokenCookie --&gt; VerifyToken
+TokenCookie --&gt; VerifyAdmin
+VerifyToken --&gt; JWTVerify
+VerifyAdmin --&gt; JWTVerify
+UsuariosTable --&gt; BCryptCompare
+
+subgraph subGraph3 ["Storage &amp; State"]
+    TokenCookie
+    UsuariosTable
+end
+
+subgraph subGraph2 ["Middleware Exports"]
+    VerifyToken
+    VerifyAdmin
+    AuthLimiter
+end
+
+subgraph subGraph1 ["Core Functions"]
+    BCryptHash
+    BCryptCompare
+    JWTSign
+    JWTVerify
+end
+
+subgraph subGraph0 ["Entry Points"]
+    PostAuth
+    PostRegister
+    GetLogout
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L1-L608">src/router.js L1-L608</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js#L1-L18">src/middlewares/verifyToken.js L1-L18</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js#L1-L45">src/middlewares/verifyAdmin.js L1-L45</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
