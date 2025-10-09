@@ -1,0 +1,2772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="Page-Views.html">
+      
+      
+        <link rel="next" href="Database-Schema.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Static Assets & Styling - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#static-assets-styling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Static Assets & Styling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-asset-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Asset Directory Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#css-stylesheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Stylesheets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CSS Stylesheets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-stylesheet-stylecss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Stylesheet (style.css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-stylesheet-bodycss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Body Stylesheet (body.css)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font Assets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Images
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-uploaded-profile-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-Uploaded Profile Images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-file-serving-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static File Serving Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset-references-in-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asset References in Templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asset References in Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css-linking-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Linking Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-reference-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Reference Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#font-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font Loading
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#styling-components-and-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Styling Components and Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Styling Components and Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#form-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Form Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-menu-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Menu Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footer-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Footer Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Effects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-uploaded-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-Uploaded Files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-specific-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language-Specific Assets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-asset-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Asset Directory Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#css-stylesheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Stylesheets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CSS Stylesheets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-stylesheet-stylecss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Stylesheet (style.css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-stylesheet-bodycss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Body Stylesheet (body.css)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font Assets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Images
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-uploaded-profile-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-Uploaded Profile Images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-file-serving-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static File Serving Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset-references-in-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asset References in Templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Asset References in Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css-linking-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Linking Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-reference-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Reference Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#font-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Font Loading
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#styling-components-and-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Styling Components and Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Styling Components and Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#form-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Form Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-menu-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Menu Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footer-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Footer Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Effects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-uploaded-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-Uploaded Files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-specific-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language-Specific Assets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="static-assets-styling">Static Assets &amp; Styling<a class="headerlink" href="#static-assets-styling" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/docs/fonts/Montserrat/Montserrat-Bold.ttf">docs/fonts/Montserrat/Montserrat-Bold.ttf</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css">public/css/style.css</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs">views/admin.ejs</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs">views/index.ejs</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs">views/register.ejs</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>This document covers the organization, configuration, and usage of static assets in the registro-sesiones application, including CSS stylesheets, font files, images, and user-uploaded content. For information about the EJS view templates that reference these assets, see <a href="Template-Structure.html">View Layer &amp; Templates</a>. For details on how static files are served via Express middleware, see <a href="Application-Bootstrap.html">Application Bootstrap</a>.</p>
+<hr />
+<h2 id="static-asset-directory-structure">Static Asset Directory Structure<a class="headerlink" href="#static-asset-directory-structure" title="Permanent link">&para;</a></h2>
+<p>The application organizes static assets across multiple directories that are served by Express. The primary locations are <code>public/</code> for application assets and <code>docs/fonts/</code> for typography.</p>
+<pre class="mermaid"><code>flowchart TD
+
+Public["public/&lt;br&gt;Main static assets"]
+Docs["docs/fonts/&lt;br&gt;Font files"]
+CSS["css/&lt;br&gt;Stylesheets"]
+Resources["resources/&lt;br&gt;Media assets"]
+StyleCSS["css/style.css&lt;br&gt;Main stylesheet"]
+BodyCSS["css/body.css&lt;br&gt;Body-specific styles"]
+Img["resources/img/&lt;br&gt;Application images"]
+Uploads["resources/uploads/&lt;br&gt;User profile images"]
+Montserrat["Montserrat/&lt;br&gt;Montserrat font family"]
+OpenSans["Open Sans/&lt;br&gt;Open Sans font family"]
+MontserratBold["Montserrat-Bold.ttf"]
+MontserratRegular["Montserrat-Regular.ttf"]
+
+Public --&gt; CSS
+Public --&gt; Resources
+Docs --&gt; Montserrat
+Docs --&gt; OpenSans
+
+subgraph subGraph2 ["docs/fonts/ Structure"]
+    Montserrat
+    OpenSans
+    MontserratBold
+    MontserratRegular
+    Montserrat --&gt; MontserratBold
+    Montserrat --&gt; MontserratRegular
+end
+
+subgraph subGraph1 ["public/ Structure"]
+    CSS
+    Resources
+    StyleCSS
+    BodyCSS
+    Img
+    Uploads
+    CSS --&gt; StyleCSS
+    CSS --&gt; BodyCSS
+    Resources --&gt; Img
+    Resources --&gt; Uploads
+end
+
+subgraph subGraph0 ["Static Asset Locations"]
+    Public
+    Docs
+end</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/index.ejs#L1-L35">views/index.ejs L1-L35</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L1-L85">views/register.ejs L1-L85</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L1-L71">views/admin.ejs L1-L71</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/docs/fonts/Montserrat/Montserrat-Bold.ttf#L1-L10">docs/fonts/Montserrat/Montserrat-Bold.ttf L1-L10</a></p>
+<hr />
+<h2 id="css-stylesheets">CSS Stylesheets<a class="headerlink" href="#css-stylesheets" title="Permanent link">&para;</a></h2>
+<p>The application uses two primary CSS files to style the user interface. Both are located in the <code>public/css/</code> directory and served as static assets.</p>
+<h3 id="main-stylesheet-stylecss">Main Stylesheet (style.css)<a class="headerlink" href="#main-stylesheet-stylecss" title="Permanent link">&para;</a></h3>
+<p>The primary stylesheet <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L1-L353">public/css/style.css L1-L353</a></p>
+<p>contains the majority of application styles organized into logical sections:</p>
+<table>
+<thead>
+<tr>
+<th>Style Category</th>
+<th>Lines</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global body styles</td>
+<td>1-6</td>
+<td>Sets background, font, margins, text alignment</td>
+</tr>
+<tr>
+<td>Language switcher</td>
+<td>8-12</td>
+<td>Active state styling for language selection</td>
+</tr>
+<tr>
+<td>Form containers</td>
+<td>14-22</td>
+<td>Login and content container widths</td>
+</tr>
+<tr>
+<td>Login form</td>
+<td>24-60</td>
+<td>Input fields, login button styling</td>
+</tr>
+<tr>
+<td>Register button</td>
+<td>63-88</td>
+<td>Registration button with hover effects</td>
+</tr>
+<tr>
+<td>Logout link</td>
+<td>95-110</td>
+<td>Styled anchor for logout action</td>
+</tr>
+<tr>
+<td>Cancel/Save buttons</td>
+<td>113-167</td>
+<td>Form action buttons</td>
+</tr>
+<tr>
+<td>Registration form</td>
+<td>170-193</td>
+<td>User registration form container</td>
+</tr>
+<tr>
+<td>Select dropdowns</td>
+<td>196-223</td>
+<td>Styled select elements</td>
+</tr>
+<tr>
+<td>Login link</td>
+<td>226-241</td>
+<td>Styled anchor for login action</td>
+</tr>
+<tr>
+<td>Navigation menu</td>
+<td>249-276</td>
+<td>Menu bar and navigation items</td>
+</tr>
+<tr>
+<td>Footer</td>
+<td>279-331</td>
+<td>Footer layout and styling</td>
+</tr>
+<tr>
+<td>Image effects</td>
+<td>335-352</td>
+<td>Hover effects for images</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Style Patterns:</strong></p>
+<p>The stylesheet follows a consistent button styling pattern with hover and focus states:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">btn-</span><span class="p">{</span><span class="err">type</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">percentage</span><span class="p">]</span><span class="o">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kc">color</span><span class="p">];</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">btn-</span><span class="p">{</span><span class="err">type</span><span class="p">}:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">darker-color</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">btn-</span><span class="p">{</span><span class="err">type</span><span class="p">}:</span><span class="nd">focus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="p">[</span><span class="n">darker-color</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Color Palette:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element Type</th>
+<th>Primary Color</th>
+<th>Hover Color</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login button</td>
+<td><code>#223172</code></td>
+<td><code>#20369b</code></td>
+<td>Primary authentication action</td>
+</tr>
+<tr>
+<td>Register button</td>
+<td><code>#158b36</code></td>
+<td><code>#14ad3f</code></td>
+<td>User registration action</td>
+</tr>
+<tr>
+<td>Cancel button</td>
+<td><code>#9ca3af</code></td>
+<td><code>#6b7280</code></td>
+<td>Form cancellation</td>
+</tr>
+<tr>
+<td>Save button</td>
+<td><code>#1d4ed8</code></td>
+<td><code>#1e3a8a</code></td>
+<td>Data persistence</td>
+</tr>
+<tr>
+<td>Logout link</td>
+<td>Border <code>#f87171</code></td>
+<td><code>#f87171</code></td>
+<td>Session termination</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td><code>#20369b</code></td>
+<td><code>#158b36</code></td>
+<td>Menu navigation</td>
+</tr>
+<tr>
+<td>Footer</td>
+<td><code>#143d20</code></td>
+<td>N/A</td>
+<td>Footer background</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L1-L353">public/css/style.css L1-L353</a></p>
+<h3 id="body-stylesheet-bodycss">Body Stylesheet (body.css)<a class="headerlink" href="#body-stylesheet-bodycss" title="Permanent link">&para;</a></h3>
+<p>A secondary stylesheet is referenced in the registration page <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L2-L2">views/register.ejs L2</a></p>
+<p>but the file itself is not included in the provided codebase. This likely contains body-specific styling overrides for the registration view.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L2-L2">views/register.ejs L2</a></p>
+<hr />
+<h2 id="font-assets">Font Assets<a class="headerlink" href="#font-assets" title="Permanent link">&para;</a></h2>
+<p>The application uses custom web fonts stored in the <code>docs/fonts/</code> directory, which is served as a static directory by the Express application.</p>
+<pre class="mermaid"><code>flowchart TD
+
+Montserrat["Montserrat Font Family&lt;br&gt;docs/fonts/Montserrat/"]
+OpenSans["Open Sans Font Family&lt;br&gt;docs/fonts/Open Sans/"]
+MBold["Montserrat-Bold.ttf&lt;br&gt;Weight: 700"]
+MRegular["Montserrat-Regular.ttf&lt;br&gt;Weight: 400"]
+MOther["Other weights&lt;br&gt;and variants"]
+FontFace["@font-face declarations"]
+BodyFont["body { font-family: roboto }"]
+
+Montserrat --&gt; MBold
+Montserrat --&gt; MRegular
+Montserrat --&gt; MOther
+MBold --&gt; FontFace
+MRegular --&gt; FontFace
+
+subgraph subGraph2 ["Usage in CSS"]
+    FontFace
+    BodyFont
+    FontFace --&gt; BodyFont
+end
+
+subgraph subGraph1 ["Montserrat Variants"]
+    MBold
+    MRegular
+    MOther
+end
+
+subgraph subGraph0 ["Font Files"]
+    Montserrat
+    OpenSans
+end</code></pre>
+<p><strong>Font Configuration:</strong></p>
+<p>The Montserrat font family includes multiple weight and style variants:</p>
+<ul>
+<li><strong>Montserrat-Bold.ttf</strong> - Bold weight (700) for headings and emphasis <a href="https://github.com/moichuelo/registro/blob/544abbcc/docs/fonts/Montserrat/Montserrat-Bold.ttf#L1-L10">docs/fonts/Montserrat/Montserrat-Bold.ttf L1-L10</a></li>
+<li>Additional variants for Regular, Light, Italic, etc. (referenced in Diagram 6 of architecture)</li>
+</ul>
+<p>The body text uses the Roboto font family as specified in <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L3-L3">public/css/style.css L3</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/docs/fonts/Montserrat/Montserrat-Bold.ttf#L1-L10">docs/fonts/Montserrat/Montserrat-Bold.ttf L1-L10</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L3-L3">public/css/style.css L3</a></p>
+<hr />
+<h2 id="image-resources">Image Resources<a class="headerlink" href="#image-resources" title="Permanent link">&para;</a></h2>
+<h3 id="application-images">Application Images<a class="headerlink" href="#application-images" title="Permanent link">&para;</a></h3>
+<p>Application images such as flags for language selection and UI icons are stored in <code>public/resources/img/</code>. These are referenced in the header partial for the language switcher functionality.</p>
+<pre class="mermaid"><code>flowchart TD
+
+ImgDir["public/resources/img/"]
+Flags["Language flags&lt;br&gt;en.png, es.png"]
+Icons["UI icons&lt;br&gt;Various icons"]
+Header["partials/header.ejs&lt;br&gt;Language switcher"]
+Views["Various view templates&lt;br&gt;UI elements"]
+
+Flags --&gt; Header
+Icons --&gt; Views
+
+subgraph subGraph1 ["Usage Locations"]
+    Header
+    Views
+end
+
+subgraph subGraph0 ["Image Resource Structure"]
+    ImgDir
+    Flags
+    Icons
+    ImgDir --&gt; Flags
+    ImgDir --&gt; Icons
+end</code></pre>
+<h3 id="user-uploaded-profile-images">User-Uploaded Profile Images<a class="headerlink" href="#user-uploaded-profile-images" title="Permanent link">&para;</a></h3>
+<p>User profile images are uploaded during registration and stored in <code>public/resources/uploads/</code>. The admin view displays these images <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L4-L7">views/admin.ejs L4-L7</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Upload Directory:</strong> <code>public/resources/uploads/</code>
+<strong>Reference Pattern:</strong> <code>/resources/uploads/&lt;filename&gt;</code>
+<strong>Display Styling:</strong> Circular (50% border-radius), 100px width</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L4-L7">views/admin.ejs L4-L7</a></p>
+<hr />
+<h2 id="static-file-serving-configuration">Static File Serving Configuration<a class="headerlink" href="#static-file-serving-configuration" title="Permanent link">&para;</a></h2>
+<p>Express serves static files from multiple directories configured in the application bootstrap. The configuration maps URL paths to filesystem directories.</p>
+<pre class="mermaid"><code>flowchart TD
+
+App["Express App&lt;br&gt;index.js"]
+PublicMiddleware["express.static('public')&lt;br&gt;Serves /public/*"]
+ResourcesMiddleware["express.static('public')&lt;br&gt;Mount at /resources"]
+DocsMiddleware["express.static('docs')&lt;br&gt;Serves /docs/*"]
+CSSRoute["/css/style.css&lt;br&gt;→ public/css/style.css"]
+ImgRoute["/resources/img/→ public/resources/img/"]
+UploadsRoute["/resources/uploads/→ public/resources/uploads/"]
+FontRoute["/docs/fonts/→ docs/fonts/"]
+
+PublicMiddleware --&gt; CSSRoute
+ResourcesMiddleware --&gt; ImgRoute
+ResourcesMiddleware --&gt; UploadsRoute
+DocsMiddleware --&gt; FontRoute
+
+subgraph subGraph1 ["URL Mappings"]
+    CSSRoute
+    ImgRoute
+    UploadsRoute
+    FontRoute
+end
+
+subgraph subGraph0 ["Express Static Middleware"]
+    App
+    PublicMiddleware
+    ResourcesMiddleware
+    DocsMiddleware
+    App --&gt; PublicMiddleware
+    App --&gt; ResourcesMiddleware
+    App --&gt; DocsMiddleware
+end</code></pre>
+<p><strong>Static Middleware Configuration:</strong></p>
+<p>The Express application configures static file serving in <code>index.js</code>:</p>
+<ol>
+<li><strong>Public directory</strong> - Serves all files from <code>public/</code> directly</li>
+<li><strong>Resources mounting</strong> - Mounts <code>public/</code> at <code>/resources</code> path</li>
+<li><strong>Docs directory</strong> - Serves font files from <code>docs/</code></li>
+</ol>
+<p>The specific middleware calls would be structured as:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> Architecture Diagram 6 from context, inferred from <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L5-L5">views/admin.ejs L5</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L2-L2">views/register.ejs L2</a></p>
+<hr />
+<h2 id="asset-references-in-templates">Asset References in Templates<a class="headerlink" href="#asset-references-in-templates" title="Permanent link">&para;</a></h2>
+<p>EJS templates reference static assets using absolute paths from the web root. The application uses a consistent pattern for linking CSS, images, and fonts.</p>
+<h3 id="css-linking-pattern">CSS Linking Pattern<a class="headerlink" href="#css-linking-pattern" title="Permanent link">&para;</a></h3>
+<p>The <code>partials/head.ejs</code> template contains standard CSS links:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p>Some views include additional stylesheets <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L2-L2">views/register.ejs L2</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="image-reference-pattern">Image Reference Pattern<a class="headerlink" href="#image-reference-pattern" title="Permanent link">&para;</a></h3>
+<p>Profile images use the <code>/resources/uploads/</code> path <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L5-L5">views/admin.ejs L5</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="font-loading">Font Loading<a class="headerlink" href="#font-loading" title="Permanent link">&para;</a></h3>
+<p>Font files are loaded via CSS <code>@font-face</code> declarations (not shown in provided files but referenced in architecture) from <code>/docs/fonts/</code> paths.</p>
+<p><strong>Reference Path Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Asset Type</th>
+<th>Template Path</th>
+<th>Filesystem Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main CSS</td>
+<td><code>/css/style.css</code></td>
+<td><code>public/css/style.css</code></td>
+</tr>
+<tr>
+<td>Body CSS</td>
+<td><code>/resources/css/body.css</code></td>
+<td><code>public/resources/css/body.css</code></td>
+</tr>
+<tr>
+<td>Profile images</td>
+<td><code>/resources/uploads/&lt;filename&gt;</code></td>
+<td><code>public/resources/uploads/&lt;filename&gt;</code></td>
+</tr>
+<tr>
+<td>Application images</td>
+<td><code>/resources/img/&lt;filename&gt;</code></td>
+<td><code>public/resources/img/&lt;filename&gt;</code></td>
+</tr>
+<tr>
+<td>Font files</td>
+<td><code>/docs/fonts/&lt;family&gt;/&lt;file&gt;</code></td>
+<td><code>docs/fonts/&lt;family&gt;/&lt;file&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L2-L2">views/register.ejs L2</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L4-L7">views/admin.ejs L4-L7</a></p>
+<hr />
+<h2 id="styling-components-and-patterns">Styling Components and Patterns<a class="headerlink" href="#styling-components-and-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="form-styling">Form Styling<a class="headerlink" href="#form-styling" title="Permanent link">&para;</a></h3>
+<p>The application implements consistent form styling across login and registration views:</p>
+<p>**Login Form Structure <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L14-L38">public/css/style.css L14-L38</a></p>
+<p>:**</p>
+<ul>
+<li>Container width: 30% centered with auto margins</li>
+<li>Input fields: Full width with 15px padding, 1px solid border (#ced4da)</li>
+<li>Consistent 10px bottom margin between fields</li>
+</ul>
+<p>**Registration Form Structure <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L170-L193">public/css/style.css L170-L193</a></p>
+<p>:**</p>
+<ul>
+<li>Container width: 400px centered</li>
+<li>Padding: 0px 20px 60px 20px</li>
+<li>Box shadow for elevation effect</li>
+<li>Left-aligned text (overriding body center alignment)</li>
+</ul>
+<h3 id="button-system">Button System<a class="headerlink" href="#button-system" title="Permanent link">&para;</a></h3>
+<p>The application uses a comprehensive button system with semantic naming:</p>
+<pre class="mermaid"><code>flowchart TD
+
+LoginLink["a-login&lt;br&gt;#14ad3f border/bg&lt;br&gt;Navigation to login"]
+LogoutLink["a-logout&lt;br&gt;#f87171 border/bg&lt;br&gt;Session termination"]
+Login["btn-login&lt;br&gt;#223172 → #20369b&lt;br&gt;Primary authentication"]
+Register["btn-register&lt;br&gt;#158b36 → #14ad3f&lt;br&gt;User registration"]
+Save["btn-save&lt;br&gt;#1d4ed8 → #1e3a8a&lt;br&gt;Data persistence"]
+Cancel["btn-cancel&lt;br&gt;#9ca3af → #6b7280&lt;br&gt;Form cancellation"]
+Normal["Normal state&lt;br&gt;Base color"]
+Hover["Hover state&lt;br&gt;Darker color"]
+Focus["Focus state&lt;br&gt;Box shadow ring"]
+
+Login --&gt; Normal
+Register --&gt; Normal
+Save --&gt; Normal
+Cancel --&gt; Normal
+
+subgraph States ["States"]
+    Normal
+    Hover
+    Focus
+    Normal --&gt; Hover
+    Hover --&gt; Focus
+end
+
+subgraph subGraph0 ["Button Types and Colors"]
+    Login
+    Register
+    Save
+    Cancel
+end
+
+subgraph subGraph1 ["Link Styles"]
+    LoginLink
+    LogoutLink
+end</code></pre>
+<p><strong>Button Specifications:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Width</th>
+<th>Background</th>
+<th>Hover</th>
+<th>Focus Shadow</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.btn-login</code></td>
+<td>100%</td>
+<td><code>#223172</code></td>
+<td><code>#20369b</code></td>
+<td><code>#20369b</code> 3px</td>
+<td>Login authentication</td>
+</tr>
+<tr>
+<td><code>.btn-register</code></td>
+<td>100%</td>
+<td><code>#158b36</code></td>
+<td><code>#14ad3f</code></td>
+<td><code>#14ad3f</code> 3px</td>
+<td>New user registration</td>
+</tr>
+<tr>
+<td><code>.btn-save</code></td>
+<td>50%</td>
+<td><code>#1d4ed8</code></td>
+<td><code>#1e3a8a</code></td>
+<td><code>#1e3a8a</code> 3px</td>
+<td>Form submission</td>
+</tr>
+<tr>
+<td><code>.btn-cancel</code></td>
+<td>50%</td>
+<td><code>#9ca3af</code></td>
+<td><code>#6b7280</code></td>
+<td><code>#6b7280</code> 3px</td>
+<td>Form cancellation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L41-L167">public/css/style.css L41-L167</a></p>
+<h3 id="navigation-menu-styling">Navigation Menu Styling<a class="headerlink" href="#navigation-menu-styling" title="Permanent link">&para;</a></h3>
+<p>The navigation system uses a custom list-based menu <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L249-L276">public/css/style.css L249-L276</a></p>
+<p>:</p>
+<p><strong>Structure:</strong></p>
+<ul>
+<li><code>.menunave</code> - Container with max-width 1100px, centered</li>
+<li><code>.nave-lista</code> - Unordered list with no list-style</li>
+<li><code>.nave-item</code> - Inline display for horizontal layout</li>
+<li><code>.nave-link</code> - Styled anchors with background color</li>
+</ul>
+<p><strong>Link Styling:</strong></p>
+<ul>
+<li>Background: <code>#20369b</code> (navy blue)</li>
+<li>Text: White</li>
+<li>Padding: 10px 20px</li>
+<li>Border-radius: 5px</li>
+<li>Hover background: <code>#158b36</code> (green)</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L249-L276">public/css/style.css L249-L276</a></p>
+<h3 id="footer-styling">Footer Styling<a class="headerlink" href="#footer-styling" title="Permanent link">&para;</a></h3>
+<p>The footer uses a flexbox layout for responsive design <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L279-L331">public/css/style.css L279-L331</a></p>
+<p>:</p>
+<p><strong>Structure:</strong></p>
+<ul>
+<li>Background: <code>#143d20</code> (dark green)</li>
+<li>Color: White</li>
+<li><code>.footer-container</code> - Flexbox with space-between justification</li>
+<li><code>.footer-section</code> - Flexible sections with min-width 200px</li>
+<li><code>.footer-bottom</code> - Copyright/credits section</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L279-L331">public/css/style.css L279-L331</a></p>
+<h3 id="image-effects">Image Effects<a class="headerlink" href="#image-effects" title="Permanent link">&para;</a></h3>
+<p>The application includes hover effects for images <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L335-L352">public/css/style.css L335-L352</a></p>
+<p>:</p>
+<p><strong>Hover Effect Specification:</strong></p>
+<ul>
+<li>Transform: <code>scale(1.1)</code> - 110% size increase</li>
+<li>Filter: <code>brightness(1.2)</code> - 20% brightness increase</li>
+<li>Transition: 0.5s ease for smooth animation</li>
+<li>Container: Border-radius 10px with overflow hidden</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L335-L352">public/css/style.css L335-L352</a></p>
+<hr />
+<h2 id="user-uploaded-files">User-Uploaded Files<a class="headerlink" href="#user-uploaded-files" title="Permanent link">&para;</a></h2>
+<p>The application handles user profile images through the registration process and stores them in the static uploads directory.</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Upload Configuration:</strong></p>
+<p>Registration form accepts image files <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L35-L36">views/register.ejs L35-L36</a></p>
+<p>:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p>The form uses <code>enctype="multipart/form-data"</code> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L7-L7">views/register.ejs L7</a></p>
+<p>to support file uploads.</p>
+<p><strong>Storage Location:</strong> <code>public/resources/uploads/</code></p>
+<p><strong>Display Implementation:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L4-L7">views/admin.ejs L4-L7</a></p>
+<ul>
+<li>Conditional rendering based on <code>user.imagen</code> field</li>
+<li>Circular styling with 50% border-radius</li>
+<li>Fixed width of 100px</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L7-L7">views/register.ejs L7</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/register.ejs#L35-L36">views/register.ejs L35-L36</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/admin.ejs#L4-L7">views/admin.ejs L4-L7</a></p>
+<hr />
+<h2 id="language-specific-assets">Language-Specific Assets<a class="headerlink" href="#language-specific-assets" title="Permanent link">&para;</a></h2>
+<p>The application supports internationalization with language-specific image assets for the language switcher in the header.</p>
+<p><strong>Language Flags:</strong></p>
+<ul>
+<li><code>public/resources/img/</code> contains flag images</li>
+<li>Spanish flag for <code>es</code> locale</li>
+<li>English flag for <code>en</code> locale</li>
+</ul>
+<p>The language switcher is implemented in <code>partials/header.ejs</code> (referenced in architecture) and uses these flag images to provide visual indicators for language selection.</p>
+<p>**Active Language Styling <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L8-L12">public/css/style.css L8-L12</a></p>
+<p>:**</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L8-L12">public/css/style.css L8-L12</a></p>
+<p>Architecture Diagram 6 from context</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

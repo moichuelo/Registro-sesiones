@@ -1,0 +1,2553 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="productos-Table.html">
+      
+      
+        <link rel="next" href="API-Reference.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>mensajes Table - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mensajes-table" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              mensajes Table
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="mensajes-Table.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entity Relationship Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#column-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Descriptions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Column Descriptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de_usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      de_usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para_usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      para_usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      mensaje
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fecha" class="md-nav__link">
+    <span class="md-ellipsis">
+      fecha
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-insertion-websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Insertion (WebSocket)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-retrieval-http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Retrieval (HTTP API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Retrieval (HTTP API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-apimensajes-admin-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. GET /api/mensajes (Admin Only)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-apimensajesmios-authenticated-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. GET /api/mensajes/mios (Authenticated Users)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-get-apiusuarios-conversaciones-admin-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. GET /api/usuarios-conversaciones (Admin Only)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Access Patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-patterns-and-performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Patterns and Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Patterns and Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-message-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bidirectional Message Queries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chronological-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chronological Ordering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-conversation-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Conversation Discovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-real-time-messaging-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in Real-time Messaging Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insertion-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-enforcement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization Enforcement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-injection-prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Injection Prevention
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Exposure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entity Relationship Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#column-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Descriptions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Column Descriptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de_usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      de_usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para_usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      para_usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      mensaje
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fecha" class="md-nav__link">
+    <span class="md-ellipsis">
+      fecha
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-insertion-websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Insertion (WebSocket)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-retrieval-http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Retrieval (HTTP API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Retrieval (HTTP API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-get-apimensajes-admin-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. GET /api/mensajes (Admin Only)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-apimensajesmios-authenticated-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. GET /api/mensajes/mios (Authenticated Users)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-get-apiusuarios-conversaciones-admin-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. GET /api/usuarios-conversaciones (Admin Only)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Access Patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-patterns-and-performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Patterns and Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Patterns and Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-message-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bidirectional Message Queries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chronological-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chronological Ordering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-conversation-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Conversation Discovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-real-time-messaging-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in Real-time Messaging Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insertion-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-enforcement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization Enforcement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-injection-prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Injection Prevention
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Exposure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mensajes-table">mensajes Table<a class="headerlink" href="#mensajes-table" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js">src/router.js</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js">src/sockets/socketHandler.js</a></p>
+</blockquote>
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>The <code>mensajes</code> table stores all chat messages exchanged in the support chat system between users and administrators. This table serves as the persistence layer for the real-time messaging functionality, recording every message sent through Socket.IO WebSocket connections and providing historical message retrieval through HTTP API endpoints.</p>
+<p>For information about the real-time WebSocket layer that writes to this table, see <a href="Real-time-Communication-System.html">Real-time Communication System</a>. For details about the HTTP endpoints that query this table, see <a href="API-Endpoints.html">API Endpoints</a>. For the related user authentication table, see <a href="usuarios-Table.html">usuarios Table</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L315">src/router.js L229-L315</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L55-L62">src/sockets/socketHandler.js L55-L62</a></p>
+<hr />
+<h2 id="table-schema">Table Schema<a class="headerlink" href="#table-schema" title="Permanent link">&para;</a></h2>
+<p>The <code>mensajes</code> table has the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Constraints</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>de_usuario</code></td>
+<td>VARCHAR</td>
+<td>NOT NULL, FK → <code>usuarios.usuario</code></td>
+<td>Username of the message sender</td>
+</tr>
+<tr>
+<td><code>para_usuario</code></td>
+<td>VARCHAR</td>
+<td>NOT NULL, FK → <code>usuarios.usuario</code></td>
+<td>Username of the message recipient</td>
+</tr>
+<tr>
+<td><code>mensaje</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>Message content</td>
+</tr>
+<tr>
+<td><code>fecha</code></td>
+<td>DATETIME</td>
+<td>DEFAULT CURRENT_TIMESTAMP</td>
+<td>Timestamp when message was created</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> The table does not have an explicit primary key defined in the queries, though it likely has an auto-increment ID column for internal indexing.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L237-L269">src/router.js L237-L269</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L55-L55">src/sockets/socketHandler.js L55</a></p>
+<hr />
+<h2 id="entity-relationship-diagram">Entity Relationship Diagram<a class="headerlink" href="#entity-relationship-diagram" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">#</span><span class="nn">mermaid-1rs7o028btr</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="n">ui-sans-serif</span><span class="p">,</span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="n">system-ui</span><span class="p">,</span><span class="n">Segoe</span><span class="w"> </span><span class="n">UI</span><span class="p">,</span><span class="n">Helvetica</span><span class="p">;</span><span class="k">font-size</span><span class="p">:</span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span><span class="k">fill</span><span class="p">:</span><span class="mh">#333</span><span class="p">;}@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">edge-animation-frame</span><span class="p">{</span><span class="nt">from</span><span class="p">{</span><span class="k">stroke-dashoffset</span><span class="p">:</span><span class="mi">0</span><span class="p">;}}@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">dash</span><span class="p">{</span><span class="nt">to</span><span class="p">{</span><span class="k">stroke-dashoffset</span><span class="p">:</span><span class="mi">0</span><span class="p">;}}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-animation-slow</span><span class="p">{</span><span class="k">stroke-dasharray</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="cp">!important</span><span class="p">;</span><span class="k">stroke-dashoffset</span><span class="p">:</span><span class="mi">900</span><span class="p">;</span><span class="k">animation</span><span class="p">:</span><span class="n">dash</span><span class="w"> </span><span class="mi">50</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">infinite</span><span class="p">;</span><span class="k">stroke-linecap</span><span class="p">:</span><span class="kc">round</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-animation-fast</span><span class="p">{</span><span class="k">stroke-dasharray</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="cp">!important</span><span class="p">;</span><span class="k">stroke-dashoffset</span><span class="p">:</span><span class="mi">900</span><span class="p">;</span><span class="k">animation</span><span class="p">:</span><span class="n">dash</span><span class="w"> </span><span class="mi">20</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">infinite</span><span class="p">;</span><span class="k">stroke-linecap</span><span class="p">:</span><span class="kc">round</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">error-icon</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#dddddd</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">error-text</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#222222</span><span class="p">;</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#222222</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-thickness-normal</span><span class="p">{</span><span class="k">stroke-width</span><span class="p">:</span><span class="mi">1</span><span class="kt">px</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-thickness-thick</span><span class="p">{</span><span class="k">stroke-width</span><span class="p">:</span><span class="mf">3.5</span><span class="kt">px</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-pattern-solid</span><span class="p">{</span><span class="k">stroke-dasharray</span><span class="p">:</span><span class="mi">0</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-thickness-invisible</span><span class="p">{</span><span class="k">stroke-width</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span><span class="k">fill</span><span class="p">:</span><span class="kc">none</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-pattern-dashed</span><span class="p">{</span><span class="k">stroke-dasharray</span><span class="p">:</span><span class="mi">3</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-pattern-dotted</span><span class="p">{</span><span class="k">stroke-dasharray</span><span class="p">:</span><span class="mi">2</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">marker</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#999</span><span class="p">;</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#999</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">marker</span><span class="p">.</span><span class="nc">cross</span><span class="p">{</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#999</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="nt">svg</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="n">ui-sans-serif</span><span class="p">,</span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="n">system-ui</span><span class="p">,</span><span class="n">Segoe</span><span class="w"> </span><span class="n">UI</span><span class="p">,</span><span class="n">Helvetica</span><span class="p">;</span><span class="k">font-size</span><span class="p">:</span><span class="mi">16</span><span class="kt">px</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="nt">p</span><span class="p">{</span><span class="k">margin</span><span class="p">:</span><span class="mi">0</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">entityBox</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#ffffff</span><span class="p">;</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#dddddd</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">relationshipLabelBox</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#dddddd</span><span class="p">;</span><span class="k">opacity</span><span class="p">:</span><span class="mf">0.7</span><span class="p">;</span><span class="k">background-color</span><span class="p">:</span><span class="mh">#dddddd</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">relationshipLabelBox</span><span class="w"> </span><span class="nt">rect</span><span class="p">{</span><span class="k">opacity</span><span class="p">:</span><span class="mf">0.5</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">labelBkg</span><span class="p">{</span><span class="k">background-color</span><span class="p">:</span><span class="nb">rgba</span><span class="p">(</span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edgeLabel</span><span class="w"> </span><span class="p">.</span><span class="nc">label</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#dddddd</span><span class="p">;</span><span class="k">font-size</span><span class="p">:</span><span class="mi">14</span><span class="kt">px</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">label</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="n">ui-sans-serif</span><span class="p">,</span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="n">system-ui</span><span class="p">,</span><span class="n">Segoe</span><span class="w"> </span><span class="n">UI</span><span class="p">,</span><span class="n">Helvetica</span><span class="p">;</span><span class="k">color</span><span class="p">:</span><span class="mh">#333</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">edge-pattern-dashed</span><span class="p">{</span><span class="k">stroke-dasharray</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">node</span><span class="w"> </span><span class="nt">rect</span><span class="o">,</span><span class="p">#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">node</span><span class="w"> </span><span class="nt">circle</span><span class="o">,</span><span class="p">#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">node</span><span class="w"> </span><span class="nt">ellipse</span><span class="o">,</span><span class="p">#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">node</span><span class="w"> </span><span class="nt">polygon</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="mh">#ffffff</span><span class="p">;</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#dddddd</span><span class="p">;</span><span class="k">stroke-width</span><span class="p">:</span><span class="mi">1</span><span class="kt">px</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">relationshipLine</span><span class="p">{</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#999</span><span class="p">;</span><span class="k">stroke-width</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span><span class="k">fill</span><span class="p">:</span><span class="kc">none</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">.</span><span class="nc">marker</span><span class="p">{</span><span class="k">fill</span><span class="p">:</span><span class="kc">none</span><span class="cp">!important</span><span class="p">;</span><span class="k">stroke</span><span class="p">:</span><span class="mh">#999</span><span class="cp">!important</span><span class="p">;</span><span class="k">stroke-width</span><span class="p">:</span><span class="mi">1</span><span class="p">;}#</span><span class="nn">mermaid-1rs7o028btr</span><span class="w"> </span><span class="p">:</span><span class="nd">root</span><span class="p">{</span><span class="nv">--mermaid-font-family</span><span class="p">:</span><span class="s2">&quot;trebuchet ms&quot;</span><span class="p">,</span><span class="n">verdana</span><span class="p">,</span><span class="n">arial</span><span class="p">,</span><span class="kc">sans-serif</span><span class="p">;}</span><span class="nt">sends</span><span class="w"> </span><span class="o">(</span><span class="nt">de_usuario</span><span class="o">)</span><span class="nt">receives</span><span class="w"> </span><span class="o">(</span><span class="nt">para_usuario</span><span class="o">)</span><span class="nt">usuariosvarcharusuarioPKvarcharnombrevarcharrolvarcharpassvarcharimagenmensajesvarcharde_usuarioFKvarcharpara_usuarioFKtextmensajedatetimefecha</span>
+</code></pre></div>
+<p><strong>Diagram:</strong> Relationship between <code>usuarios</code> and <code>mensajes</code> tables. Each message has two foreign key relationships to the <code>usuarios</code> table: one for the sender (<code>de_usuario</code>) and one for the recipient (<code>para_usuario</code>).</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L237-L242">src/router.js L237-L242</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L55-L55">src/sockets/socketHandler.js L55</a></p>
+<hr />
+<h2 id="column-descriptions">Column Descriptions<a class="headerlink" href="#column-descriptions" title="Permanent link">&para;</a></h2>
+<h3 id="de_usuario">de_usuario<a class="headerlink" href="#de_usuario" title="Permanent link">&para;</a></h3>
+<p>The <code>de_usuario</code> column stores the username of the message sender. This is a foreign key reference to <code>usuarios.usuario</code>. The value is extracted from the authenticated JWT token in WebSocket connections.</p>
+<p><strong>Populated by:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L46-L56">src/sockets/socketHandler.js L46-L56</a></p>
+<h3 id="para_usuario">para_usuario<a class="headerlink" href="#para_usuario" title="Permanent link">&para;</a></h3>
+<p>The <code>para_usuario</code> column stores the username of the message recipient. This is a foreign key reference to <code>usuarios.usuario</code>. In the WebSocket handler, this value comes from the <code>para</code> field of the <code>mensaje_privado</code> event payload.</p>
+<p><strong>Populated by:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L56">src/sockets/socketHandler.js L45-L56</a></p>
+<h3 id="mensaje">mensaje<a class="headerlink" href="#mensaje" title="Permanent link">&para;</a></h3>
+<p>The <code>mensaje</code> column stores the actual text content of the message as a TEXT field, allowing for messages of arbitrary length. This content is passed directly from the client through the WebSocket <code>mensaje_privado</code> event.</p>
+<p><strong>Populated by:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L56">src/sockets/socketHandler.js L45-L56</a></p>
+<h3 id="fecha">fecha<a class="headerlink" href="#fecha" title="Permanent link">&para;</a></h3>
+<p>The <code>fecha</code> column is a DATETIME field that records when the message was created. This column likely uses <code>DEFAULT CURRENT_TIMESTAMP</code> to automatically set the timestamp during insertion, though it is not explicitly set in the INSERT query.</p>
+<p><strong>Implicitly set by:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L55-L56">src/sockets/socketHandler.js L55-L56</a></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L62">src/sockets/socketHandler.js L45-L62</a></p>
+<hr />
+<h2 id="data-operations">Data Operations<a class="headerlink" href="#data-operations" title="Permanent link">&para;</a></h2>
+<h3 id="message-insertion-websocket">Message Insertion (WebSocket)<a class="headerlink" href="#message-insertion-websocket" title="Permanent link">&para;</a></h3>
+<p>Messages are inserted into the <code>mensajes</code> table when a user sends a message through the Socket.IO WebSocket connection. The insertion occurs in the <code>mensaje_privado</code> event handler.</p>
+<pre class="mermaid"><code>sequenceDiagram
+  participant Client
+  participant Socket.IO Server
+  participant socketHandler.js
+  participant MySQL mensajes table
+
+  Client-&gt;&gt;Socket.IO Server: "emit mensaje_privado {para, mensaje}"
+  Socket.IO Server-&gt;&gt;socketHandler.js: "mensaje_privado event"
+  note over socketHandler.js: "Extract 'de' from JWT
+  socketHandler.js-&gt;&gt;MySQL mensajes table: "INSERT INTO mensajes
+  socketHandler.js-&gt;&gt;Socket.IO Server: (de_usuario, para_usuario, mensaje)"
+  socketHandler.js-&gt;&gt;Socket.IO Server: "emit mensaje_recibido to recipient"
+  MySQL mensajes table--&gt;&gt;socketHandler.js: "emit mensaje_recibido to admins (if sender not admin)"
+  note over socketHandler.js: "Log: 💾 Mensaje guardado"</code></pre>
+<p><strong>Diagram:</strong> Message insertion flow through WebSocket connection</p>
+<p>The actual SQL insertion code:</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">mensajes</span><span class="w"> </span><span class="p">(</span><span class="n">de_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">para_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L63">src/sockets/socketHandler.js L45-L63</a></p>
+<h3 id="message-retrieval-http-api">Message Retrieval (HTTP API)<a class="headerlink" href="#message-retrieval-http-api" title="Permanent link">&para;</a></h3>
+<p>Three HTTP API endpoints query the <code>mensajes</code> table to retrieve historical messages:</p>
+<h4 id="1-get-apimensajes-admin-only">1. GET /api/mensajes (Admin Only)<a class="headerlink" href="#1-get-apimensajes-admin-only" title="Permanent link">&para;</a></h4>
+<p>This endpoint retrieves all messages for a specific user conversation. It requires the <code>verifyAdmin</code> middleware and accepts a query parameter <code>?con=username</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">de_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">para_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">mensajes</span>
+<span class="k">WHERE</span><span class="w"> </span>
+<span class="w">  </span><span class="p">(</span><span class="n">de_usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">para_usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fecha</span><span class="w"> </span><span class="k">ASC</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L253">src/router.js L229-L253</a></p>
+<h4 id="2-get-apimensajesmios-authenticated-users">2. GET /api/mensajes/mios (Authenticated Users)<a class="headerlink" href="#2-get-apimensajesmios-authenticated-users" title="Permanent link">&para;</a></h4>
+<p>This endpoint retrieves all messages for the currently authenticated user. The username is extracted from the JWT token via the <code>verifyToken</code> middleware.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">de_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">para_usuario</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">mensajes</span>
+<span class="k">WHERE</span><span class="w"> </span>
+<span class="w">  </span><span class="p">(</span><span class="n">de_usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">para_usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fecha</span><span class="w"> </span><span class="k">ASC</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L280">src/router.js L256-L280</a></p>
+<h4 id="3-get-apiusuarios-conversaciones-admin-only">3. GET /api/usuarios-conversaciones (Admin Only)<a class="headerlink" href="#3-get-apiusuarios-conversaciones-admin-only" title="Permanent link">&para;</a></h4>
+<p>This endpoint retrieves a list of all users who have had conversations with administrators. It uses a complex UNION query to find all non-admin users who have either sent messages to admins or received messages from admins.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">usuario</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">de_usuario</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mensajes</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">para_usuario</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">UNION</span>
+
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">para_usuario</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mensajes</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">de_usuario</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">conversaciones</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>This query:</p>
+<ol>
+<li>Finds all non-admin senders who sent to admins (<code>de_usuario</code>)</li>
+<li>Finds all non-admin recipients who received from admins (<code>para_usuario</code>)</li>
+<li>Combines results with UNION to eliminate duplicates</li>
+<li>Filters out any admin users from the final list</li>
+</ol>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L283-L315">src/router.js L283-L315</a></p>
+<hr />
+<h2 id="data-access-patterns">Data Access Patterns<a class="headerlink" href="#data-access-patterns" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+
+WS["Socket.IO WebSocket&lt;br&gt;mensaje_privado event"]
+WSHandler["socketHandler.js:45-63"]
+API1["GET /api/mensajes?con=user&lt;br&gt;verifyAdmin"]
+API2["GET /api/mensajes/mios&lt;br&gt;verifyToken"]
+API3["GET /api/usuarios-conversaciones&lt;br&gt;verifyAdmin"]
+Router["router.js:229-315"]
+MensajesTable["mensajes table&lt;br&gt;de_usuario, para_usuario,&lt;br&gt;mensaje, fecha"]
+
+WSHandler --&gt; MensajesTable
+Router --&gt; MensajesTable
+
+subgraph Database ["Database"]
+    MensajesTable
+end
+
+subgraph subGraph1 ["Read Operations"]
+    API1
+    API2
+    API3
+    Router
+    API1 --&gt; Router
+    API2 --&gt; Router
+    API3 --&gt; Router
+end
+
+subgraph subGraph0 ["Write Operations"]
+    WS
+    WSHandler
+    WS --&gt; WSHandler
+end</code></pre>
+<p><strong>Diagram:</strong> Write and read access patterns for the <code>mensajes</code> table</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L315">src/router.js L229-L315</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L63">src/sockets/socketHandler.js L45-L63</a></p>
+<hr />
+<h2 id="query-patterns-and-performance-considerations">Query Patterns and Performance Considerations<a class="headerlink" href="#query-patterns-and-performance-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="bidirectional-message-queries">Bidirectional Message Queries<a class="headerlink" href="#bidirectional-message-queries" title="Permanent link">&para;</a></h3>
+<p>Both <code>/api/mensajes</code> and <code>/api/mensajes/mios</code> endpoints use the same query pattern to retrieve bidirectional conversations:</p>
+<div class="highlight"><pre><span></span><code>WHERE (de_usuario = ? OR para_usuario = ?)
+</code></pre></div>
+<p>This pattern matches messages where the user is either the sender or recipient, enabling a complete conversation view. For optimal performance, the table should have composite indexes on:</p>
+<ul>
+<li><code>(de_usuario, fecha)</code></li>
+<li><code>(para_usuario, fecha)</code></li>
+</ul>
+<p>This allows efficient retrieval of chronologically ordered messages for any user.</p>
+<h3 id="chronological-ordering">Chronological Ordering<a class="headerlink" href="#chronological-ordering" title="Permanent link">&para;</a></h3>
+<p>All message retrieval queries use <code>ORDER BY fecha ASC</code> to return messages in chronological order, which is essential for displaying conversation history correctly.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L241-L268">src/router.js L241-L268</a></p>
+<h3 id="admin-conversation-discovery">Admin Conversation Discovery<a class="headerlink" href="#admin-conversation-discovery" title="Permanent link">&para;</a></h3>
+<p>The <code>/api/usuarios-conversaciones</code> endpoint uses a complex subquery pattern to discover all users who have communicated with administrators. This query performs multiple table scans and subqueries, making it potentially expensive for large datasets. Consider caching this result or maintaining a denormalized table if performance becomes an issue.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L292-L304">src/router.js L292-L304</a></p>
+<hr />
+<h2 id="usage-in-real-time-messaging-flow">Usage in Real-time Messaging Flow<a class="headerlink" href="#usage-in-real-time-messaging-flow" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+  participant User Client
+  participant Admin Client
+  participant Socket.IO Server
+  participant socketHandler.js
+  participant mensajes table
+  participant router.js API
+
+  note over User Client,Admin Client: "Initial page load"
+  User Client-&gt;&gt;router.js API: "GET /api/mensajes/mios"
+  Admin Client-&gt;&gt;router.js API: "GET /api/usuarios-conversaciones"
+  router.js API-&gt;&gt;mensajes table: "SELECT historical messages"
+  mensajes table--&gt;&gt;router.js API: "Previous messages"
+  router.js API--&gt;&gt;User Client: "JSON: message history"
+  router.js API--&gt;&gt;Admin Client: "JSON: user list"
+  note over User Client,Admin Client: "Real-time messaging"
+  User Client-&gt;&gt;Socket.IO Server: "mensaje_privado {para: 'admin1', mensaje: '...'}"
+  Socket.IO Server-&gt;&gt;socketHandler.js: "Event received"
+  socketHandler.js-&gt;&gt;mensajes table: "INSERT INTO mensajes"
+  socketHandler.js-&gt;&gt;User Client: "mensaje_recibido (confirmation)"
+  socketHandler.js-&gt;&gt;Admin Client: "mensaje_recibido (to admins room)"
+  Admin Client-&gt;&gt;Socket.IO Server: "mensaje_privado {para: 'user1', mensaje: '...'}"
+  Socket.IO Server-&gt;&gt;socketHandler.js: "Event received"
+  socketHandler.js-&gt;&gt;mensajes table: "INSERT INTO mensajes"
+  socketHandler.js-&gt;&gt;Admin Client: "mensaje_recibido (confirmation)"
+  socketHandler.js-&gt;&gt;User Client: "mensaje_recibido (to user:user1 room)"</code></pre>
+<p><strong>Diagram:</strong> Complete message flow showing both historical retrieval (HTTP) and real-time messaging (WebSocket) interactions with the <code>mensajes</code> table</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L256-L315">src/router.js L256-L315</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L45-L63">src/sockets/socketHandler.js L45-L63</a></p>
+<hr />
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<h3 id="insertion-errors">Insertion Errors<a class="headerlink" href="#insertion-errors" title="Permanent link">&para;</a></h3>
+<p>When message insertion fails in the WebSocket handler, an error is logged to the console but the client is not explicitly notified. The message delivery to recipients proceeds regardless of database persistence success.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L57-L61">src/sockets/socketHandler.js L57-L61</a></p>
+<h3 id="query-errors">Query Errors<a class="headerlink" href="#query-errors" title="Permanent link">&para;</a></h3>
+<p>All HTTP API endpoints that query the <code>mensajes</code> table implement error handling:</p>
+<ul>
+<li>Return HTTP 500 status code with JSON error message</li>
+<li>Log errors to console with "❌" prefix</li>
+<li>Generic error messages to avoid leaking database information</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L245-L310">src/router.js L245-L310</a></p>
+<hr />
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="authorization-enforcement">Authorization Enforcement<a class="headerlink" href="#authorization-enforcement" title="Permanent link">&para;</a></h3>
+<p>Access to message data is protected by middleware:</p>
+<ul>
+<li><code>/api/mensajes</code> requires <code>verifyAdmin</code> middleware - only administrators can query other users' messages</li>
+<li><code>/api/mensajes/mios</code> requires <code>verifyToken</code> middleware - users can only access their own messages</li>
+<li>WebSocket insertions require JWT authentication via Socket.IO middleware</li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L229-L283">src/router.js L229-L283</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L6-L32">src/sockets/socketHandler.js L6-L32</a></p>
+<h3 id="sql-injection-prevention">SQL Injection Prevention<a class="headerlink" href="#sql-injection-prevention" title="Permanent link">&para;</a></h3>
+<p>All database queries use parameterized queries with <code>?</code> placeholders, preventing SQL injection attacks:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">usuario</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">})</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">de</span><span class="p">,</span><span class="w"> </span><span class="nx">para</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L244-L271">src/router.js L244-L271</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js#L56-L56">src/sockets/socketHandler.js L56</a></p>
+<h3 id="data-exposure">Data Exposure<a class="headerlink" href="#data-exposure" title="Permanent link">&para;</a></h3>
+<p>The queries select only necessary columns (<code>de_usuario</code>, <code>para_usuario</code>, <code>mensaje</code>, <code>fecha</code>) and do not expose internal IDs or other sensitive metadata.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/router.js#L237-L264">src/router.js L237-L264</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

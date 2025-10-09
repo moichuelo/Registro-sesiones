@@ -1,0 +1,3393 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación del proyecto Registro (DeepWiki dump)">
+      
+      
+      
+      
+        <link rel="prev" href="WebSocket-Events.html">
+      
+      
+        <link rel="next" href="index.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Deployment & Configuration - DeepWiki — Registro</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deployment-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="DeepWiki — Registro" class="md-header__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DeepWiki — Registro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deployment & Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="DeepWiki — Registro" class="md-nav__button md-logo" aria-label="DeepWiki — Registro" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DeepWiki — Registro
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Getting-Started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Architecture-Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="System-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Technology-Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Technology Stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Request-Processing-Pipeline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Processing Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Application-Bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Bootstrap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Routing System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Routing-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Routing System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Protected-Routes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protected Routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Authentication & Authorization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Authentication-%26-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & Authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Registration-%26-Login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Registration & Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="JWT-Token-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JWT Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verifyToken-Middleware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    verifyToken Middleware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Security-Measures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Real-time Communication System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Real-time-Communication-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Communication System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Socket.IO-Server-Setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Socket.IO Server Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Room-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Room Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Message-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Product-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Support Chat System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Support-Chat-System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Support Chat System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="User-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Chat-Interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Chat Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            PDF Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Puppeteer-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Puppeteer PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PDFKit-PDF-Generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDFKit PDF Generation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Internationalization-%28i18n%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internationalization (i18n)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    View Layer & Templates
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            View Layer & Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Template-Structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Partial-Components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Partial Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Page-Views.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page Views
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Static-Assets-%26-Styling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Assets & Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Database Schema
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Database-Schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usuarios-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    usuarios Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="productos-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    productos Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mensajes-Table.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    mensajes Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API-Reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HTTP-Endpoints.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="WebSocket-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebSocket Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Deployment-%26-Configuration.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment & Configuration
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variable Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-loading-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Loading Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-connection-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Connection Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-schema-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Schema Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-repository-and-install-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone Repository and Install Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configure Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-setup-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Setup Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-required-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create Required Directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-start-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Start the Application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-initialization-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Initialization Sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-configuration-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Configuration Order
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internationalization-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-assets-and-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Assets and File Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Static Assets and File Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-system-structure-for-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Structure for Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-asset-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Asset Serving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Upload Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-deployment-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pm2-process-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PM2 Process Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pm2-cluster-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PM2 Cluster Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-reverse-proxy-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nginx Reverse Proxy Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker-compose.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-deployment-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Deployment Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-security-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Security Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-configuration-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Configuration Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-check-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check Endpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-deployment-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Deployment Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-connection-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Connection Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup and Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-production-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Production Optimizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-pool-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Pool Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    README
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variable Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-loading-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Loading Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-connection-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Connection Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-schema-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Schema Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-repository-and-install-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone Repository and Install Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configure Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-setup-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Setup Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-required-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create Required Directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-start-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Start the Application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-initialization-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Initialization Sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-configuration-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware Configuration Order
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internationalization-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-assets-and-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Assets and File Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Static Assets and File Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-system-structure-for-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Structure for Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-asset-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Asset Serving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Upload Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-deployment-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-pm2-process-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PM2 Process Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pm2-cluster-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PM2 Cluster Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-reverse-proxy-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nginx Reverse Proxy Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      docker-compose.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-deployment-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Deployment Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-security-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Security Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-configuration-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Configuration Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-check-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check Endpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-deployment-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Deployment Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-connection-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Connection Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup and Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-production-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Production Optimizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-pool-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Pool Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deployment-configuration">Deployment &amp; Configuration<a class="headerlink" href="#deployment-configuration" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Relevant source files</strong>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js">index.js</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/package.json">package.json</a>
+* <a href="https://github.com/moichuelo/registro/blob/544abbcc/proyecto.zip">proyecto.zip</a></p>
+</blockquote>
+<p>This document provides comprehensive guidance for deploying and configuring the registro-sesiones application. It covers environment setup, database configuration, dependency installation, server initialization, and production deployment considerations. For information about the application's architecture and components, see <a href="Architecture-Overview.html">Architecture Overview</a>. For details about security configuration and middleware, see <a href="Authentication-%26-Authorization.html">Authentication &amp; Authorization</a> and <a href="Security-Measures.html">Security Measures</a>.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before deploying the application, ensure the following requirements are met:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Version/Details</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>14.x or higher</td>
+<td>Runtime environment</td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>6.x or higher</td>
+<td>Package manager</td>
+</tr>
+<tr>
+<td><strong>MySQL</strong></td>
+<td>5.7 or higher</td>
+<td>Database server</td>
+</tr>
+<tr>
+<td><strong>Operating System</strong></td>
+<td>Linux, macOS, or Windows</td>
+<td>Server platform</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td>Minimum 512MB RAM</td>
+<td>Application + Puppeteer</td>
+</tr>
+<tr>
+<td><strong>Disk Space</strong></td>
+<td>Minimum 1GB</td>
+<td>Dependencies + uploads</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/package.json#L1-L48">package.json L1-L48</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L1-L86">index.js L1-L86</a></p>
+<hr />
+<h2 id="environment-variables-configuration">Environment Variables Configuration<a class="headerlink" href="#environment-variables-configuration" title="Permanent link">&para;</a></h2>
+<p>The application uses <code>dotenv</code> to load environment variables from <code>./env/.env</code>. All sensitive configuration must be stored in this file and never committed to version control.</p>
+<h3 id="required-environment-variables">Required Environment Variables<a class="headerlink" href="#required-environment-variables" title="Permanent link">&para;</a></h3>
+<p>Create a file at <code>./env/.env</code> with the following structure:</p>
+<div class="highlight"><pre><span></span><code>DATABASE_HOST=localhost
+DATABASE_USER=your_database_user
+DATABASE_PASS=your_database_password
+DATABASE_NAME=registro_sesiones
+SECRET_KEY=your_jwt_secret_key_min_32_characters
+</code></pre></div>
+<h3 id="environment-variable-reference">Environment Variable Reference<a class="headerlink" href="#environment-variable-reference" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_HOST</code></td>
+<td>MySQL server hostname</td>
+<td><code>localhost</code>, <code>192.168.1.10</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>DATABASE_USER</code></td>
+<td>MySQL username</td>
+<td><code>app_user</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>DATABASE_PASS</code></td>
+<td>MySQL password</td>
+<td><code>secure_password</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>DATABASE_NAME</code></td>
+<td>Database name</td>
+<td><code>registro_sesiones</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>SECRET_KEY</code></td>
+<td>JWT signing secret</td>
+<td>32+ character string</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environment-loading-flow">Environment Loading Flow<a class="headerlink" href="#environment-loading-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+EnvFile["./env/.env&lt;br&gt;Environment File"]
+DotenvConfig["dotenv.config()&lt;br&gt;index.js:4"]
+ProcessEnv["process.env"]
+DBConfig["database/db.js&lt;br&gt;MySQL Connection"]
+JWTConfig["JWT Token Signing&lt;br&gt;controllers.js"]
+
+EnvFile --&gt; DotenvConfig
+DotenvConfig --&gt; ProcessEnv
+ProcessEnv --&gt; DBConfig
+ProcessEnv --&gt; JWTConfig</code></pre>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L4-L4">index.js L4</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/env/.env#L1-L5">env/.env L1-L5</a></p>
+<hr />
+<h2 id="database-setup">Database Setup<a class="headerlink" href="#database-setup" title="Permanent link">&para;</a></h2>
+<p>The application uses MySQL with the <code>mysql2</code> package and connection pooling for efficient database operations.</p>
+<h3 id="database-connection-configuration">Database Connection Configuration<a class="headerlink" href="#database-connection-configuration" title="Permanent link">&para;</a></h3>
+<p>The database connection is established through a connection pool configured in <code>database/db.js</code>:</p>
+<pre class="mermaid"><code>flowchart TD
+
+EnvVars["Environment Variables&lt;br&gt;process.env"]
+CreatePool["mysql2.createPool()&lt;br&gt;database/db.js"]
+Pool["Connection Pool&lt;br&gt;Max 10 Connections"]
+Controllers["src/controllers.js"]
+SocketHandler["src/sockets/socketHandler.js"]
+Router["src/router.js"]
+
+EnvVars --&gt; CreatePool
+CreatePool --&gt; Pool
+Pool --&gt; Controllers
+Pool --&gt; SocketHandler
+Pool --&gt; Router
+
+subgraph subGraph0 ["Application Components"]
+    Controllers
+    SocketHandler
+    Router
+end</code></pre>
+<h3 id="database-schema-setup">Database Schema Setup<a class="headerlink" href="#database-schema-setup" title="Permanent link">&para;</a></h3>
+<p>Execute the following SQL to create the required database structure:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p>For detailed schema information, see <a href="Database-Schema.html">Database Schema</a>, <a href="usuarios-Table.html">usuarios Table</a>, <a href="productos-Table.html">productos Table</a>, and <a href="mensajes-Table.html">mensajes Table</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/database/db.js#L1-L20">database/db.js L1-L20</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/env/.env#L1-L5">env/.env L1-L5</a></p>
+<hr />
+<h2 id="installation-steps">Installation Steps<a class="headerlink" href="#installation-steps" title="Permanent link">&para;</a></h2>
+<p>Follow these steps to install and configure the application:</p>
+<h3 id="1-clone-repository-and-install-dependencies">1. Clone Repository and Install Dependencies<a class="headerlink" href="#1-clone-repository-and-install-dependencies" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="2-configure-environment">2. Configure Environment<a class="headerlink" href="#2-configure-environment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="3-setup-database">3. Setup Database<a class="headerlink" href="#3-setup-database" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="4-create-required-directories">4. Create Required Directories<a class="headerlink" href="#4-create-required-directories" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="5-start-the-application">5. Start the Application<a class="headerlink" href="#5-start-the-application" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/package.json#L1-L48">package.json L1-L48</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L62-L65">index.js L62-L65</a></p>
+<hr />
+<h2 id="server-configuration">Server Configuration<a class="headerlink" href="#server-configuration" title="Permanent link">&para;</a></h2>
+<p>The application server is configured in <code>index.js</code> with multiple middleware layers and services.</p>
+<h3 id="server-initialization-sequence">Server Initialization Sequence<a class="headerlink" href="#server-initialization-sequence" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Start["Application Start&lt;br&gt;node index.js"]
+LoadEnv["Load Environment&lt;br&gt;dotenv.config()&lt;br&gt;index.js:4"]
+CreateApp["Create Express App&lt;br&gt;index.js:3"]
+CreateHTTP["Create HTTP Server&lt;br&gt;http.createServer(app)&lt;br&gt;index.js:10"]
+AttachSocketIO["Attach Socket.IO&lt;br&gt;socketIO(server)&lt;br&gt;index.js:12"]
+ConfigMiddleware["Configure Middleware&lt;br&gt;index.js:37-48"]
+ConfigViews["Configure View Engine&lt;br&gt;EJS&lt;br&gt;index.js:52"]
+SetupWebSocket["Setup WebSocket Handler&lt;br&gt;setupSocket(io)&lt;br&gt;index.js:57"]
+StartServer["Start Server&lt;br&gt;server.listen(3000)&lt;br&gt;index.js:62"]
+Ready["Server Ready&lt;br&gt;localhost:3000"]
+
+Start --&gt; LoadEnv
+LoadEnv --&gt; CreateApp
+CreateApp --&gt; CreateHTTP
+CreateHTTP --&gt; AttachSocketIO
+AttachSocketIO --&gt; ConfigMiddleware
+ConfigMiddleware --&gt; ConfigViews
+ConfigViews --&gt; SetupWebSocket
+SetupWebSocket --&gt; StartServer
+StartServer --&gt; Ready</code></pre>
+<h3 id="middleware-configuration-order">Middleware Configuration Order<a class="headerlink" href="#middleware-configuration-order" title="Permanent link">&para;</a></h3>
+<p>The middleware stack is configured in the following order (critical for proper functionality):</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Middleware</th>
+<th>Purpose</th>
+<th>File Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>cookieParser()</code></td>
+<td>Parse HTTP cookies</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L37-L37">index.js L37</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>express.urlencoded()</code></td>
+<td>Parse form data</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L41-L41">index.js L41</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>express.json()</code></td>
+<td>Parse JSON bodies</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L42-L42">index.js L42</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>express.static()</code></td>
+<td>Serve static files</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L43-L43">index.js L43</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Swagger UI</td>
+<td>API documentation</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L44-L44">index.js L44</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>securityMiddleware</code></td>
+<td>Security headers, rate limiting</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L45-L45">index.js L45</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>i18n.init</code></td>
+<td>Internationalization</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L46-L46">index.js L46</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>setGlobals</code></td>
+<td>Global template variables</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L47-L47">index.js L47</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Application router</td>
+<td>Route handlers</td>
+<td><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L48-L48">index.js L48</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="port-configuration">Port Configuration<a class="headerlink" href="#port-configuration" title="Permanent link">&para;</a></h3>
+<p>The server listens on port <code>3000</code> by default. To change the port:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="internationalization-configuration">Internationalization Configuration<a class="headerlink" href="#internationalization-configuration" title="Permanent link">&para;</a></h3>
+<p>The i18n system is configured to support English and Spanish:</p>
+<pre class="mermaid"><code>flowchart TD
+
+I18nConfig["i18n.configure()&lt;br&gt;index.js:23-31"]
+LocalesDir["locales/ directory&lt;br&gt;en.json, es.json"]
+Cookie["lang cookie"]
+QueryParam["?lang=en/es"]
+Middleware["i18n.init&lt;br&gt;index.js:46"]
+Templates["EJS Templates&lt;br&gt;__() function"]
+
+LocalesDir --&gt; I18nConfig
+I18nConfig --&gt; Middleware
+Cookie --&gt; Middleware
+QueryParam --&gt; Middleware
+Middleware --&gt; Templates</code></pre>
+<p><strong>Configuration parameters:</strong></p>
+<ul>
+<li><strong>Locales:</strong> <code>['en', 'es']</code></li>
+<li><strong>Directory:</strong> <code>./locales</code></li>
+<li><strong>Default Locale:</strong> <code>'es'</code></li>
+<li><strong>Cookie Name:</strong> <code>'lang'</code></li>
+<li><strong>Query Parameter:</strong> <code>'lang'</code></li>
+<li><strong>Auto Reload:</strong> <code>true</code></li>
+<li><strong>Sync Files:</strong> <code>true</code></li>
+</ul>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L1-L66">index.js L1-L66</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/security.js">src/middlewares/security.js</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/setGlobals.js">src/middlewares/setGlobals.js</a></p>
+<hr />
+<h2 id="static-assets-and-file-structure">Static Assets and File Structure<a class="headerlink" href="#static-assets-and-file-structure" title="Permanent link">&para;</a></h2>
+<p>The application serves static assets and handles file uploads with specific directory requirements.</p>
+<h3 id="file-system-structure-for-deployment">File System Structure for Deployment<a class="headerlink" href="#file-system-structure-for-deployment" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Root["Application Root"]
+Public["public/&lt;br&gt;Static Resources"]
+CSS["public/css/&lt;br&gt;style.css, body.css"]
+Images["public/resources/img/&lt;br&gt;Flags, Icons"]
+Uploads["public/resources/uploads/&lt;br&gt;User Profile Images"]
+Fonts["docs/fonts/&lt;br&gt;Montserrat, Open Sans"]
+Views["views/&lt;br&gt;EJS Templates"]
+Partials["views/partials/&lt;br&gt;Reusable Components"]
+Locales["locales/&lt;br&gt;en.json, es.json"]
+EnvDir["env/&lt;br&gt;.env file"]
+
+Root --&gt; Public
+Root --&gt; Views
+Root --&gt; Locales
+Root --&gt; EnvDir
+
+subgraph Configuration ["Configuration"]
+    EnvDir
+end
+
+subgraph Localization ["Localization"]
+    Locales
+end
+
+subgraph subGraph1 ["View Templates"]
+    Views
+    Partials
+    Views --&gt; Partials
+end
+
+subgraph subGraph0 ["Static Assets"]
+    Public
+    CSS
+    Images
+    Uploads
+    Fonts
+    Public --&gt; CSS
+    Public --&gt; Images
+    Public --&gt; Uploads
+end</code></pre>
+<h3 id="static-asset-serving">Static Asset Serving<a class="headerlink" href="#static-asset-serving" title="Permanent link">&para;</a></h3>
+<p>Static files are served under the <code>/resources</code> route:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>URL Mapping:</strong></p>
+<ul>
+<li><code>http://localhost:3000/resources/css/style.css</code> → <code>public/css/style.css</code></li>
+<li><code>http://localhost:3000/resources/img/flag_en.png</code> → <code>public/resources/img/flag_en.png</code></li>
+<li><code>http://localhost:3000/resources/uploads/user123.jpg</code> → <code>public/resources/uploads/user123.jpg</code></li>
+</ul>
+<h3 id="file-upload-configuration">File Upload Configuration<a class="headerlink" href="#file-upload-configuration" title="Permanent link">&para;</a></h3>
+<p>User profile images are uploaded to <code>public/resources/uploads/</code> via the <code>multer</code> middleware. Ensure this directory exists and has write permissions:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L43-L43">index.js L43</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/public/css/style.css#L1-L79">public/css/style.css L1-L79</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/views/partials/header.ejs#L1-L33">views/partials/header.ejs L1-L33</a></p>
+<hr />
+<h2 id="production-deployment">Production Deployment<a class="headerlink" href="#production-deployment" title="Permanent link">&para;</a></h2>
+<p>Production deployment requires additional configuration for security, performance, and reliability.</p>
+<h3 id="production-environment-variables">Production Environment Variables<a class="headerlink" href="#production-environment-variables" title="Permanent link">&para;</a></h3>
+<p>Add production-specific variables to <code>env/.env</code>:</p>
+<div class="highlight"><pre><span></span><code>NODE_ENV=production
+DATABASE_HOST=production-db-host.example.com
+DATABASE_USER=prod_user
+DATABASE_PASS=strong_production_password
+DATABASE_NAME=registro_prod
+SECRET_KEY=very_long_random_production_secret_key_minimum_32_chars
+PORT=3000
+</code></pre></div>
+<h3 id="production-deployment-architecture">Production Deployment Architecture<a class="headerlink" href="#production-deployment-architecture" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Internet["Internet"]
+Nginx["Nginx&lt;br&gt;Port 80/443"]
+PM2["PM2 Process Manager"]
+App1["Node.js Instance 1&lt;br&gt;Port 3000"]
+App2["Node.js Instance 2&lt;br&gt;Port 3001"]
+App3["Node.js Instance 3&lt;br&gt;Port 3002"]
+MySQL["MySQL Database&lt;br&gt;Port 3306"]
+FileSystem["Uploaded Files&lt;br&gt;/var/app/uploads"]
+Logs["Application Logs&lt;br&gt;PM2 Logs"]
+Metrics["System Metrics"]
+
+Internet --&gt; Nginx
+Nginx --&gt; PM2
+App1 --&gt; MySQL
+App2 --&gt; MySQL
+App3 --&gt; MySQL
+App1 --&gt; FileSystem
+App2 --&gt; FileSystem
+App3 --&gt; FileSystem
+PM2 --&gt; Logs
+PM2 --&gt; Metrics
+
+subgraph Monitoring ["Monitoring"]
+    Logs
+    Metrics
+end
+
+subgraph subGraph2 ["Data Layer"]
+    MySQL
+    FileSystem
+end
+
+subgraph subGraph1 ["Application Layer"]
+    PM2
+    App1
+    App2
+    App3
+    PM2 --&gt; App1
+    PM2 --&gt; App2
+    PM2 --&gt; App3
+end
+
+subgraph subGraph0 ["Reverse Proxy Layer"]
+    Nginx
+end</code></pre>
+<h3 id="using-pm2-process-manager">Using PM2 Process Manager<a class="headerlink" href="#using-pm2-process-manager" title="Permanent link">&para;</a></h3>
+<p>PM2 is recommended for production deployment to manage the Node.js process:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="pm2-cluster-mode">PM2 Cluster Mode<a class="headerlink" href="#pm2-cluster-mode" title="Permanent link">&para;</a></h3>
+<p>For better performance, run multiple instances using cluster mode:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>PM2 Configuration File (<code>ecosystem.config.js</code>):</strong></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L62-L65">index.js L62-L65</a></p>
+<hr />
+<h2 id="nginx-reverse-proxy-configuration">Nginx Reverse Proxy Configuration<a class="headerlink" href="#nginx-reverse-proxy-configuration" title="Permanent link">&para;</a></h2>
+<p>Configure Nginx as a reverse proxy for the Node.js application:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Enable the configuration:</strong></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L10-L12">index.js L10-L12</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/sockets/socketHandler.js">src/sockets/socketHandler.js</a></p>
+<hr />
+<h2 id="docker-deployment">Docker Deployment<a class="headerlink" href="#docker-deployment" title="Permanent link">&para;</a></h2>
+<p>For containerized deployment, create the following Docker configuration:</p>
+<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="docker-composeyml">docker-compose.yml<a class="headerlink" href="#docker-composeyml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="docker-deployment-commands">Docker Deployment Commands<a class="headerlink" href="#docker-deployment-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/package.json#L22-L43">package.json L22-L43</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L1-L66">index.js L1-L66</a></p>
+<hr />
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="production-security-checklist">Production Security Checklist<a class="headerlink" href="#production-security-checklist" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Security Measure</th>
+<th>Implementation</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HTTPS/TLS</strong></td>
+<td>Configure SSL certificate in Nginx</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Environment Variables</strong></td>
+<td>Never commit <code>.env</code> to version control</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>JWT Secret</strong></td>
+<td>Use strong random secret (32+ chars)</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Database Credentials</strong></td>
+<td>Use strong passwords, limit privileges</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Rate Limiting</strong></td>
+<td>Enabled via helmet middleware</td>
+<td>✓ Configured</td>
+</tr>
+<tr>
+<td><strong>Security Headers</strong></td>
+<td>Enabled via helmet middleware</td>
+<td>✓ Configured</td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Enabled via express-validator</td>
+<td>✓ Configured</td>
+</tr>
+<tr>
+<td><strong>File Upload Validation</strong></td>
+<td>Configure multer file type/size limits</td>
+<td>Review</td>
+</tr>
+<tr>
+<td><strong>CORS Configuration</strong></td>
+<td>Configure allowed origins</td>
+<td>Review</td>
+</tr>
+<tr>
+<td><strong>Session Security</strong></td>
+<td>HTTP-only cookies, secure flag</td>
+<td>✓ Configured</td>
+</tr>
+</tbody>
+</table>
+<h3 id="security-configuration-flow">Security Configuration Flow<a class="headerlink" href="#security-configuration-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+
+Request["Incoming Request"]
+Helmet["helmet&lt;br&gt;Security Headers"]
+RateLimit["express-rate-limit&lt;br&gt;Brute Force Protection"]
+AuthCheck["JWT Verification&lt;br&gt;verifyToken"]
+RoleCheck["Role Authorization&lt;br&gt;verifyAdmin"]
+RouteHandler["Route Handler"]
+
+Request --&gt; Helmet
+RoleCheck --&gt; RouteHandler
+
+subgraph subGraph0 ["Security Middleware Stack"]
+    Helmet
+    RateLimit
+    AuthCheck
+    RoleCheck
+    Helmet --&gt; RateLimit
+    RateLimit --&gt; AuthCheck
+    AuthCheck --&gt; RoleCheck
+end</code></pre>
+<p><strong>Security middleware is configured in:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/security.js">src/middlewares/security.js</a></p>
+<p>For detailed security configuration, see <a href="Security-Measures.html">Security Measures</a>.</p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L45-L45">index.js L45</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/security.js">src/middlewares/security.js</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyToken.js">src/middlewares/verifyToken.js</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/src/middlewares/verifyAdmin.js">src/middlewares/verifyAdmin.js</a></p>
+<hr />
+<h2 id="monitoring-and-logging">Monitoring and Logging<a class="headerlink" href="#monitoring-and-logging" title="Permanent link">&para;</a></h2>
+<h3 id="application-logging">Application Logging<a class="headerlink" href="#application-logging" title="Permanent link">&para;</a></h3>
+<p>Configure logging for production monitoring:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="health-check-endpoint">Health Check Endpoint<a class="headerlink" href="#health-check-endpoint" title="Permanent link">&para;</a></h3>
+<p>Add a health check endpoint for monitoring:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L62-L65">index.js L62-L65</a></p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-deployment-issues">Common Deployment Issues<a class="headerlink" href="#common-deployment-issues" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Symptom</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Database Connection Failed</strong></td>
+<td><code>ECONNREFUSED</code> error</td>
+<td>Verify <code>DATABASE_HOST</code>, <code>DATABASE_USER</code>, <code>DATABASE_PASS</code> in <code>.env</code></td>
+</tr>
+<tr>
+<td><strong>Port Already in Use</strong></td>
+<td><code>EADDRINUSE</code> error</td>
+<td>Change port in <code>index.js:62</code> or kill process using port 3000</td>
+</tr>
+<tr>
+<td><strong>JWT Authentication Fails</strong></td>
+<td>401 errors on protected routes</td>
+<td>Verify <code>SECRET_KEY</code> is set and consistent</td>
+</tr>
+<tr>
+<td><strong>Static Assets Not Loading</strong></td>
+<td>404 on CSS/JS files</td>
+<td>Verify <code>/resources</code> path and file permissions</td>
+</tr>
+<tr>
+<td><strong>File Upload Fails</strong></td>
+<td>Upload errors</td>
+<td>Check <code>public/resources/uploads/</code> exists and has write permissions</td>
+</tr>
+<tr>
+<td><strong>WebSocket Connection Fails</strong></td>
+<td>Chat not working</td>
+<td>Verify Socket.IO upgrade headers in Nginx proxy</td>
+</tr>
+<tr>
+<td><strong>Puppeteer PDF Error</strong></td>
+<td>PDF generation fails</td>
+<td>Install Chromium dependencies (see Dockerfile)</td>
+</tr>
+<tr>
+<td><strong>i18n Not Working</strong></td>
+<td>Translations not loading</td>
+<td>Verify <code>locales/</code> directory exists with <code>en.json</code> and <code>es.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="database-connection-test">Database Connection Test<a class="headerlink" href="#database-connection-test" title="Permanent link">&para;</a></h3>
+<p>Test database connectivity:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p>Run: <code>node test-db.js</code></p>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/database/db.js#L1-L20">database/db.js L1-L20</a></p>
+<p><a href="https://github.com/moichuelo/registro/blob/544abbcc/index.js#L4-L4">index.js L4</a></p>
+<hr />
+<h2 id="backup-and-recovery">Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h2>
+<h3 id="database-backup">Database Backup<a class="headerlink" href="#database-backup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="file-system-backup">File System Backup<a class="headerlink" href="#file-system-backup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/database/db.js#L1-L20">database/db.js L1-L20</a></p>
+<hr />
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="recommended-production-optimizations">Recommended Production Optimizations<a class="headerlink" href="#recommended-production-optimizations" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Enable Gzip Compression</strong> (Nginx)</li>
+<li><strong>Configure CDN</strong> for static assets</li>
+<li><strong>Database Connection Pooling</strong> (already configured in <code>database/db.js</code>)</li>
+<li><strong>Redis Session Store</strong> (upgrade from default memory store)</li>
+<li><strong>Asset Minification</strong> for CSS/JS</li>
+<li><strong>Image Optimization</strong> for uploads</li>
+<li><strong>Database Indexing</strong> (already configured in schema)</li>
+</ol>
+<h3 id="connection-pool-configuration">Connection Pool Configuration<a class="headerlink" href="#connection-pool-configuration" title="Permanent link">&para;</a></h3>
+<p>The MySQL connection pool is configured with default settings. For high-traffic scenarios, adjust in <code>database/db.js</code>:</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><strong>Sources:</strong> <a href="https://github.com/moichuelo/registro/blob/544abbcc/database/db.js#L1-L20">database/db.js L1-L20</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>
