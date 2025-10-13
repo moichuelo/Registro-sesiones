@@ -1,7 +1,9 @@
 //9 1 Iniciar las librerías
 const express = require("express");
 const app = express();
-require("dotenv").config({ path: "./env/.env" });
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config({ path: "./env/.env" });
+}
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const socketIO = require("socket.io");
@@ -39,7 +41,7 @@ let studios = ["Estudio 1", 25];
 let persona = {
     name: "pepe",
     apellido: "perez",
-    edad: 35
+    edad: 35,
 };
 
 /**
@@ -54,8 +56,8 @@ class articulo {
 
     /**
      * Constructor de la clase artículo
-     * @param {String} titulo 
-     * @param {Number} precio 
+     * @param {String} titulo
+     * @param {Number} precio
      */
     constructor(titulo, precio) {
         this.titulo = titulo;
@@ -80,9 +82,8 @@ i18n.configure({
     cookie: "lang", // importante si trabajamos con cookies
     queryParameter: "lang", // importante si trabajamos con query strings
     autoReload: true,
-    syncFiles: true
+    syncFiles: true,
 });
-
 
 //9 3 Definir los middlewares
 app.use("/resources", express.static(__dirname + "/public"));
@@ -95,8 +96,6 @@ app.use(i18n.init);
 app.use(setGlobals);
 app.use("/", require("./src/router"));
 
-
-
 //9 6 Definir el motor de vistas
 app.set("view engine", "ejs");
 // app.use(expressLayouts);
@@ -106,11 +105,10 @@ app.set("view engine", "ejs");
 setupSocket(io);
 
 //9 2 Crear el servidor
-server.listen(4000, () => {
+server.listen(process.env.PORT, () => {
     console.log("Servidor corriendo en http://localhost:4000");
     console.log("Servidor corriendo en http://localhost:4000/api-docs");
 });
-
 
 /**
  * Función que saluda al usuario
@@ -127,4 +125,4 @@ function saludar(num, nombre, apellido, edad) {
     return num;
 }
 
-saludar(3, "pepe"); 
+saludar(3, "pepe");
