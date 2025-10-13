@@ -1,9 +1,11 @@
 //9 1 Iniciar las librerías
 const express = require("express");
 const app = express();
+
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config({ path: "./env/.env" });
 }
+
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const socketIO = require("socket.io");
@@ -20,13 +22,13 @@ const setGlobals = require("./src/middlewares/setGlobals");
 //@ts-ignore
 const { swaggerJSDoc, swaggerUi, swaggerSpec } = require("./swagger");
 /**
- * @description Nombre de la ciudad
+ * @description Nombre de la ciudad. Ejemplo de variable string
  * @type {string}
  */
 let city = "Barcelona";
 
 /**
- * @description Nombre del estudio
+ * @description Nombre del estudio.
  * @type {Array<String|Number>}
  */
 let studios = ["Estudio 1", 25];
