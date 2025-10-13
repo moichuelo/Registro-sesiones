@@ -6,7 +6,7 @@
 > * [proyecto.zip](https://github.com/moichuelo/registro/blob/544abbcc/proyecto.zip)
 > * [src/router.js](https://github.com/moichuelo/registro/blob/544abbcc/src/router.js)
 
-This document provides a high-level overview of the `registro-sesiones` system architecture, including its major components, technology stack, and how data and requests flow through the system. This page focuses on the structural organization and component interactions at a conceptual level.
+Esto es una prueba: This document provides a high-level overview of the `registro-sesiones` system architecture, including its major components, technology stack, and how data and requests flow through the system. This page focuses on the structural organization and component interactions at a conceptual level.
 
 For detailed information about specific subsystems, see:
 
