@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/body.css">
+    </head>
+
+<body>
+    <h1>Curso de Node</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registro">Registro</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/soporte">Soporte</a>
+                    </li>
+
+
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center idioma" href="#"
+                            onclick="changeLang('es')" class="btn-es">
+                            <img src="/resources/img/es.png" alt="Español" width="24px" height="16px">
+                            🇪🇸</a>
+                    </li>
+                    <li>
+                        <a class="nav-link d-flex align-items-center " href="#"
+                            onclick="changeLang('en')" class="btn-en">
+                            <img src="/resources/img/en.png" alt="English" width="24px" height="16px">
+                            🇬🇧</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            function changeLang(lang) {
+                const currentPath = window.location.pathname + window.location.search;
+                window.location.href = `/set-lang/${lang}?returnTo=${encodeURIComponent(currentPath)}`;
+            }
+        </script>
+    </nav>
+
+        <div class="register-form">
+            <h1>Registro</h1>
+            <form action="/register" method="POST" enctype="multipart/form-data">
+                <label for="user">Usuario: </label>
+                <input type="text" name="user" placeholder="Ingrese su usuario"
+                    value="">
+
+                <label for="name">Nombre: </label>
+                <input type="text" name="name" placeholder="Ingrese su nombre"
+                    value="">
+
+                <label for="rol">Rol:</label>
+                <select name="rol">
+                    <option value="admin">Administrador</option>
+                    <option value="user">Usuario</option>
+                </select>
+
+                <br>
+                <label for="pass">Contraseña: </label>
+                <input type="password" name="pass" placeholder="Ingrese su contraseña"
+                    value="">
+
+                <label for="pass">Email: </label>
+                <input type="text" name="email" placeholder="Ingrese su email"
+                    value="">
+
+                <label for="pass">Edad: </label>
+                <input type="text" name="edad" placeholder="Ingrese su edad"
+                    value="">
+
+                <label for="profileImage">Imagen de perfil:</label>
+                <input type="file" name="profileImage" accept="image/*">
+
+                <div class="inline">
+                    <a href="/" class="btn-cancel">Cancelar</a><input type="submit" class="btn-save" value="Guardar">
+                </div>
+            </form>
+
+            <br>
+            
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+
+                <br>
+<br>
+<footer>
+    <h5>
+        Todos los derechos reservados
+    </h5>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+<script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+</script>
+
+
+</body>
+
+</html>
