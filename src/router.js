@@ -13,6 +13,8 @@ const puppeteer = require("puppeteer");
 const ejs = require("ejs");
 const path = require("path");
 const PDFDocument = require("pdfkit");
+const { SitemapStream } = require("sitemap");
+const { createGzip } = require("zlib");
 
 //9 4 Definir las rutas
 
@@ -409,6 +411,48 @@ router.get("/set-lang/:lang", (req, res) => {
     }
 
     res.redirect(returnTo);
+});
+
+router.get("/sitemap.xml", async (req, res, next) => {
+    try {
+        res.header("Content-Type", "application/xml");
+        res.header("Content-Encoding", "gzip");
+
+        const smStream = new SitemapStream({ hostname: process.env.SITE_URL });
+        const pipeline = smStream.pipe(createGzip());
+
+        // 🔹 Rutas estáticas
+        smStream.write({
+            url: "/",
+            changefreq: "daily",
+            priority: 1.0,
+            lastmod: new Date(),
+        });
+        const tipos = ["login", "registro", "registro/profesional"];
+        // 🔹 Rutas en bloque
+        tipos.forEach((tipo) => {
+            smStream.write({
+                url: `/${tipo}`,
+                changefreq: "monthly",
+                priority: 0.5,
+                lastmod: new Date(),
+            });
+        });
+
+        smStream.end();
+        pipeline.pipe(res);
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get("/robots.txt", (req, res) => {
+    res.type("text/plain").send(
+        `User-agent: *
+Allow: /
+
+Sitemap: ${process.env.SITE_URL}/sitemap.xml`
+    );
 });
 
 //9 ******************************************************************************************************

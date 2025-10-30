@@ -1,9 +1,20 @@
-//9 1 Iniciar las librerías
-const express = require("express");
-const app = express();
+//0 Cargar las variables de entorno
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config({ path: "./env/.env" });
 }
+
+// ===== 0.1) Sentry (inicializar lo PRIMERO) =====
+const Sentry = require("@sentry/node");
+Sentry.init({
+    dsn: process.env.SENTRY_DSN, // ponlo en env/.env
+    tracesSampleRate: process.env.NODE_ENV === "production" ? 0.1 : 1.0,
+    profilesSampleRate: 0, // súbelo si luego activas profiling
+    disableInstrumentationWarnings: true, // opcional: silencia warnings si Express se inicializa tarde
+});
+
+//9 1 Iniciar las librerías
+const express = require("express");
+const app = express();
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const socketIO = require("socket.io");
@@ -95,6 +106,35 @@ app.use(security);
 app.use(i18n.init);
 app.use(setGlobals);
 app.use("/", require("./src/router"));
+
+// Ruta de prueba
+app.get("/error", (req, res, next) => {
+    next(new Error("Prueba Sentry!"));
+});
+
+//HANLDLE ERRORS (debe ir al final de los middlewares)
+Sentry.setupExpressErrorHandler(app);
+
+// Tu handler (redirección solo para esta ruta)
+app.use((err, req, res, next) => {
+    if (req.path === "/error") {
+        // Evita bucles: redirige a home con un query
+        return res.redirect("/?testError=1");
+    }
+    // Resto de errores: responde normal
+    res.status(500).send("Error interno");
+});
+
+// (Opcional) Capturar errores de nivel proceso
+process.on("unhandledRejection", (reason) => {
+    Sentry.captureException(
+        reason instanceof Error ? reason : new Error(String(reason))
+    );
+});
+process.on("uncaughtException", (err) => {
+    Sentry.captureException(err);
+    // decide si quieres process.exit(1) en producción
+});
 
 //9 6 Definir el motor de vistas
 app.set("view engine", "ejs");
